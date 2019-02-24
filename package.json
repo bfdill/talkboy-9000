@@ -1,0 +1,42 @@
+{
+  "name": "bfd-soundboard",
+  "version": "0.0.1",
+  "description": "soundboard app",
+  "main": "dist/app.js",
+  "engines": {
+    "node": "11.10.0",
+    "yarn": "1.13.0"
+  },
+  "scripts": {
+    "build": "yarn clean && tsc",
+    "clean": "rimraf dist/",
+    "lint": "tslint -c tslint.json --project tsconfig.json 'src/**/*.ts'",
+    "serve": "node dist/app.js",
+    "start": "ts-node src/app.ts",
+    "start:watch": "nodemon --watch 'src/**/*' -e ts --exec 'ts-node' src/app.ts",
+    "test": "jest --no-cache",
+    "test:coverage": "yarn test --coverage",
+    "test:watch": "yarn test --watch"
+  },
+  "author": "Ben Dill <ben@dillfamily.org>",
+  "dependencies": {
+    "koa": "^2.7.0",
+    "koa-body": "^4.0.8",
+    "koa-helmet": "^4.0.0",
+    "koa-router": "^7.4.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.48",
+    "@types/koa-helmet": "^3.1.2",
+    "@types/koa-router": "^7.0.39",
+    "@types/winston": "^2.4.4",
+    "nodemon": "^1.18.10",
+    "rimraf": "^2.6.3",
+    "ts-node": "^8.0.2",
+    "tslint": "^5.13.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-no-focused-test": "^0.5.0",
+    "typescript": "^3.3.3333"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "extends": "tslint-config-airbnb",
+  "rulesDirectory": ["tslint-no-focused-test"],
+  "rules": {
+    "semicolon": [true, "never"],
+    "ter-arrow-parens": [true, "as-needed"],
+    "import-name": false,
+    "max-line-length": [true, 120],
+    "align": [true, "parameters", "statements"],
+    "no-increment-decrement": false,
+    "trailing-comma": [true, { "multiline": "never", "singleline": "never" }],
+    "no-focused-test": true,
+    "interface-name": [true, "always-prefix"],
+    "ban": [
+      true,
+      ["describe", "only"],
+      ["test", "skip"],
+      ["it", "only"],
+      "xit",
+      "xtest",
+      "xdescribe"
+    ]
+  }
+}
