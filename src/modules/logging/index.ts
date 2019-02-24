@@ -1,12 +1,20 @@
 import * as winston from 'winston'
 
+const transports = [
+  new winston.transports.Console({
+    format: winston.format.simple()
+  })
+]
+
 const logger = winston.createLogger({
-  format: winston.format.json(),
-  transports: [
-    new winston.transports.Console({
-      format: winston.format.simple()
-    })
-  ]
+  transports,
+  defaultMeta: {
+    module: 'default'
+  },
+  format: winston.format.json()
 })
 
-export { logger }
+export {
+  logger,
+  transports
+}
