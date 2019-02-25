@@ -1,10 +1,10 @@
-import { playFile, dohFilename } from '.'
+import { playerService } from '.'
 
 describe('modules -> player', () => {
   test('play', () => {
-    playFile(dohFilename)
+    playerService.playFile('/Users/bd50258/playground/bfd-soundboard/audio/doh.mp3')
   })
   test('log path fail', () => {
-    playFile('../../../../../not.mp3')
+    playerService.playFile('../../../../../not.mp3')
   })
 })

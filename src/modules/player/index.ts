@@ -1,51 +1,43 @@
 import * as playSound from 'play-sound'
-import * as path from 'path'
 import * as winston from 'winston'
 import { inspect } from 'util'
+import { soundService, ISoundService } from '../sounds'
+import { createModuleLogger } from '../logging'
 
-const logger = winston.createLogger({
-  defaultMeta: {
-    module: 'player'
-  },
-  transports: [
-    new winston.transports.Console({
-      format: winston.format.simple()
-    })
-  ]
-})
+const playerServiceLogger = createModuleLogger('PlayerService')
 const opts: any = {}
 const player = playSound(opts)
-const VALID_PATH_PREFIX = path.resolve(process.cwd()) + path.sep
-
-export const audioPathPrefix = path.join(process.cwd(), 'audio')
-export const dohFilename = path.join(audioPathPrefix, '/doh.mp3')
 
 export const errorHandler = (error?: any) => {
   if (error === undefined || error === null) return
 
-  logger.error(JSON.stringify(inspect(error)))
+  // :( womp womp
+  playerServiceLogger.error(JSON.stringify(inspect(error)))
 
   throw error
 }
 
-export const isPathValid = (filename: string): boolean => {
-  const absCandidate = path.resolve(filename) + path.sep
-
-  return absCandidate.substring(0, VALID_PATH_PREFIX.length) === VALID_PATH_PREFIX
+export interface IPlayerService {
+  playFile: (filename: string) => PromiseLike<void>
 }
 
-const playFile = (filename: string) => {
-  logger.info(`filename: ${filename}`)
+export class PlayerService implements IPlayerService {
+  constructor(protected readonly soundService: ISoundService, protected readonly logger: winston.Logger) { }
 
-  if (!isPathValid(filename)) {
-    logger.error('filename is not valid')
-    return
+  playFile = (filename: string): PromiseLike<void> => {
+    this.logger.info(`filename: ${filename}`)
+
+    if (!this.soundService.isPathValid(filename)) {
+      const message = `filename is not valid: ${filename}`
+      this.logger.error(message)
+      return Promise.reject(message)
+    }
+
+    // after i fill out the types i'll make this DI
+    player.play(filename, errorHandler)
+
+    return Promise.resolve()
   }
-
-  const handle = player.play(filename, errorHandler)
-  logger.info(inspect(handle))
 }
 
-export {
-  playFile
-}
+export const playerService = new PlayerService(soundService, playerServiceLogger)

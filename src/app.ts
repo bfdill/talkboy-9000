@@ -2,21 +2,19 @@ import * as Koa from 'koa'
 import * as helmet from 'koa-helmet'
 import * as bodyParser from 'koa-body'
 import * as koaRouter from 'koa-router'
-import * as winston from 'winston'
-import { transports } from './modules/logging'
+import { createModuleLogger } from './modules/logging'
 import { inspect } from 'util'
-import { healthCheckRoutes } from './controllers/healthcheck'
+import { healthCheckRouter } from './controllers/healthcheck'
+import { playerRouter } from './controllers/player'
+import { soundsRouter } from './controllers/sounds'
 
 const app = new Koa()
 const api = new koaRouter()
-  .use('/healthcheck', healthCheckRoutes.routes())
+  .use('/healthcheck', healthCheckRouter.routes())
+  .use('/player', playerRouter.routes())
+  .use('/sounds', soundsRouter.routes())
 
-const appLogger = winston.createLogger({
-  transports,
-  defaultMeta: {
-    module: 'app',
-  }
-})
+const appLogger = createModuleLogger('app')
 
 app.on('error', err => {
   appLogger.error(inspect(err))
