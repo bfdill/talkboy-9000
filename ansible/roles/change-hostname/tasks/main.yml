@@ -1,0 +1,19 @@
+---
+- name: update hostname if needed
+  become: true
+  hostname:
+    name: "{{ inventory_hostname_short }}"
+  register: hostname
+  when: ansible_hostname != inventory_hostname_short
+
+- name: update 127.0.1.1 in /etc/hosts
+  become: true
+  lineinfile:
+    path: /etc/hosts
+    regexp: '^127\.0\.1\.1'
+    line: '127.0.1.1 {{ inventory_hostname_short }}'
+
+- name: reboot inventory with updated hostnames
+  include_role:
+    name: reboot-host
+  when: hostname.changed

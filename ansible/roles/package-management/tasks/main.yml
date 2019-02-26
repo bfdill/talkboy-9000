@@ -1,0 +1,7 @@
+---
+- name: Upgrade all packages to the latest version
+  become: true
+  apt:
+    cache_valid_time: 86400 #One day
+    upgrade: yes
+    update_cache: yes

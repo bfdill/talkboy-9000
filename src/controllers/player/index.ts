@@ -22,7 +22,6 @@ class PlayerController implements IPlayerController {
 
   playSong = async (ctx: koaRouter.RouterContext) => {
     const { soundId } = ctx.params
-
     const sound = this.soundService.getBySoundId(soundId)
 
     if (sound === undefined) {
@@ -57,11 +56,10 @@ class PlayerController implements IPlayerController {
       return
     }
 
-    const soundIndex = randomIntFromInterval(0, sounds.length - 1)
-    const sound = sounds[soundIndex]
+    const sound = sounds.length === 0 ? sounds[0] : sounds[randomIntFromInterval(0, sounds.length - 1)]
+
     this.logger.debug({
       sound,
-      soundIndex,
       message: 'playRando()'
     })
     this.playerService.playFile(sound.filename)

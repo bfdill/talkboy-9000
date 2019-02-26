@@ -1,5 +1,5 @@
 {
-  "name": "bfd-soundboard",
+  "name": "talkboy-9000",
   "version": "0.0.1",
   "description": "soundboard app",
   "main": "dist/app.js",
@@ -18,7 +18,7 @@
     "test:coverage": "yarn test --coverage",
     "test:watch": "yarn test --watch"
   },
-  "author": "Ben Dill <ben@dillfamily.org>",
+  "author": "bfd <ben@dillfamily.org>",
   "dependencies": {
     "chokidar": "^2.1.2",
     "http-status-codes": "^1.3.0",
