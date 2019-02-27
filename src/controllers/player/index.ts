@@ -39,7 +39,8 @@ class PlayerController implements IPlayerController {
       soundId,
       message: 'playSong()'
     })
-    this.playerService.playFile(sound.filename)
+    await this.playerService.playFile(sound.filename)
+    ctx.body = { sound }
   }
 
   playRando = async (ctx: koaRouter.RouterContext) => {
@@ -62,7 +63,8 @@ class PlayerController implements IPlayerController {
       sound,
       message: 'playRando()'
     })
-    this.playerService.playFile(sound.filename)
+    await this.playerService.playFile(sound.filename)
+    ctx.body = { sound }
   }
 }
 

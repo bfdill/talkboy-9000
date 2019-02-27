@@ -1,25 +1,15 @@
 - hosts: all
   become: true
   tasks:
-    - copy:
-      src: ../node_modules.zip
-      dest: /srv/talkboy-9000/node_modules.zip
-      mode: 0640
-    - copy:
-      src: ../dist
-      dest: /srv/talkboy-9000/dist
-      mode: 0640
-    # - name: foo
-    #   archive:
-    #     path: ../node_modules
-    #     dest: /srv/asdf
-    #     format: bz2
-
-    # - copy:
-    #     src: ../node_modules
-    #     dest: /srv/talkboy-9000/node_modules
-    #     mode: 0640
-    # - copy:
-    #     src: ../dist
-    #     dest: /srv/talkboy-9000/dist
-    #     mode: 0640
+    - name: remove app dir
+      file:
+        state: absent
+        path: /srv/talkboy-9000/
+    - name: create app dir
+      file:
+        path: /srv/talkboy-9000
+        state: directory
+    - name: extract app
+      unarchive:
+        src: ../app.zip
+        dest: /srv/talkboy-9000
