@@ -2,21 +2,24 @@
   "name": "talkboy-9000",
   "version": "0.0.1",
   "description": "soundboard app",
-  "main": "dist/app.js",
+  "main": "dist/src/app.js",
   "engines": {
     "node": "11.10.0",
     "yarn": "1.13.0"
   },
+  "license": "Unlicense",
+  "rant": "Unlicense says fight the man, no license field. Yarn says, include it or warning. 😩🐼",
   "scripts": {
     "build": "yarn clean && tsc",
-    "clean": "rimraf dist/",
+    "clean": "rimraf dist/ && rimraf app.zip",
     "lint": "tslint -c tslint.json --project tsconfig.json 'src/**/*.ts'",
-    "serve": "node dist/app.js",
+    "serve": "node .",
     "start": "ts-node src/app.ts",
     "start:watch": "nodemon --watch 'src/**/*' -e ts --exec 'ts-node' src/app.ts",
     "test": "jest --no-cache",
     "test:coverage": "yarn test --coverage",
-    "test:watch": "yarn test --watch"
+    "test:watch": "yarn test --watch",
+    "zip": "node dist/archiver.js"
   },
   "author": "bfd <ben@dillfamily.org>",
   "dependencies": {
@@ -30,6 +33,7 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "@types/archiver": "^2.1.2",
     "@types/chokidar": "^1.7.5",
     "@types/http-status-codes": "^1.2.0",
     "@types/jest": "^24.0.6",
@@ -37,6 +41,7 @@
     "@types/koa-helmet": "^3.1.2",
     "@types/koa-router": "^7.0.39",
     "@types/winston": "^2.4.4",
+    "archiver": "^3.0.0",
     "jest": "^24.1.0",
     "nodemon": "^1.18.10",
     "rimraf": "^2.6.3",
