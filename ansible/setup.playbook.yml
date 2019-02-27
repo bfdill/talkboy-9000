@@ -1,7 +1,17 @@
 ---
 
 - hosts: all
+  tasks:
+    - name: "change hostname"
+      import_role:
+        name: change-hostname
+    - name: "package management"
+      import_role:
+        name: package-management
+
+- hosts: all
   become: true
+  vars:
+    - nodejs_version: "11.x"
   roles:
-    - change-hostname
-    - package-management
+    - geerlingguy.nodejs

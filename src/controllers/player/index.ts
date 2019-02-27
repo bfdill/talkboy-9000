@@ -4,7 +4,7 @@ import { createModuleLogger } from '../../modules/logging'
 import winston = require('winston')
 import { ISoundService, soundService } from '../../modules/sounds'
 import { IPlayerService, playerService } from '../../modules/player'
-import { randomIntFromInterval } from '../../utils';
+import { randomIntFromInterval } from '../../utils'
 
 const playerControllerLogger = createModuleLogger('PlayerController')
 
