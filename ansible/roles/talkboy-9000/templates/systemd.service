@@ -1,0 +1,12 @@
+[Unit]
+Description=talkboy-9000
+After=network.target
+
+[Service]
+WorkingDirectory=/srv/talkboy-9000
+ExecStart=/usr/bin/npm run serve
+Restart=on-failure
+User=pi
+
+[Install]
+WantedBy=multi-user.target

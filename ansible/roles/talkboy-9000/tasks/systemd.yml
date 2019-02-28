@@ -1,0 +1,5 @@
+- name: copy service template
+  become: true
+  copy:
+    src: ../templates/systemd.service
+    dest: /etc/systemd/system/talkboy-9000.service

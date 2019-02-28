@@ -1,15 +1,5 @@
 - hosts: all
-  become: true
   tasks:
-    - name: remove app dir
-      file:
-        state: absent
-        path: /srv/talkboy-9000/
-    - name: create app dir
-      file:
-        path: /srv/talkboy-9000
-        state: directory
-    - name: extract app
-      unarchive:
-        src: ../app.zip
-        dest: /srv/talkboy-9000
+    - name: deploy, install, and launch talkboy-9000
+      import_role:
+        name: talkboy-9000
