@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`modules -> player playback happy path 1`] = `undefined`;
+
+exports[`modules -> player playback happy path 2`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "filename: this-file-totes-exists.mp3",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"filename: this-file-totes-exists.mp3\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
 exports[`modules -> player rejects on invalid file 1`] = `"filename is not valid: this-file-totes-exists.mp3"`;
 
 exports[`modules -> player rejects on invalid file 2`] = `
@@ -20,6 +33,44 @@ Array [
     "message": "filename is not valid: this-file-totes-exists.mp3",
     Symbol(level): "error",
     Symbol(message): "{\\"message\\":\\"filename is not valid: this-file-totes-exists.mp3\\",\\"level\\":\\"error\\"}",
+  },
+]
+`;
+
+exports[`modules -> player rejects on playback error 1`] = `
+Object {
+  "error": "KHAAAAAAN!",
+}
+`;
+
+exports[`modules -> player rejects on playback error 2`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "filename: this-file-totes-exists.mp3",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"filename: this-file-totes-exists.mp3\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> player rejects on playback error 3`] = `
+Array [
+  Object {
+    "error": Object {
+      "error": "KHAAAAAAN!",
+    },
+    "level": "error",
+    "message": "playback failure: this-file-totes-exists.mp3",
+    Symbol(level): "error",
+    Symbol(splat): Array [
+      Object {
+        "error": Object {
+          "error": "KHAAAAAAN!",
+        },
+      },
+    ],
+    Symbol(message): "{\\"error\\":{\\"error\\":\\"KHAAAAAAN!\\"},\\"level\\":\\"error\\",\\"message\\":\\"playback failure: this-file-totes-exists.mp3\\"}",
   },
 ]
 `;

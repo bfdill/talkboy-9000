@@ -15,4 +15,9 @@ export class WinstonJestTransport extends winstonTransport implements IWinstonJe
     this.mock(info)
     next()
   }
+
+  logv = (info: any, next: () => void): any => {
+    this.mock(info)
+    next()
+  }
 }

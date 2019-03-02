@@ -38,7 +38,7 @@ export class PlayerService implements IPlayerService {
         }
 
         this.logger.error(`playback failure: ${filename}`, { error })
-        reject()
+        reject(error)
       }
 
       this.player.play(filename, next)
