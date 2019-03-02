@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`controllers -> sounds -> index get matches snapshot 1`] = `
+Object {
+  "body": Object {
+    "sounds": null,
+  },
+  "status": 404,
+}
+`;
+
+exports[`controllers -> sounds -> index get matches snapshot 2`] = `
+Object {
+  "body": Object {
+    "basename": "mock basename",
+    "filename": "mock filename",
+    "id": "mock id",
+  },
+}
+`;

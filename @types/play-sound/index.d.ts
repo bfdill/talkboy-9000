@@ -1,1 +1,1 @@
-declare module 'play-sound'
+// declare module 'play-sound'

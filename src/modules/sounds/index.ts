@@ -22,12 +22,13 @@ export class SoundService implements ISoundService {
   public readonly FILE_GLOB = '**/*.mp3'
 
   protected sounds: Sound[] = []
-  protected readonly watcher: chokidar.FSWatcher
+  // protected readonly watcher: chokidar.FSWatcher
   protected readonly watchedPath: string
 
   constructor(public readonly pathToSounds: string, protected readonly logger: winston.Logger) {
     this.watchedPath = join(pathToSounds, this.FILE_GLOB)
-    this.watcher = this.createWatch()
+    // this.watcher = this.createWatch()
+    // this.watcher = null
   }
 
   addSound = (filename: string) => {
@@ -52,23 +53,23 @@ export class SoundService implements ISoundService {
   }
 
   createWatch = () => {
-    return chokidar.watch(this.watchedPath)
-      .on('add', (path: string) => {
-        this.addSound(path)
+    // return chokidar.watch(this.watchedPath)
+    //   .on('add', (path: string) => {
+    //     this.addSound(path)
 
-        this.logger.debug({
-          path,
-          message: 'add'
-        })
-      })
-      .on('unlink', (path: string) => {
-        this.removeSound(path)
+    //     this.logger.debug({
+    //       path,
+    //       message: 'add'
+    //     })
+    //   })
+    //   .on('unlink', (path: string) => {
+    //     this.removeSound(path)
 
-        this.logger.debug({
-          path,
-          message: 'unlink'
-        })
-      })
+    //     this.logger.debug({
+    //       path,
+    //       message: 'unlink'
+    //     })
+    //   })
   }
 
   getBySoundId = (soundId?: string | undefined): Sound | undefined => {

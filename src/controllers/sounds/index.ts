@@ -4,13 +4,13 @@ import { createModuleLogger } from '../../modules/logging'
 import winston = require('winston')
 import { ISoundService, soundService } from '../../modules/sounds'
 
-const soundsControllerLogger = createModuleLogger('SoundsController')
+export const soundsControllerLogger = createModuleLogger('SoundsController')
 
 interface ISoundsController {
   get: (ctx: koaRouter.RouterContext) => void
 }
 
-class SoundsController implements ISoundsController {
+export class SoundsController implements ISoundsController {
   constructor(protected readonly soundService: ISoundService, protected readonly logger: winston.Logger) { }
 
   get = async (ctx: koaRouter.RouterContext) => {
@@ -24,14 +24,9 @@ class SoundsController implements ISoundsController {
 
     ctx.body = sounds
   }
-
-  asdf = async (ctx: koaRouter.RouterContext) => {
-    ctx.body = { yoyoyo: 'yo yo yo!' }
-  }
 }
 
 const controllerInstance = new SoundsController(soundService, soundsControllerLogger)
 
 export const soundsRouter = new koaRouter()
   .get('/', controllerInstance.get)
-  .get('/asdf', controllerInstance.asdf)

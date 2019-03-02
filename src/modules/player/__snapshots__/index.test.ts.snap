@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`modules -> player rejects on invalid file 1`] = `"filename is not valid: this-file-totes-exists.mp3"`;
+
+exports[`modules -> player rejects on invalid file 2`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "filename: this-file-totes-exists.mp3",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"filename: this-file-totes-exists.mp3\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> player rejects on invalid file 3`] = `
+Array [
+  Object {
+    "level": "error",
+    "message": "filename is not valid: this-file-totes-exists.mp3",
+    Symbol(level): "error",
+    Symbol(message): "{\\"message\\":\\"filename is not valid: this-file-totes-exists.mp3\\",\\"level\\":\\"error\\"}",
+  },
+]
+`;
