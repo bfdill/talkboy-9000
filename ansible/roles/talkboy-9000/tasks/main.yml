@@ -1,0 +1,20 @@
+- name: become for all tasks
+  become: yes
+  block:
+    - name: stop if running
+      systemd:
+        name: talkboy-9000
+        state: stopped
+      ignore_errors: yes
+
+    - name: deploy
+      import_tasks: deploy.yml
+
+    - name: install service
+      import_tasks: systemd.yml
+
+    - name: start
+      systemd:
+        name: talkboy-9000
+        enabled: yes
+        state: started

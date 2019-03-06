@@ -1,0 +1,5 @@
+- hosts: all
+  tasks:
+    - name: deploy, install, and launch talkboy-9000
+      import_role:
+        name: talkboy-9000

@@ -4,7 +4,7 @@ import { createModuleLogger } from '../../modules/logging'
 import winston = require('winston')
 import { ISoundService, soundService } from '../../modules/sounds'
 import { IPlayerService, playerService } from '../../modules/player'
-import { randomIntFromInterval } from '../../utils';
+import { randomIntFromInterval } from '../../utils'
 
 const playerControllerLogger = createModuleLogger('PlayerController')
 
@@ -22,7 +22,6 @@ class PlayerController implements IPlayerController {
 
   playSong = async (ctx: koaRouter.RouterContext) => {
     const { soundId } = ctx.params
-
     const sound = this.soundService.getBySoundId(soundId)
 
     if (sound === undefined) {
@@ -40,7 +39,8 @@ class PlayerController implements IPlayerController {
       soundId,
       message: 'playSong()'
     })
-    this.playerService.playFile(sound.filename)
+    await this.playerService.playFile(sound.filename)
+    ctx.body = { sound }
   }
 
   playRando = async (ctx: koaRouter.RouterContext) => {
@@ -57,14 +57,14 @@ class PlayerController implements IPlayerController {
       return
     }
 
-    const soundIndex = randomIntFromInterval(0, sounds.length - 1)
-    const sound = sounds[soundIndex]
+    const sound = sounds.length === 0 ? sounds[0] : sounds[randomIntFromInterval(0, sounds.length - 1)]
+
     this.logger.debug({
       sound,
-      soundIndex,
       message: 'playRando()'
     })
-    this.playerService.playFile(sound.filename)
+    await this.playerService.playFile(sound.filename)
+    ctx.body = { sound }
   }
 }
 

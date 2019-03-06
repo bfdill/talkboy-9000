@@ -1,5 +1,6 @@
 dist/
 audio/
+app.zip
 
 # Created by https://www.gitignore.io/api/node,macos,ansible,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=node,macos,ansible,visualstudiocode
