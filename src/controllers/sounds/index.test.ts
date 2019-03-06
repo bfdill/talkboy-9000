@@ -1,6 +1,6 @@
-import { soundsRouter, SoundsController, soundsControllerLogger } from '.';
-import { ISoundService, Sound } from '../../modules/sounds';
-import koaRouter = require('koa-router');
+import { SoundsController, soundsControllerLogger } from '.'
+import { ISoundService, Sound } from '../../modules/sounds'
+import koaRouter = require('koa-router')
 
 describe('controllers -> sounds -> index', () => {
   const mockSound: Sound = {

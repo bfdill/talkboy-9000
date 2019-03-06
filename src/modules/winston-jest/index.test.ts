@@ -1,3 +1,6 @@
+// this file has 'test' in its' name because it can only be loaded in a context
+// where jest exists.  once jest exists, it expects a test to be in a 'test' file
+// so, yeah, that's a thing and i'm not really digging into this at all
 import * as winstonTransport from 'winston-transport'
 
 export interface IWinstonJestTransport extends winstonTransport {
@@ -21,3 +24,11 @@ export class WinstonJestTransport extends winstonTransport implements IWinstonJe
     next()
   }
 }
+
+describe('modules -> winston-jest', () => {
+  test('log hits the mock', () => {
+    const l = new WinstonJestTransport()
+    l.log('hi', () => { })
+    expect(l.mock).toHaveBeenCalledWith('hi')
+  })
+})

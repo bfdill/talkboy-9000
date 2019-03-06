@@ -1,7 +1,7 @@
-import * as chokidar from 'chokidar'
 import { join, resolve, sep, basename } from 'path'
 import * as winston from 'winston'
 import { createModuleLogger } from '../logging'
+import * as sane from 'sane'
 
 export const soundServiceLogger = createModuleLogger('SoundService')
 export const PATH_TO_SOUNDS = join(process.cwd(), 'audio')
@@ -22,13 +22,10 @@ export class SoundService implements ISoundService {
   public readonly FILE_GLOB = '**/*.mp3'
 
   protected sounds: Sound[] = []
-  // protected readonly watcher: chokidar.FSWatcher
-  protected readonly watchedPath: string
+  protected readonly watcher: sane.Watcher
 
   constructor(public readonly pathToSounds: string, protected readonly logger: winston.Logger) {
-    this.watchedPath = join(pathToSounds, this.FILE_GLOB)
-    // this.watcher = this.createWatch()
-    // this.watcher = null
+    this.watcher = this.createWatch()
   }
 
   addSound = (filename: string) => {
@@ -52,24 +49,24 @@ export class SoundService implements ISoundService {
     })
   }
 
-  createWatch = () => {
-    // return chokidar.watch(this.watchedPath)
-    //   .on('add', (path: string) => {
-    //     this.addSound(path)
+  createWatch = (): sane.Watcher => {
+    return sane(this.pathToSounds, { glob: this.FILE_GLOB })
+      .on('add', (path: string) => {
+        this.addSound(path)
 
-    //     this.logger.debug({
-    //       path,
-    //       message: 'add'
-    //     })
-    //   })
-    //   .on('unlink', (path: string) => {
-    //     this.removeSound(path)
+        this.logger.debug({
+          path,
+          message: 'add'
+        })
+      })
+      .on('delete', (path: string) => {
+        this.removeSound(path)
 
-    //     this.logger.debug({
-    //       path,
-    //       message: 'unlink'
-    //     })
-    //   })
+        this.logger.debug({
+          path,
+          message: 'delete'
+        })
+      })
   }
 
   getBySoundId = (soundId?: string | undefined): Sound | undefined => {
