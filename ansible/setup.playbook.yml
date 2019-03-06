@@ -1,7 +1,23 @@
 ---
 
 - hosts: all
-  become: true
-  roles:
-    - change-hostname
-    - package-management
+  tasks:
+    - name: change hostname
+      import_role:
+        name: change-hostname
+    - name: package management
+      import_role:
+        name: package-management
+    - name: install omxplayer
+      become: true
+      apt:
+        name: omxplayer
+
+# - hosts: all
+#   become: true
+#   vars:
+#     - nodejs_version: "11.x"
+#   roles:
+#     - geerlingguy.nodejs
+# this role doesn't play well with 'reinstall'
+# need a precondition here
