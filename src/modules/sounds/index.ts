@@ -24,7 +24,10 @@ export class SoundService implements ISoundService {
   protected sounds: Sound[] = []
   protected readonly watcher: sane.Watcher
 
-  constructor(public readonly pathToSounds: string, protected readonly logger: winston.Logger) {
+  constructor(
+    public readonly pathToSounds: string,
+    protected readonly logger: winston.Logger
+  ) {
     this.watcher = this.createWatch()
   }
 
@@ -32,12 +35,14 @@ export class SoundService implements ISoundService {
     this.logger.debug(`addSound(${filename})`)
 
     this.sounds = [
-      ...this.sounds, {
+      ...this.sounds,
+      {
         filename,
         id: filename,
         basename: basename(filename)
-      }]
-      .sort((a, b) => (`${a.filename}`).localeCompare(b.filename))
+      }
+    ]
+      .sort((a, b) => `${a.filename}`.localeCompare(b.filename))
       .map((v, i) => {
         v.id = `${i}`
         return v
@@ -85,7 +90,8 @@ export class SoundService implements ISoundService {
 
   isPathValid = (filename: string): boolean => {
     const absCandidate = resolve(filename) + sep
-    const result = absCandidate.substring(0, PATH_TO_SOUNDS.length) === PATH_TO_SOUNDS
+    const result =
+      absCandidate.substring(0, PATH_TO_SOUNDS.length) === PATH_TO_SOUNDS
     this.logger.debug({
       result,
       message: `isPathValid(${filename})`
@@ -103,7 +109,7 @@ export class SoundService implements ISoundService {
     this.sounds = this.sounds
       .slice(0, soundIndex)
       .concat(this.sounds.slice(soundIndex + 1))
-      .sort((a, b) => (`${a.filename}`).localeCompare(b.filename))
+      .sort((a, b) => `${a.filename}`.localeCompare(b.filename))
       .map((v, i) => {
         v.id = `${i}`
         return v

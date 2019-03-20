@@ -9,18 +9,21 @@ describe('controllers -> sounds -> index', () => {
     id: 'mock id'
   }
 
-  test.each([
-    [null],
-    [mockSound]
-  ])('get matches snapshot', async (sounds?: Sound[] | null) => {
-    const mockSoundService: ISoundService = {
-      getSounds: () => sounds
-    } as any
-    const controller = new SoundsController(mockSoundService, soundsControllerLogger)
-    const ctx: koaRouter.RouterContext = {} as any
+  test.each([[null], [mockSound]])(
+    'get matches snapshot',
+    async (sounds?: Sound[] | null) => {
+      const mockSoundService: ISoundService = {
+        getSounds: () => sounds
+      } as any
+      const controller = new SoundsController(
+        mockSoundService,
+        soundsControllerLogger
+      )
+      const ctx: koaRouter.RouterContext = {} as any
 
-    await controller.get(ctx)
+      await controller.get(ctx)
 
-    expect(ctx).toMatchSnapshot()
-  })
+      expect(ctx).toMatchSnapshot()
+    }
+  )
 })

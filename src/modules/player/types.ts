@@ -1,16 +1,17 @@
 import { ChildProcess } from 'child_process'
 
-export type DefaultPlayer = 'mplayer' |
-  'afplay' |
-  'mpg123' |
-  'mpg321' |
-  'play' |
-  'omxplayer' |
-  'aplay' |
-  'cmdmp3'
+export type DefaultPlayer =
+  | 'mplayer'
+  | 'afplay'
+  | 'mpg123'
+  | 'mpg321'
+  | 'play'
+  | 'omxplayer'
+  | 'aplay'
+  | 'cmdmp3'
 export type What = string | string[]
 export type PlayerOptions = {
-  player: any,
+  player: any
   players?: DefaultPlayer | DefaultPlayer[] | string[]
 }
 export type PlayerArgs = { [playerName: string]: string[] }

@@ -7,7 +7,8 @@ export interface IWinstonJestTransport extends winstonTransport {
   readonly mock: jest.Mock
 }
 
-export class WinstonJestTransport extends winstonTransport implements IWinstonJestTransport {
+export class WinstonJestTransport extends winstonTransport
+  implements IWinstonJestTransport {
   public readonly mock: jest.Mock = jest.fn()
 
   constructor(opts?: winstonTransport.TransportStreamOptions) {
@@ -28,7 +29,7 @@ export class WinstonJestTransport extends winstonTransport implements IWinstonJe
 describe('modules -> winston-jest', () => {
   test('log hits the mock', () => {
     const l = new WinstonJestTransport()
-    l.log('hi', () => { })
+    l.log('hi', () => {})
     expect(l.mock).toHaveBeenCalledWith('hi')
   })
 })

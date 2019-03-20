@@ -18,7 +18,7 @@ class PlayerController implements IPlayerController {
     protected readonly playerService: IPlayerService,
     protected readonly soundService: ISoundService,
     protected readonly logger: winston.Logger
-  ) { }
+  ) {}
 
   playSong = async (ctx: koaRouter.RouterContext) => {
     const { soundId } = ctx.params
@@ -57,7 +57,10 @@ class PlayerController implements IPlayerController {
       return
     }
 
-    const sound = sounds.length === 0 ? sounds[0] : sounds[randomIntFromInterval(0, sounds.length - 1)]
+    const sound =
+      sounds.length === 0
+        ? sounds[0]
+        : sounds[randomIntFromInterval(0, sounds.length - 1)]
 
     this.logger.debug({
       sound,
@@ -68,7 +71,11 @@ class PlayerController implements IPlayerController {
   }
 }
 
-const controllerInstance = new PlayerController(playerService, soundService, playerControllerLogger)
+const controllerInstance = new PlayerController(
+  playerService,
+  soundService,
+  playerControllerLogger
+)
 
 export const playerRouter = new koaRouter()
   .get('/rando', controllerInstance.playRando)
