@@ -99,7 +99,7 @@ describe('controllers -> player', () => {
       mockGetBySoundId.mockReturnValue(sound)
       mockGetSounds.mockReturnValue([sound])
 
-      await playerController.playSound(ctx)
+      await playerController.playRando(ctx)
 
       expect(ctx).toMatchSnapshot()
       expect(logger.debug).toMatchSnapshot()

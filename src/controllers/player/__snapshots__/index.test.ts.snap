@@ -64,7 +64,6 @@ Object {
   "params": Object {
     "soundId": "baby_shark",
   },
-  "status": 200,
 }
 `;
 
@@ -73,13 +72,12 @@ exports[`controllers -> player playRando plays sound 2`] = `
   "calls": Array [
     Array [
       Object {
-        "message": "playSound()",
+        "message": "playRando()",
         "sound": Object {
           "basename": "mommy shark",
           "filename": "daddy shark",
           "id": "baby_shark",
         },
-        "soundId": "baby_shark",
       },
     ],
   ],
