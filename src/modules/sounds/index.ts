@@ -74,7 +74,7 @@ export class SoundService implements ISoundService {
       })
   }
 
-  getBySoundId = (soundId?: string | undefined): Sound | undefined => {
+  getBySoundId = (soundId: string): Sound | undefined => {
     const result = this.sounds.find(s => s.id === soundId)
     this.logger.debug({
       result,

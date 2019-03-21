@@ -1,5 +1,5 @@
 import * as koaRouter from 'koa-router'
-import { NOT_FOUND } from 'http-status-codes'
+import { NOT_FOUND, BAD_REQUEST, OK } from 'http-status-codes'
 import { createModuleLogger } from '../../modules/logging'
 import winston = require('winston')
 import { ISoundService, soundService } from '../../modules/sounds'
@@ -8,26 +8,37 @@ import { randomIntFromInterval } from '../../utils'
 
 const playerControllerLogger = createModuleLogger('PlayerController')
 
-interface IPlayerController {
-  playSong: (ctx: koaRouter.RouterContext) => PromiseLike<void>
+export interface IPlayerController {
+  playSound: (ctx: koaRouter.RouterContext) => PromiseLike<void>
   playRando: (ctx: koaRouter.RouterContext) => PromiseLike<void>
 }
 
-class PlayerController implements IPlayerController {
+export class PlayerController implements IPlayerController {
   constructor(
     protected readonly playerService: IPlayerService,
     protected readonly soundService: ISoundService,
     protected readonly logger: winston.Logger
   ) {}
 
-  playSong = async (ctx: koaRouter.RouterContext) => {
+  playSound = async (ctx: koaRouter.RouterContext) => {
     const { soundId } = ctx.params
+
+    if (typeof soundId !== 'string') {
+      this.logger.warn({
+        soundId,
+        message: `playSound().soundId !== string (${soundId})`
+      })
+      ctx.status = BAD_REQUEST
+      ctx.body = { soundId }
+      return
+    }
+
     const sound = this.soundService.getBySoundId(soundId)
 
     if (sound === undefined) {
       this.logger.error({
         soundId,
-        message: 'playSong().sound === undefined'
+        message: 'playSound().sound === undefined'
       })
       ctx.status = NOT_FOUND
       ctx.body = { soundId }
@@ -37,9 +48,10 @@ class PlayerController implements IPlayerController {
     this.logger.debug({
       sound,
       soundId,
-      message: 'playSong()'
+      message: 'playSound()'
     })
     await this.playerService.playFile(sound.filename)
+    ctx.status = OK
     ctx.body = { sound }
   }
 
@@ -79,4 +91,4 @@ const controllerInstance = new PlayerController(
 
 export const playerRouter = new koaRouter()
   .get('/rando', controllerInstance.playRando)
-  .get('/:soundId', controllerInstance.playSong)
+  .get('/:soundId', controllerInstance.playSound)

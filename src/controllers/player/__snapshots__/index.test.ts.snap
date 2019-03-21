@@ -1,0 +1,234 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`controllers -> player has known exports 1`] = `
+Array [
+  "PlayerController",
+  "playerRouter",
+]
+`;
+
+exports[`controllers -> player playSound bad request on non-string 1`] = `
+Object {
+  "body": Object {
+    "soundId": undefined,
+  },
+  "params": Object {
+    "soundId": undefined,
+  },
+  "status": 400,
+}
+`;
+
+exports[`controllers -> player playSound bad request on non-string 2`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "message": "playSound().soundId !== string (undefined)",
+        "soundId": undefined,
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`controllers -> player playSound bad request on non-string 3`] = `
+Object {
+  "body": Object {
+    "soundId": null,
+  },
+  "params": Object {
+    "soundId": null,
+  },
+  "status": 400,
+}
+`;
+
+exports[`controllers -> player playSound bad request on non-string 4`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "message": "playSound().soundId !== string (null)",
+        "soundId": null,
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`controllers -> player playSound bad request on non-string 5`] = `
+Object {
+  "body": Object {
+    "soundId": false,
+  },
+  "params": Object {
+    "soundId": false,
+  },
+  "status": 400,
+}
+`;
+
+exports[`controllers -> player playSound bad request on non-string 6`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "message": "playSound().soundId !== string (false)",
+        "soundId": false,
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`controllers -> player playSound bad request on non-string 7`] = `
+Object {
+  "body": Object {
+    "soundId": true,
+  },
+  "params": Object {
+    "soundId": true,
+  },
+  "status": 400,
+}
+`;
+
+exports[`controllers -> player playSound bad request on non-string 8`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "message": "playSound().soundId !== string (true)",
+        "soundId": true,
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`controllers -> player playSound bad request on non-string 9`] = `
+Object {
+  "body": Object {
+    "soundId": 1,
+  },
+  "params": Object {
+    "soundId": 1,
+  },
+  "status": 400,
+}
+`;
+
+exports[`controllers -> player playSound bad request on non-string 10`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "message": "playSound().soundId !== string (1)",
+        "soundId": 1,
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`controllers -> player playSound not found on unknown song 1`] = `
+Object {
+  "body": Object {
+    "soundId": "unknown",
+  },
+  "params": Object {
+    "soundId": "unknown",
+  },
+  "status": 404,
+}
+`;
+
+exports[`controllers -> player playSound not found on unknown song 2`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "message": "playSound().sound === undefined",
+        "soundId": "unknown",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`controllers -> player playSound plays sound 1`] = `
+Object {
+  "body": Object {
+    "sound": Object {
+      "basename": "mommy shark",
+      "filename": "daddy shark",
+      "id": "baby_shark",
+    },
+  },
+  "params": Object {
+    "soundId": "baby_shark",
+  },
+  "status": 200,
+}
+`;
+
+exports[`controllers -> player playSound plays sound 2`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "message": "playSound()",
+        "sound": Object {
+          "basename": "mommy shark",
+          "filename": "daddy shark",
+          "id": "baby_shark",
+        },
+        "soundId": "baby_shark",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
