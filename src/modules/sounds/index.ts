@@ -14,7 +14,7 @@ export type Sound = {
 
 export interface ISoundService {
   getBySoundId(soundId?: string): Sound | undefined
-  getSounds: () => Sound[] | null
+  getSounds: () => Sound[]
   isPathValid: (filename: string) => boolean
 }
 
@@ -83,7 +83,7 @@ export class SoundService implements ISoundService {
     return result
   }
 
-  getSounds = (): Sound[] | null => {
+  getSounds = (): Sound[] => {
     this.logger.silly({ message: 'getSounds()', sounds: this.sounds })
     return this.sounds
   }

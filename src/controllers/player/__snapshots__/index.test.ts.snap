@@ -7,6 +7,91 @@ Array [
 ]
 `;
 
+exports[`controllers -> player playRando not found when no sounds 1`] = `
+Object {
+  "params": Object {
+    "soundId": undefined,
+  },
+  "status": 404,
+}
+`;
+
+exports[`controllers -> player playRando not found when no sounds 2`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "message": "playRando()",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`controllers -> player playRando not found when no sounds 3`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "message": "playRando().sounds.length === 0",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`controllers -> player playRando plays sound 1`] = `
+Object {
+  "body": Object {
+    "sound": Object {
+      "basename": "mommy shark",
+      "filename": "daddy shark",
+      "id": "baby_shark",
+    },
+  },
+  "params": Object {
+    "soundId": "baby_shark",
+  },
+  "status": 200,
+}
+`;
+
+exports[`controllers -> player playRando plays sound 2`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "message": "playSound()",
+        "sound": Object {
+          "basename": "mommy shark",
+          "filename": "daddy shark",
+          "id": "baby_shark",
+        },
+        "soundId": "baby_shark",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
 exports[`controllers -> player playSound bad request on non-string 1`] = `
 Object {
   "body": Object {

@@ -61,18 +61,15 @@ export class PlayerController implements IPlayerController {
     })
     const sounds = this.soundService.getSounds()
 
-    if (sounds === null) {
+    if (sounds.length === 0) {
       this.logger.error({
-        message: 'playRando().sounds === null'
+        message: 'playRando().sounds.length === 0'
       })
       ctx.status = NOT_FOUND
       return
     }
 
-    const sound =
-      sounds.length === 0
-        ? sounds[0]
-        : sounds[randomIntFromInterval(0, sounds.length - 1)]
+    const sound = sounds[randomIntFromInterval(0, sounds.length - 1)]
 
     this.logger.debug({
       sound,
