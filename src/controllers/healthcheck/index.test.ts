@@ -1,5 +1,5 @@
-import koaRouter = require('koa-router');
-import { healthcheck } from '.';
+import koaRouter = require('koa-router')
+import { healthcheck } from '.'
 
 describe('controllers -> healthcheck', () => {
   test('healthy, so healthy!', async () => {

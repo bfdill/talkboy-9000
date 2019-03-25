@@ -18,7 +18,7 @@ export class PlayerService implements IPlayerService {
     protected readonly player: IPlayer,
     protected readonly soundService: ISoundService,
     protected readonly logger: winston.Logger
-  ) { }
+  ) {}
 
   playFile = (filename: string): PromiseLike<void> => {
     this.logger.info(`filename: ${filename}`)
@@ -46,4 +46,8 @@ export class PlayerService implements IPlayerService {
   }
 }
 
-export const playerService = new PlayerService(createPlayer(), soundService, playerServiceLogger)
+export const playerService = new PlayerService(
+  createPlayer(),
+  soundService,
+  playerServiceLogger
+)

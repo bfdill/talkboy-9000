@@ -1,30 +1,49 @@
+import { Server } from 'http'
 import * as Koa from 'koa'
 import * as helmet from 'koa-helmet'
 import * as bodyParser from 'koa-body'
 import * as koaRouter from 'koa-router'
+import * as winston from 'winston'
 import { createModuleLogger } from './modules/logging'
-import { inspect } from 'util'
 import { healthCheckRouter } from './controllers/healthcheck'
 import { playerRouter } from './controllers/player'
 import { soundsRouter } from './controllers/sounds'
 
-const app = new Koa()
-const api = new koaRouter()
-  .use('/healthcheck', healthCheckRouter.routes())
-  .use('/player', playerRouter.routes())
-  .use('/sounds', soundsRouter.routes())
+export interface IKoaApp {
+  listen: (port: number) => Server
+}
 
-const appLogger = createModuleLogger('app')
+export const configureRouter = (koaRouter: koaRouter) =>
+  koaRouter
+    .use('/healthcheck', healthCheckRouter.routes())
+    .use('/player', playerRouter.routes())
+    .use('/sounds', soundsRouter.routes())
 
-app.on('error', err => {
-  appLogger.error(inspect(err))
-})
+export class KoaApp implements IKoaApp {
+  constructor(
+    protected koa: Koa,
+    protected router: koaRouter,
+    protected logger: winston.Logger
+  ) {}
 
-app
-  .use(helmet())
-  .use(bodyParser())
-  .use(api.routes())
-  .use(api.allowedMethods())
-  .listen(3000, () => appLogger.info({
-    message: 'listening on 3000'
-  }))
+  protected setup = (koa: Koa, router: koaRouter, logger: winston.Logger) => {
+    koa.on('error', err => {
+      logger.error(err)
+    })
+
+    koa
+      .use(helmet())
+      .use(bodyParser())
+      .use(router.routes())
+      .use(router.allowedMethods())
+  }
+
+  listen = (port: number) => {
+    this.setup(this.koa, this.router, this.logger)
+
+    return this.koa.listen(port)
+  }
+}
+
+export const router = configureRouter(new koaRouter())
+export const logger = createModuleLogger('app')

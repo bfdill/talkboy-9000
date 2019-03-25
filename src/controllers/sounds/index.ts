@@ -11,7 +11,10 @@ interface ISoundsController {
 }
 
 export class SoundsController implements ISoundsController {
-  constructor(protected readonly soundService: ISoundService, protected readonly logger: winston.Logger) { }
+  constructor(
+    protected readonly soundService: ISoundService,
+    protected readonly logger: winston.Logger
+  ) {}
 
   get = async (ctx: koaRouter.RouterContext) => {
     const sounds = this.soundService.getSounds()
@@ -26,7 +29,9 @@ export class SoundsController implements ISoundsController {
   }
 }
 
-const controllerInstance = new SoundsController(soundService, soundsControllerLogger)
+const controllerInstance = new SoundsController(
+  soundService,
+  soundsControllerLogger
+)
 
-export const soundsRouter = new koaRouter()
-  .get('/', controllerInstance.get)
+export const soundsRouter = new koaRouter().get('/', controllerInstance.get)
