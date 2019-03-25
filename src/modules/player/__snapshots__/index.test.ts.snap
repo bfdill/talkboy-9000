@@ -13,6 +13,17 @@ Array [
 ]
 `;
 
+exports[`modules -> player playback happy path 3`] = `
+Array [
+  Object {
+    "level": "silly",
+    "message": "playback success: this-file-totes-exists.mp3",
+    Symbol(level): "silly",
+    Symbol(message): "{\\"message\\":\\"playback success: this-file-totes-exists.mp3\\",\\"level\\":\\"silly\\"}",
+  },
+]
+`;
+
 exports[`modules -> player rejects on invalid file 1`] = `"filename is not valid: this-file-totes-exists.mp3"`;
 
 exports[`modules -> player rejects on invalid file 2`] = `
