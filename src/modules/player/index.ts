@@ -1,28 +1,24 @@
-import * as playSound from 'play-sound'
+// import * as playSound from 'play-sound'
 import * as winston from 'winston'
-import { inspect } from 'util'
 import { soundService, ISoundService } from '../sounds'
 import { createModuleLogger } from '../logging'
+import { createPlayer, IPlayer } from './types'
 
 const playerServiceLogger = createModuleLogger('PlayerService')
-const opts: any = {}
-const player = playSound(opts)
 
-export const errorHandler = (error?: any) => {
-  if (error === undefined || error === null) return
-
-  // :( womp womp
-  playerServiceLogger.error(JSON.stringify(inspect(error)))
-
-  throw error
-}
+// tsd creation fail
+const createPlayer: createPlayer = require('play-sound')
 
 export interface IPlayerService {
   playFile: (filename: string) => PromiseLike<void>
 }
 
 export class PlayerService implements IPlayerService {
-  constructor(protected readonly soundService: ISoundService, protected readonly logger: winston.Logger) { }
+  constructor(
+    protected readonly player: IPlayer,
+    protected readonly soundService: ISoundService,
+    protected readonly logger: winston.Logger
+  ) {}
 
   playFile = (filename: string): PromiseLike<void> => {
     this.logger.info(`filename: ${filename}`)
@@ -33,11 +29,25 @@ export class PlayerService implements IPlayerService {
       return Promise.reject(message)
     }
 
-    // after i fill out the types i'll make this DI
-    player.play(filename, errorHandler)
+    return new Promise((resolve, reject) => {
+      const next = (error?: any) => {
+        if (error === undefined || error === null) {
+          this.logger.silly(`playback success: ${filename}`)
+          resolve()
+          return
+        }
 
-    return Promise.resolve()
+        this.logger.error(`playback failure: ${filename}`, { error })
+        reject(error)
+      }
+
+      this.player.play(filename, next)
+    })
   }
 }
 
-export const playerService = new PlayerService(soundService, playerServiceLogger)
+export const playerService = new PlayerService(
+  createPlayer(),
+  soundService,
+  playerServiceLogger
+)

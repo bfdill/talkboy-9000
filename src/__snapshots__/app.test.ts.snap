@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`app KoaApp koa.use matches snapshot 1`] = `"[ { [Function: middleware] _name: 'helmet' } ]"`;
+
+exports[`app KoaApp koa.use matches snapshot 2`] = `"[ [Function] ]"`;
+
+exports[`app KoaApp koa.use matches snapshot 3`] = `"[ undefined ]"`;
+
+exports[`app KoaApp koa.use matches snapshot 4`] = `"[ undefined ]"`;
+
+exports[`app configureRouter 1`] = `
+Array [
+  "/healthcheck",
+  [Function],
+]
+`;
+
+exports[`app configureRouter 2`] = `
+Array [
+  "/player",
+  [Function],
+]
+`;
+
+exports[`app configureRouter 3`] = `
+Array [
+  "/sounds",
+  [Function],
+]
+`;
+
+exports[`app has expected exports 1`] = `
+Array [
+  "configureRouter",
+  "KoaApp",
+  "router",
+  "logger",
+]
+`;

@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`modules -> winston-jest getJestLogger callsMatchSnapshot 1`] = `
+Array [
+  Object {
+    "level": "error",
+    "message": "call 1",
+    Symbol(level): "error",
+    Symbol(message): "{\\"level\\":\\"error\\",\\"message\\":\\"call 1\\"}",
+  },
+]
+`;
+
+exports[`modules -> winston-jest getJestLogger callsMatchSnapshot 2`] = `
+Array [
+  Object {
+    "level": "warn",
+    "message": "call 2",
+    Symbol(level): "warn",
+    Symbol(message): "{\\"level\\":\\"warn\\",\\"message\\":\\"call 2\\"}",
+  },
+]
+`;
+
+exports[`modules -> winston-jest getJestLogger callsMatchSnapshot 3`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "call 3",
+    Symbol(level): "info",
+    Symbol(message): "{\\"level\\":\\"info\\",\\"message\\":\\"call 3\\"}",
+  },
+]
+`;
+
+exports[`modules -> winston-jest getJestLogger callsMatchSnapshot 4`] = `
+Array [
+  Object {
+    "level": "verbose",
+    "message": "call 4",
+    Symbol(level): "verbose",
+    Symbol(message): "{\\"level\\":\\"verbose\\",\\"message\\":\\"call 4\\"}",
+  },
+]
+`;
+
+exports[`modules -> winston-jest getJestLogger callsMatchSnapshot 5`] = `
+Array [
+  Object {
+    "level": "debug",
+    "message": "call 5",
+    Symbol(level): "debug",
+    Symbol(message): "{\\"level\\":\\"debug\\",\\"message\\":\\"call 5\\"}",
+  },
+]
+`;
+
+exports[`modules -> winston-jest getJestLogger callsMatchSnapshot 6`] = `
+Array [
+  Object {
+    "level": "silly",
+    "message": "call 6",
+    Symbol(level): "silly",
+    Symbol(message): "{\\"level\\":\\"silly\\",\\"message\\":\\"call 6\\"}",
+  },
+]
+`;
