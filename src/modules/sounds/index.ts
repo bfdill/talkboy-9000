@@ -26,7 +26,8 @@ export class SoundService implements ISoundService {
 
   constructor(
     public readonly pathToSounds: string,
-    protected readonly logger: winston.Logger
+    protected readonly logger: winston.Logger,
+    protected readonly saneFunction: typeof sane
   ) {
     this.watcher = this.createWatch()
   }
@@ -42,7 +43,7 @@ export class SoundService implements ISoundService {
         basename: basename(filename)
       }
     ]
-      .sort((a, b) => `${a.filename}`.localeCompare(b.filename))
+      .sort((a, b) => a.filename.localeCompare(b.filename))
       .map((v, i) => {
         v.id = `${i}`
         return v
@@ -55,7 +56,7 @@ export class SoundService implements ISoundService {
   }
 
   createWatch = (): sane.Watcher => {
-    return sane(this.pathToSounds, { glob: this.FILE_GLOB })
+    return this.saneFunction(this.pathToSounds, { glob: this.FILE_GLOB })
       .on('add', (path: string) => {
         this.addSound(path)
 
@@ -122,6 +123,6 @@ export class SoundService implements ISoundService {
   }
 }
 
-const soundService = new SoundService(PATH_TO_SOUNDS, soundServiceLogger)
+const soundService = new SoundService(PATH_TO_SOUNDS, soundServiceLogger, sane)
 
 export { soundService }
