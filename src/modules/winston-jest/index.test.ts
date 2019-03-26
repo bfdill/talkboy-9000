@@ -39,7 +39,11 @@ export const getJestLogger = (): IJestLogger => {
     transport,
     callsMatchSnapshot: () =>
       transport.mock.mock.calls.forEach(call => expect(call).toMatchSnapshot()),
-    logger: winston.createLogger({ level: 'silly', transports: [transport] })
+    logger: winston.createLogger({
+      level: 'silly',
+      levels: winston.config.npm.levels,
+      transports: [transport]
+    })
   }
 }
 

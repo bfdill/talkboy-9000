@@ -59,11 +59,9 @@ describe('modules -> player', () => {
   })
 
   test('playback happy path', async () => {
-    expect.assertions(2)
+    expect.assertions(3)
 
     await expect(playerService.playFile(filename)).resolves.toMatchSnapshot()
-
-    // await expect(playerService.playFile(filename)).rejects.toMatchSnapshot()
 
     jestLogger.callsMatchSnapshot()
   })

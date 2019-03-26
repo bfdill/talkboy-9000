@@ -17,39 +17,37 @@ Object {
 `;
 
 exports[`controllers -> player playRando not found when no sounds 2`] = `
-[MockFunction] {
-  "calls": Array [
-    Array [
-      Object {
-        "message": "playRando()",
-      },
-    ],
-  ],
-  "results": Array [
-    Object {
-      "type": "return",
-      "value": undefined,
-    },
-  ],
-}
+Array [
+  Object {
+    "level": "info",
+    "message": "playRando()",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"playRando()\\",\\"level\\":\\"info\\"}",
+  },
+]
 `;
 
 exports[`controllers -> player playRando not found when no sounds 3`] = `
-[MockFunction] {
-  "calls": Array [
-    Array [
-      Object {
-        "message": "playRando().sounds.length === 0",
-      },
-    ],
-  ],
-  "results": Array [
-    Object {
-      "type": "return",
-      "value": undefined,
-    },
-  ],
-}
+Array [
+  Object {
+    "level": "silly",
+    "message": "playRando()",
+    "sounds": Array [],
+    Symbol(level): "silly",
+    Symbol(message): "{\\"sounds\\":[],\\"message\\":\\"playRando()\\",\\"level\\":\\"silly\\"}",
+  },
+]
+`;
+
+exports[`controllers -> player playRando not found when no sounds 4`] = `
+Array [
+  Object {
+    "level": "error",
+    "message": "playRando().sounds.length === 0",
+    Symbol(level): "error",
+    Symbol(message): "{\\"message\\":\\"playRando().sounds.length === 0\\",\\"level\\":\\"error\\"}",
+  },
+]
 `;
 
 exports[`controllers -> player playRando plays sound 1`] = `
@@ -64,30 +62,53 @@ Object {
   "params": Object {
     "soundId": "baby_shark",
   },
+  "status": 200,
 }
 `;
 
 exports[`controllers -> player playRando plays sound 2`] = `
-[MockFunction] {
-  "calls": Array [
-    Array [
+Array [
+  Object {
+    "level": "info",
+    "message": "playRando()",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"playRando()\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`controllers -> player playRando plays sound 3`] = `
+Array [
+  Object {
+    "level": "silly",
+    "message": "playRando()",
+    "sounds": Array [
       Object {
-        "message": "playRando()",
-        "sound": Object {
-          "basename": "mommy shark",
-          "filename": "daddy shark",
-          "id": "baby_shark",
-        },
+        "basename": "mommy shark",
+        "filename": "daddy shark",
+        "id": "baby_shark",
       },
     ],
-  ],
-  "results": Array [
-    Object {
-      "type": "return",
-      "value": undefined,
+    Symbol(level): "silly",
+    Symbol(message): "{\\"sounds\\":[{\\"basename\\":\\"mommy shark\\",\\"filename\\":\\"daddy shark\\",\\"id\\":\\"baby_shark\\"}],\\"message\\":\\"playRando()\\",\\"level\\":\\"silly\\"}",
+  },
+]
+`;
+
+exports[`controllers -> player playRando plays sound 4`] = `
+Array [
+  Object {
+    "level": "debug",
+    "message": "playRando()",
+    "sound": Object {
+      "basename": "mommy shark",
+      "filename": "daddy shark",
+      "id": "baby_shark",
     },
-  ],
-}
+    Symbol(level): "debug",
+    Symbol(message): "{\\"sound\\":{\\"basename\\":\\"mommy shark\\",\\"filename\\":\\"daddy shark\\",\\"id\\":\\"baby_shark\\"},\\"message\\":\\"playRando()\\",\\"level\\":\\"debug\\"}",
+  },
+]
 `;
 
 exports[`controllers -> player playSound bad request on non-string 1`] = `
@@ -103,25 +124,29 @@ Object {
 `;
 
 exports[`controllers -> player playSound bad request on non-string 2`] = `
-[MockFunction] {
-  "calls": Array [
-    Array [
-      Object {
-        "message": "playSound().soundId !== string (undefined)",
-        "soundId": undefined,
-      },
-    ],
-  ],
-  "results": Array [
-    Object {
-      "type": "return",
-      "value": undefined,
-    },
-  ],
-}
+Array [
+  Object {
+    "level": "info",
+    "message": "playSound(undefined)",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"playSound(undefined)\\",\\"level\\":\\"info\\"}",
+  },
+]
 `;
 
 exports[`controllers -> player playSound bad request on non-string 3`] = `
+Array [
+  Object {
+    "level": "error",
+    "message": "playSound().soundId !== string (undefined)",
+    "soundId": undefined,
+    Symbol(level): "error",
+    Symbol(message): "{\\"message\\":\\"playSound().soundId !== string (undefined)\\",\\"level\\":\\"error\\"}",
+  },
+]
+`;
+
+exports[`controllers -> player playSound bad request on non-string 4`] = `
 Object {
   "body": Object {
     "soundId": null,
@@ -130,91 +155,103 @@ Object {
     "soundId": null,
   },
   "status": 400,
-}
-`;
-
-exports[`controllers -> player playSound bad request on non-string 4`] = `
-[MockFunction] {
-  "calls": Array [
-    Array [
-      Object {
-        "message": "playSound().soundId !== string (null)",
-        "soundId": null,
-      },
-    ],
-  ],
-  "results": Array [
-    Object {
-      "type": "return",
-      "value": undefined,
-    },
-  ],
 }
 `;
 
 exports[`controllers -> player playSound bad request on non-string 5`] = `
-Object {
-  "body": Object {
-    "soundId": false,
+Array [
+  Object {
+    "level": "info",
+    "message": "playSound(null)",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"playSound(null)\\",\\"level\\":\\"info\\"}",
   },
-  "params": Object {
-    "soundId": false,
-  },
-  "status": 400,
-}
+]
 `;
 
 exports[`controllers -> player playSound bad request on non-string 6`] = `
-[MockFunction] {
-  "calls": Array [
-    Array [
-      Object {
-        "message": "playSound().soundId !== string (false)",
-        "soundId": false,
-      },
-    ],
-  ],
-  "results": Array [
-    Object {
-      "type": "return",
-      "value": undefined,
-    },
-  ],
-}
+Array [
+  Object {
+    "level": "error",
+    "message": "playSound().soundId !== string (null)",
+    "soundId": null,
+    Symbol(level): "error",
+    Symbol(message): "{\\"soundId\\":null,\\"message\\":\\"playSound().soundId !== string (null)\\",\\"level\\":\\"error\\"}",
+  },
+]
 `;
 
 exports[`controllers -> player playSound bad request on non-string 7`] = `
 Object {
   "body": Object {
-    "soundId": true,
+    "soundId": false,
   },
   "params": Object {
-    "soundId": true,
+    "soundId": false,
   },
   "status": 400,
 }
 `;
 
 exports[`controllers -> player playSound bad request on non-string 8`] = `
-[MockFunction] {
-  "calls": Array [
-    Array [
-      Object {
-        "message": "playSound().soundId !== string (true)",
-        "soundId": true,
-      },
-    ],
-  ],
-  "results": Array [
-    Object {
-      "type": "return",
-      "value": undefined,
-    },
-  ],
-}
+Array [
+  Object {
+    "level": "info",
+    "message": "playSound(false)",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"playSound(false)\\",\\"level\\":\\"info\\"}",
+  },
+]
 `;
 
 exports[`controllers -> player playSound bad request on non-string 9`] = `
+Array [
+  Object {
+    "level": "error",
+    "message": "playSound().soundId !== string (false)",
+    "soundId": false,
+    Symbol(level): "error",
+    Symbol(message): "{\\"soundId\\":false,\\"message\\":\\"playSound().soundId !== string (false)\\",\\"level\\":\\"error\\"}",
+  },
+]
+`;
+
+exports[`controllers -> player playSound bad request on non-string 10`] = `
+Object {
+  "body": Object {
+    "soundId": true,
+  },
+  "params": Object {
+    "soundId": true,
+  },
+  "status": 400,
+}
+`;
+
+exports[`controllers -> player playSound bad request on non-string 11`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "playSound(true)",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"playSound(true)\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`controllers -> player playSound bad request on non-string 12`] = `
+Array [
+  Object {
+    "level": "error",
+    "message": "playSound().soundId !== string (true)",
+    "soundId": true,
+    Symbol(level): "error",
+    Symbol(message): "{\\"soundId\\":true,\\"message\\":\\"playSound().soundId !== string (true)\\",\\"level\\":\\"error\\"}",
+  },
+]
+`;
+
+exports[`controllers -> player playSound bad request on non-string 13`] = `
 Object {
   "body": Object {
     "soundId": 1,
@@ -226,23 +263,27 @@ Object {
 }
 `;
 
-exports[`controllers -> player playSound bad request on non-string 10`] = `
-[MockFunction] {
-  "calls": Array [
-    Array [
-      Object {
-        "message": "playSound().soundId !== string (1)",
-        "soundId": 1,
-      },
-    ],
-  ],
-  "results": Array [
-    Object {
-      "type": "return",
-      "value": undefined,
-    },
-  ],
-}
+exports[`controllers -> player playSound bad request on non-string 14`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "playSound(1)",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"playSound(1)\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`controllers -> player playSound bad request on non-string 15`] = `
+Array [
+  Object {
+    "level": "error",
+    "message": "playSound().soundId !== string (1)",
+    "soundId": 1,
+    Symbol(level): "error",
+    Symbol(message): "{\\"soundId\\":1,\\"message\\":\\"playSound().soundId !== string (1)\\",\\"level\\":\\"error\\"}",
+  },
+]
 `;
 
 exports[`controllers -> player playSound not found on unknown song 1`] = `
@@ -258,22 +299,26 @@ Object {
 `;
 
 exports[`controllers -> player playSound not found on unknown song 2`] = `
-[MockFunction] {
-  "calls": Array [
-    Array [
-      Object {
-        "message": "playSound().sound === undefined",
-        "soundId": "unknown",
-      },
-    ],
-  ],
-  "results": Array [
-    Object {
-      "type": "return",
-      "value": undefined,
-    },
-  ],
-}
+Array [
+  Object {
+    "level": "info",
+    "message": "playSound(unknown)",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"playSound(unknown)\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`controllers -> player playSound not found on unknown song 3`] = `
+Array [
+  Object {
+    "level": "error",
+    "message": "playSound().sound === undefined",
+    "soundId": "unknown",
+    Symbol(level): "error",
+    Symbol(message): "{\\"soundId\\":\\"unknown\\",\\"message\\":\\"playSound().sound === undefined\\",\\"level\\":\\"error\\"}",
+  },
+]
 `;
 
 exports[`controllers -> player playSound plays sound 1`] = `
@@ -293,25 +338,29 @@ Object {
 `;
 
 exports[`controllers -> player playSound plays sound 2`] = `
-[MockFunction] {
-  "calls": Array [
-    Array [
-      Object {
-        "message": "playSound()",
-        "sound": Object {
-          "basename": "mommy shark",
-          "filename": "daddy shark",
-          "id": "baby_shark",
-        },
-        "soundId": "baby_shark",
-      },
-    ],
-  ],
-  "results": Array [
-    Object {
-      "type": "return",
-      "value": undefined,
+Array [
+  Object {
+    "level": "info",
+    "message": "playSound(baby_shark)",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"playSound(baby_shark)\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`controllers -> player playSound plays sound 3`] = `
+Array [
+  Object {
+    "level": "debug",
+    "message": "playSound()",
+    "sound": Object {
+      "basename": "mommy shark",
+      "filename": "daddy shark",
+      "id": "baby_shark",
     },
-  ],
-}
+    "soundId": "baby_shark",
+    Symbol(level): "debug",
+    Symbol(message): "{\\"sound\\":{\\"basename\\":\\"mommy shark\\",\\"filename\\":\\"daddy shark\\",\\"id\\":\\"baby_shark\\"},\\"soundId\\":\\"baby_shark\\",\\"message\\":\\"playSound()\\",\\"level\\":\\"debug\\"}",
+  },
+]
 `;

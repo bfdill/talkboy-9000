@@ -22,9 +22,12 @@ export class PlayerController implements IPlayerController {
 
   playSound = async (ctx: koaRouter.RouterContext) => {
     const { soundId } = ctx.params
+    this.logger.info({
+      message: `playSound(${soundId})`
+    })
 
     if (typeof soundId !== 'string') {
-      this.logger.warn({
+      this.logger.error({
         soundId,
         message: `playSound().soundId !== string (${soundId})`
       })
@@ -50,7 +53,9 @@ export class PlayerController implements IPlayerController {
       soundId,
       message: 'playSound()'
     })
+
     await this.playerService.playFile(sound.filename)
+
     ctx.status = OK
     ctx.body = { sound }
   }
@@ -60,6 +65,10 @@ export class PlayerController implements IPlayerController {
       message: 'playRando()'
     })
     const sounds = this.soundService.getSounds()
+    this.logger.silly({
+      sounds,
+      message: 'playRando()'
+    })
 
     if (sounds.length === 0) {
       this.logger.error({
@@ -75,7 +84,10 @@ export class PlayerController implements IPlayerController {
       sound,
       message: 'playRando()'
     })
+
     await this.playerService.playFile(sound.filename)
+
+    ctx.status = OK
     ctx.body = { sound }
   }
 }

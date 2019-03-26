@@ -32,7 +32,7 @@ export class PlayerService implements IPlayerService {
     return new Promise((resolve, reject) => {
       const next = (error?: any) => {
         if (error === undefined || error === null) {
-          this.logger.silly(`playback success: ${filename}`)
+          this.logger.debug(`playback success: ${filename}`)
           resolve()
           return
         }

@@ -3,6 +3,10 @@ import { PlayerController, IPlayerController } from '.'
 import { IPlayerService } from '../../modules/player'
 import { ISoundService, Sound } from '../../modules/sounds'
 import winston = require('winston')
+import {
+  getJestLogger,
+  IJestLogger
+} from '../../modules/winston-jest/index.test'
 
 describe('controllers -> player', () => {
   const contextBuilder = (soundId?: any): koaRouter.RouterContext =>
@@ -18,22 +22,22 @@ describe('controllers -> player', () => {
     getBySoundId: mockGetBySoundId,
     getSounds: mockGetSounds
   } as any
-  const logger: winston.Logger = {
-    debug: jest.fn(),
-    error: jest.fn(),
-    info: jest.fn(),
-    warn: jest.fn()
-  } as any
   const sound: Sound = {
     basename: 'mommy shark',
     filename: 'daddy shark',
     id: 'baby_shark'
   }
+  let jestLogger: IJestLogger
   let playerController: IPlayerController
 
   beforeEach(() => {
     mockGetSounds.mockReturnValue([])
-    playerController = new PlayerController(playerService, soundService, logger)
+    jestLogger = getJestLogger()
+    playerController = new PlayerController(
+      playerService,
+      soundService,
+      jestLogger.logger
+    )
   })
 
   test('has known exports', () => {
@@ -44,29 +48,29 @@ describe('controllers -> player', () => {
     test.each([undefined, null, false, true, 1])(
       'bad request on non-string',
       async (soundId: any) => {
-        expect.assertions(2)
+        expect.hasAssertions()
         const ctx = contextBuilder(soundId)
 
         await playerController.playSound(ctx)
 
         expect(ctx).toMatchSnapshot()
-        expect(logger.warn).toMatchSnapshot()
+        jestLogger.callsMatchSnapshot()
       }
     )
 
     test('not found on unknown song', async () => {
-      expect.assertions(2)
+      expect.hasAssertions()
 
       const ctx = contextBuilder('unknown')
 
       await playerController.playSound(ctx)
 
       expect(ctx).toMatchSnapshot()
-      expect(logger.error).toMatchSnapshot()
+      jestLogger.callsMatchSnapshot()
     })
 
     test('plays sound', async () => {
-      expect.assertions(3)
+      expect.hasAssertions()
 
       const ctx = contextBuilder(sound.id)
       mockGetBySoundId.mockReturnValue(sound)
@@ -74,26 +78,25 @@ describe('controllers -> player', () => {
       await playerController.playSound(ctx)
 
       expect(ctx).toMatchSnapshot()
-      expect(logger.debug).toMatchSnapshot()
       expect(playerService.playFile).toBeCalledWith(sound.filename)
+      jestLogger.callsMatchSnapshot()
     })
   })
 
   describe('playRando', () => {
     test('not found when no sounds', async () => {
-      expect.assertions(3)
+      expect.hasAssertions()
 
       const ctx = contextBuilder()
 
       await playerController.playRando(ctx)
 
       expect(ctx).toMatchSnapshot()
-      expect(logger.info).toMatchSnapshot()
-      expect(logger.error).toMatchSnapshot()
+      jestLogger.callsMatchSnapshot()
     })
 
     test('plays sound', async () => {
-      expect.assertions(3)
+      expect.hasAssertions()
 
       const ctx = contextBuilder(sound.id)
       mockGetBySoundId.mockReturnValue(sound)
@@ -102,8 +105,8 @@ describe('controllers -> player', () => {
       await playerController.playRando(ctx)
 
       expect(ctx).toMatchSnapshot()
-      expect(logger.debug).toMatchSnapshot()
       expect(playerService.playFile).toBeCalledWith(sound.filename)
+      jestLogger.callsMatchSnapshot()
     })
   })
 })

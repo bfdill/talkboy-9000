@@ -16,10 +16,10 @@ Array [
 exports[`modules -> player playback happy path 3`] = `
 Array [
   Object {
-    "level": "silly",
+    "level": "debug",
     "message": "playback success: this-file-totes-exists.mp3",
-    Symbol(level): "silly",
-    Symbol(message): "{\\"message\\":\\"playback success: this-file-totes-exists.mp3\\",\\"level\\":\\"silly\\"}",
+    Symbol(level): "debug",
+    Symbol(message): "{\\"message\\":\\"playback success: this-file-totes-exists.mp3\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;
@@ -40,10 +40,10 @@ Array [
 exports[`modules -> player playback happy path 6`] = `
 Array [
   Object {
-    "level": "silly",
+    "level": "debug",
     "message": "playback success: this-file-totes-exists.mp3",
-    Symbol(level): "silly",
-    Symbol(message): "{\\"message\\":\\"playback success: this-file-totes-exists.mp3\\",\\"level\\":\\"silly\\"}",
+    Symbol(level): "debug",
+    Symbol(message): "{\\"message\\":\\"playback success: this-file-totes-exists.mp3\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;

@@ -17,5 +17,6 @@ export const logger = winston.createLogger({
 export const createModuleLogger = (module: string) =>
   winston.createLogger({
     transports,
-    defaultMeta: { module }
+    defaultMeta: { module },
+    levels: winston.config.npm.levels
   })
