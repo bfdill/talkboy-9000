@@ -2,6 +2,7 @@ import { join, resolve, sep, basename } from 'path'
 import * as winston from 'winston'
 import { createModuleLogger } from '../logging'
 import * as sane from 'sane'
+import * as glob from 'glob'
 
 export const soundServiceLogger = createModuleLogger('SoundService')
 export const PATH_TO_SOUNDS = join(process.cwd(), 'audio')
@@ -29,8 +30,14 @@ export class SoundService implements ISoundService {
     protected readonly logger: winston.Logger,
     protected readonly saneFunction: typeof sane
   ) {
+    this.addSounds()
     this.watcher = this.createWatch()
   }
+
+  addSounds = () =>
+    glob(join(this.pathToSounds, this.FILE_GLOB), (_, matches) => {
+      matches.forEach(this.addSound)
+    })
 
   addSound = (filename: string) => {
     this.logger.debug(`addSound(${filename})`)
@@ -57,6 +64,9 @@ export class SoundService implements ISoundService {
 
   createWatch = (): sane.Watcher => {
     return this.saneFunction(this.pathToSounds, { glob: this.FILE_GLOB })
+      .on('all', (et, p, r, s) => {
+        console.log(`${et}, ${p}, ${r}, ${s}`)
+      })
       .on('add', (path: string) => {
         this.addSound(path)
 

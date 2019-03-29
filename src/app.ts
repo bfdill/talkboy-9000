@@ -39,6 +39,7 @@ export class KoaApp implements IKoaApp {
   }
 
   listen = (port: number) => {
+    this.logger.info(`listen(${port})`)
     this.setup(this.koa, this.router, this.logger)
 
     return this.koa.listen(port)

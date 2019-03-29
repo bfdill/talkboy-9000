@@ -2,7 +2,6 @@ import * as koaRouter from 'koa-router'
 import { PlayerController, IPlayerController } from '.'
 import { IPlayerService } from '../../modules/player'
 import { ISoundService, Sound } from '../../modules/sounds'
-import winston = require('winston')
 import {
   getJestLogger,
   IJestLogger
