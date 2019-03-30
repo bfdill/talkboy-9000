@@ -3,6 +3,7 @@ import * as koaRouter from 'koa-router'
 import * as winston from 'winston'
 import { KoaApp, configureRouter } from './app'
 import { inspect } from 'util'
+import { getJestLogger } from './modules/winston-jest/index.test'
 
 describe('app', () => {
   test('has expected exports', () => {
@@ -32,11 +33,13 @@ describe('app', () => {
       allowedMethods: jest.fn(),
       routes: jest.fn()
     } as any
-    const mockLogger: winston.Logger = { error: jest.fn() } as any
+
+    const jestLogger = getJestLogger()
+
     const getSut = (
       koa: Koa = mockKoa,
       router: koaRouter = mockRouter,
-      logger: winston.Logger = mockLogger
+      logger: winston.Logger = jestLogger.logger
     ) => new KoaApp(koa, router, logger)
     const TEST_PORT = 12345
 
@@ -45,6 +48,10 @@ describe('app', () => {
 
       const sut = getSut()
       sut.listen(TEST_PORT)
+    })
+
+    test('listen logs', () => {
+      jestLogger.callsMatchSnapshot()
     })
 
     test('koa.use matches snapshot', () => {
@@ -69,7 +76,7 @@ describe('app', () => {
 
       expect(koaOn[0]).toEqual('error')
       koaOn[1](error)
-      expect(mockLogger.error).toBeCalledWith(error)
+      jestLogger.callsMatchSnapshot()
     })
   })
 })

@@ -64,9 +64,6 @@ export class SoundService implements ISoundService {
 
   createWatch = (): sane.Watcher => {
     return this.saneFunction(this.pathToSounds, { glob: this.FILE_GLOB })
-      .on('all', (et, p, r, s) => {
-        console.log(`${et}, ${p}, ${r}, ${s}`)
-      })
       .on('add', (path: string) => {
         this.addSound(path)
 
