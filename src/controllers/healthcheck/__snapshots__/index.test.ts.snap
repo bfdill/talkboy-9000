@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`controllers -> healthcheck getHealthcheckLogger 1`] = `
+Array [
+  Object {
+    "controller": Object {
+      "name": "healthcheck",
+    },
+    "level": "info",
+    "message": "✅test works✅",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"✅test works✅\\",\\"level\\":\\"info\\",\\"controller\\":{\\"name\\":\\"healthcheck\\"}}",
+  },
+]
+`;
+
 exports[`controllers -> healthcheck getHealthcheckRouter 1`] = `
 Router {
   "methods": Array [
@@ -42,11 +56,10 @@ Router {
 exports[`controllers -> healthcheck healthy, so healthy! 1`] = `
 Array [
   Object {
-    "controller": "healthcheck",
     "level": "silly",
     "message": "success",
     Symbol(level): "silly",
-    Symbol(message): "{\\"controller\\":\\"healthcheck\\",\\"message\\":\\"success\\",\\"level\\":\\"silly\\"}",
+    Symbol(message): "{\\"message\\":\\"success\\",\\"level\\":\\"silly\\"}",
   },
 ]
 `;

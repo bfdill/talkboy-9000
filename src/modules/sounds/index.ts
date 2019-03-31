@@ -14,7 +14,7 @@ export type Sound = {
 }
 
 export interface ISoundService {
-  getBySoundId(soundId?: string): Sound | undefined
+  getBySoundId(soundId: string): Sound | undefined
   getSounds: () => Sound[]
   isPathValid: (filename: string) => boolean
 }

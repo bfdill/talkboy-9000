@@ -13,5 +13,6 @@ export const createLogger = (meta: any) =>
   winston.createLogger({
     transports: getDefaultTransports(),
     defaultMeta: meta,
-    levels: winston.config.npm.levels
+    levels: winston.config.npm.levels,
+    exitOnError: false
   })
