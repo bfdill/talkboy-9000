@@ -75,7 +75,10 @@ describe('controllers -> player', () => {
       await playerController.playSound(context)
 
       expect(context).toMatchSnapshot()
-      expect(playerService.playFile).toBeCalledWith(sound.filename)
+      expect(playerService.playFile).toBeCalledWith(
+        sound.filename,
+        jestLogger.logger
+      )
       jestLogger.callsMatchSnapshot()
     })
   })
@@ -103,7 +106,10 @@ describe('controllers -> player', () => {
 
       expect(context.body).toMatchSnapshot()
       expect(context.status).toMatchSnapshot()
-      expect(playerService.playFile).toBeCalledWith(sound.filename)
+      expect(playerService.playFile).toBeCalledWith(
+        sound.filename,
+        jestLogger.logger
+      )
       jestLogger.callsMatchSnapshot()
     })
   })

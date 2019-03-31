@@ -37,14 +37,16 @@ describe('modules -> player', () => {
     mockIsPathValid.mockReturnValue(true)
     mockNextInput.mockReturnValue(null)
     jestLogger = getJestLogger()
-    playerService = new PlayerService(player, soundService, jestLogger.logger)
+    playerService = new PlayerService(player, soundService)
   })
 
   test('rejects on invalid file', async () => {
     expect.assertions(3)
     mockIsPathValid.mockReturnValue(false)
 
-    await expect(playerService.playFile(filename)).rejects.toMatchSnapshot()
+    await expect(
+      playerService.playFile(filename, jestLogger.logger)
+    ).rejects.toMatchSnapshot()
 
     jestLogger.callsMatchSnapshot()
   })
@@ -53,7 +55,9 @@ describe('modules -> player', () => {
     expect.assertions(3)
     mockNextInput.mockReturnValue({ error: 'KHAAAAAAN!' })
 
-    await expect(playerService.playFile(filename)).rejects.toMatchSnapshot()
+    await expect(
+      playerService.playFile(filename, jestLogger.logger)
+    ).rejects.toMatchSnapshot()
 
     jestLogger.callsMatchSnapshot()
   })
@@ -61,7 +65,9 @@ describe('modules -> player', () => {
   test('playback happy path', async () => {
     expect.assertions(3)
 
-    await expect(playerService.playFile(filename)).resolves.toMatchSnapshot()
+    await expect(
+      playerService.playFile(filename, jestLogger.logger)
+    ).resolves.toMatchSnapshot()
 
     jestLogger.callsMatchSnapshot()
   })
@@ -69,7 +75,9 @@ describe('modules -> player', () => {
   test('playback happy path', async () => {
     expect.assertions(3)
 
-    await expect(playerService.playFile(filename)).resolves.toMatchSnapshot()
+    await expect(
+      playerService.playFile(filename, jestLogger.logger)
+    ).resolves.toMatchSnapshot()
 
     jestLogger.callsMatchSnapshot()
   })

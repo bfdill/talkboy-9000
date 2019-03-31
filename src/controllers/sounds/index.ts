@@ -9,7 +9,7 @@ export interface ISoundsController {
 }
 
 export class SoundsController implements ISoundsController {
-  static instance: ISoundsController | undefined
+  private static instance: ISoundsController | undefined
 
   constructor(protected readonly soundService: ISoundService) {}
 

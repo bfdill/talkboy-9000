@@ -6,9 +6,14 @@ exports[`modules -> player playback happy path 2`] = `
 Array [
   Object {
     "level": "info",
-    "message": "filename: this-file-totes-exists.mp3",
+    "message": Object {
+      "filename": "this-file-totes-exists.mp3",
+    },
+    "service": Object {
+      "name": "PlayerService",
+    },
     Symbol(level): "info",
-    Symbol(message): "{\\"message\\":\\"filename: this-file-totes-exists.mp3\\",\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\"},\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\"},\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -16,10 +21,14 @@ Array [
 exports[`modules -> player playback happy path 3`] = `
 Array [
   Object {
+    "filename": "this-file-totes-exists.mp3",
     "level": "debug",
-    "message": "playback success: this-file-totes-exists.mp3",
+    "message": "playback success",
+    "service": Object {
+      "name": "PlayerService",
+    },
     Symbol(level): "debug",
-    Symbol(message): "{\\"message\\":\\"playback success: this-file-totes-exists.mp3\\",\\"level\\":\\"debug\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\"},\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"playback success\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;
@@ -30,9 +39,14 @@ exports[`modules -> player playback happy path 5`] = `
 Array [
   Object {
     "level": "info",
-    "message": "filename: this-file-totes-exists.mp3",
+    "message": Object {
+      "filename": "this-file-totes-exists.mp3",
+    },
+    "service": Object {
+      "name": "PlayerService",
+    },
     Symbol(level): "info",
-    Symbol(message): "{\\"message\\":\\"filename: this-file-totes-exists.mp3\\",\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\"},\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\"},\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -40,23 +54,32 @@ Array [
 exports[`modules -> player playback happy path 6`] = `
 Array [
   Object {
+    "filename": "this-file-totes-exists.mp3",
     "level": "debug",
-    "message": "playback success: this-file-totes-exists.mp3",
+    "message": "playback success",
+    "service": Object {
+      "name": "PlayerService",
+    },
     Symbol(level): "debug",
-    Symbol(message): "{\\"message\\":\\"playback success: this-file-totes-exists.mp3\\",\\"level\\":\\"debug\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\"},\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"playback success\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;
 
-exports[`modules -> player rejects on invalid file 1`] = `"filename is not valid: this-file-totes-exists.mp3"`;
+exports[`modules -> player rejects on invalid file 1`] = `"filename path is invalid"`;
 
 exports[`modules -> player rejects on invalid file 2`] = `
 Array [
   Object {
     "level": "info",
-    "message": "filename: this-file-totes-exists.mp3",
+    "message": Object {
+      "filename": "this-file-totes-exists.mp3",
+    },
+    "service": Object {
+      "name": "PlayerService",
+    },
     Symbol(level): "info",
-    Symbol(message): "{\\"message\\":\\"filename: this-file-totes-exists.mp3\\",\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\"},\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\"},\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -64,10 +87,14 @@ Array [
 exports[`modules -> player rejects on invalid file 3`] = `
 Array [
   Object {
+    "filename": "this-file-totes-exists.mp3",
     "level": "error",
-    "message": "filename is not valid: this-file-totes-exists.mp3",
+    "message": "filename path is invalid",
+    "service": Object {
+      "name": "PlayerService",
+    },
     Symbol(level): "error",
-    Symbol(message): "{\\"message\\":\\"filename is not valid: this-file-totes-exists.mp3\\",\\"level\\":\\"error\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\"},\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"filename path is invalid\\",\\"level\\":\\"error\\"}",
   },
 ]
 `;
@@ -82,9 +109,14 @@ exports[`modules -> player rejects on playback error 2`] = `
 Array [
   Object {
     "level": "info",
-    "message": "filename: this-file-totes-exists.mp3",
+    "message": Object {
+      "filename": "this-file-totes-exists.mp3",
+    },
+    "service": Object {
+      "name": "PlayerService",
+    },
     Symbol(level): "info",
-    Symbol(message): "{\\"message\\":\\"filename: this-file-totes-exists.mp3\\",\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\"},\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\"},\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -95,17 +127,14 @@ Array [
     "error": Object {
       "error": "KHAAAAAAN!",
     },
-    "level": "error",
-    "message": "playback failure: this-file-totes-exists.mp3",
-    Symbol(level): "error",
-    Symbol(splat): Array [
-      Object {
-        "error": Object {
-          "error": "KHAAAAAAN!",
-        },
-      },
-    ],
-    Symbol(message): "{\\"error\\":{\\"error\\":\\"KHAAAAAAN!\\"},\\"level\\":\\"error\\",\\"message\\":\\"playback failure: this-file-totes-exists.mp3\\"}",
+    "filename": "this-file-totes-exists.mp3",
+    "level": "debug",
+    "message": "playback failure",
+    "service": Object {
+      "name": "PlayerService",
+    },
+    Symbol(level): "debug",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\"},\\"error\\":{\\"error\\":\\"KHAAAAAAN!\\"},\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"playback failure\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;

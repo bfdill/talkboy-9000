@@ -1,7 +1,7 @@
 import * as koaRouter from 'koa-router'
 import { NOT_FOUND, BAD_REQUEST, OK } from 'http-status-codes'
 import { ISoundService, soundService } from '../../modules/sounds'
-import { IPlayerService, playerService } from '../../modules/player'
+import { IPlayerService, PlayerService } from '../../modules/player'
 import { randomIntFromInterval } from '../../utils'
 import { ApplicationState, IApplicationContext } from '../../types'
 
@@ -11,7 +11,7 @@ export interface IPlayerController {
 }
 
 export class PlayerController implements IPlayerController {
-  static instance: IPlayerController | undefined
+  private static instance: IPlayerController | undefined
 
   constructor(
     protected readonly playerService: IPlayerService,
@@ -58,7 +58,7 @@ export class PlayerController implements IPlayerController {
       message: 'playSound()'
     })
 
-    await this.playerService.playFile(sound.filename)
+    await this.playerService.playFile(sound.filename, logger)
 
     context.body = { sound }
     context.status = OK
@@ -97,7 +97,7 @@ export class PlayerController implements IPlayerController {
       message: 'selected sound'
     })
 
-    await this.playerService.playFile(sound.filename)
+    await this.playerService.playFile(sound.filename, logger)
 
     context.body = { sound }
     context.status = OK
@@ -106,7 +106,10 @@ export class PlayerController implements IPlayerController {
   static getInstance(): IPlayerController {
     if (this.instance !== undefined) return this.instance
 
-    this.instance = new PlayerController(playerService, soundService)
+    this.instance = new PlayerController(
+      PlayerService.getInstance(),
+      soundService
+    )
 
     return this.instance
   }
