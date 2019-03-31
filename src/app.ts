@@ -10,7 +10,7 @@ import {
 } from './modules/logging'
 import { getHealthcheckRouter } from './controllers/healthcheck'
 import { getPlayerRouter } from './controllers/player'
-import { soundsRouter } from './controllers/sounds'
+import { getSoundsRouter } from './controllers/sounds'
 import {
   ApplicationRouter,
   ApplicationKoa,
@@ -23,7 +23,7 @@ export const configureRouter = (router: ApplicationRouter) =>
   router
     .use('/healthcheck', getHealthcheckRouter().routes())
     .use('/player', getPlayerRouter().routes())
-    .use('/sounds', soundsRouter.routes())
+    .use('/sounds', getSoundsRouter().routes())
 export const getAppLogger = () =>
   createLogger({
     app: {

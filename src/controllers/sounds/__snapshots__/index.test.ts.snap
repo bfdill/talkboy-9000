@@ -2,19 +2,98 @@
 
 exports[`controllers -> sounds -> index get matches snapshot 1`] = `
 Object {
-  "body": Object {
-    "sounds": null,
-  },
-  "status": 404,
+  "sounds": null,
 }
 `;
 
-exports[`controllers -> sounds -> index get matches snapshot 2`] = `
+exports[`controllers -> sounds -> index get matches snapshot 2`] = `404`;
+
+exports[`controllers -> sounds -> index get matches snapshot 3`] = `
+Array [
+  Object {
+    "controller": Object {
+      "method": "get",
+      "name": "SoundsController",
+    },
+    "level": "warn",
+    "message": "no sounds from service",
+    Symbol(level): "warn",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"SoundsController\\",\\"method\\":\\"get\\"},\\"message\\":\\"no sounds from service\\",\\"level\\":\\"warn\\"}",
+  },
+]
+`;
+
+exports[`controllers -> sounds -> index get matches snapshot 4`] = `
 Object {
-  "body": Object {
+  "sounds": Object {
     "basename": "mock basename",
     "filename": "mock filename",
     "id": "mock id",
   },
 }
+`;
+
+exports[`controllers -> sounds -> index get matches snapshot 5`] = `200`;
+
+exports[`controllers -> sounds -> index get matches snapshot 6`] = `
+Array [
+  Object {
+    "controller": Object {
+      "method": "get",
+      "name": "SoundsController",
+    },
+    "level": "info",
+    "message": Object {
+      "soundsLength": undefined,
+    },
+    Symbol(level): "info",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"SoundsController\\",\\"method\\":\\"get\\"},\\"message\\":{},\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`controllers -> sounds -> index getSoundsRouter 1`] = `
+Router {
+  "methods": Array [
+    "HEAD",
+    "OPTIONS",
+    "GET",
+    "PUT",
+    "PATCH",
+    "POST",
+    "DELETE",
+  ],
+  "opts": Object {},
+  "params": Object {},
+  "stack": Array [
+    Layer {
+      "methods": Array [
+        "HEAD",
+        "GET",
+      ],
+      "name": null,
+      "opts": Object {
+        "end": true,
+        "ignoreCaptures": undefined,
+        "name": null,
+        "prefix": "",
+        "sensitive": false,
+        "strict": false,
+      },
+      "paramNames": Array [],
+      "path": "/",
+      "regexp": /\\^\\(\\?:\\\\/\\(\\?=\\$\\)\\)\\?\\$/i,
+      "stack": Array [
+        [Function],
+      ],
+    },
+  ],
+}
+`;
+
+exports[`controllers -> sounds -> index has known exports 1`] = `
+Array [
+  "SoundsController",
+  "getSoundsRouter",
+]
 `;
