@@ -40,10 +40,17 @@ Array [
 exports[`modules -> sounds addSound id = ordinal position by filename alpha 4`] = `
 Array [
   Object {
-    "level": "debug",
-    "message": "addSound(/tmp/fake_sound_0.mp3)",
-    Symbol(level): "debug",
-    Symbol(message): "{\\"message\\":\\"addSound(/tmp/fake_sound_0.mp3)\\",\\"level\\":\\"debug\\"}",
+    "level": "silly",
+    "message": "getSounds()",
+    "sounds": Array [
+      Object {
+        "basename": "fake_sound_0.mp3",
+        "filename": "/tmp/fake_sound_0.mp3",
+        "id": "1",
+      },
+    ],
+    Symbol(level): "silly",
+    Symbol(message): "{\\"message\\":\\"getSounds()\\",\\"sounds\\":[{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"fake_sound_0.mp3\\"}],\\"level\\":\\"silly\\"}",
   },
 ]
 `;
@@ -52,7 +59,7 @@ exports[`modules -> sounds addSound id = ordinal position by filename alpha 5`] 
 Array [
   Object {
     "level": "silly",
-    "message": "addSound(/tmp/fake_sound_0.mp3)",
+    "message": "getSounds()",
     "sounds": Array [
       Object {
         "basename": "fake_sound_0.mp3",
@@ -61,82 +68,12 @@ Array [
       },
     ],
     Symbol(level): "silly",
-    Symbol(message): "{\\"message\\":\\"addSound(/tmp/fake_sound_0.mp3)\\",\\"sounds\\":[{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"fake_sound_0.mp3\\"}],\\"level\\":\\"silly\\"}",
+    Symbol(message): "{\\"message\\":\\"getSounds()\\",\\"sounds\\":[{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"fake_sound_0.mp3\\"}],\\"level\\":\\"silly\\"}",
   },
 ]
 `;
 
 exports[`modules -> sounds addSound id = ordinal position by filename alpha 6`] = `
-Array [
-  Object {
-    "level": "silly",
-    "message": "getSounds()",
-    "sounds": Array [
-      Object {
-        "basename": "fake_sound_0.mp3",
-        "filename": "/tmp/fake_sound_0.mp3",
-        "id": "1",
-      },
-    ],
-    Symbol(level): "silly",
-    Symbol(message): "{\\"message\\":\\"getSounds()\\",\\"sounds\\":[{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"fake_sound_0.mp3\\"}],\\"level\\":\\"silly\\"}",
-  },
-]
-`;
-
-exports[`modules -> sounds addSound id = ordinal position by filename alpha 7`] = `
-Array [
-  Object {
-    "level": "silly",
-    "message": "getSounds()",
-    "sounds": Array [
-      Object {
-        "basename": "fake_sound_0.mp3",
-        "filename": "/tmp/fake_sound_0.mp3",
-        "id": "1",
-      },
-    ],
-    Symbol(level): "silly",
-    Symbol(message): "{\\"message\\":\\"getSounds()\\",\\"sounds\\":[{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"fake_sound_0.mp3\\"}],\\"level\\":\\"silly\\"}",
-  },
-]
-`;
-
-exports[`modules -> sounds addSound id = ordinal position by filename alpha 8`] = `
-Array [
-  Object {
-    "level": "debug",
-    "message": "addSound(/tmp/a_fake_sound_0.mp3)",
-    Symbol(level): "debug",
-    Symbol(message): "{\\"message\\":\\"addSound(/tmp/a_fake_sound_0.mp3)\\",\\"level\\":\\"debug\\"}",
-  },
-]
-`;
-
-exports[`modules -> sounds addSound id = ordinal position by filename alpha 9`] = `
-Array [
-  Object {
-    "level": "silly",
-    "message": "addSound(/tmp/a_fake_sound_0.mp3)",
-    "sounds": Array [
-      Object {
-        "basename": "a_fake_sound_0.mp3",
-        "filename": "/tmp/a_fake_sound_0.mp3",
-        "id": "0",
-      },
-      Object {
-        "basename": "fake_sound_0.mp3",
-        "filename": "/tmp/fake_sound_0.mp3",
-        "id": "1",
-      },
-    ],
-    Symbol(level): "silly",
-    Symbol(message): "{\\"message\\":\\"addSound(/tmp/a_fake_sound_0.mp3)\\",\\"sounds\\":[{\\"filename\\":\\"/tmp/a_fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"a_fake_sound_0.mp3\\"},{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"1\\",\\"basename\\":\\"fake_sound_0.mp3\\"}],\\"level\\":\\"silly\\"}",
-  },
-]
-`;
-
-exports[`modules -> sounds addSound id = ordinal position by filename alpha 10`] = `
 Array [
   Object {
     "level": "silly",
@@ -159,7 +96,7 @@ Array [
 ]
 `;
 
-exports[`modules -> sounds addSound id = ordinal position by filename alpha 11`] = `
+exports[`modules -> sounds addSound id = ordinal position by filename alpha 7`] = `
 Array [
   Object {
     "level": "silly",
@@ -183,35 +120,6 @@ Array [
 `;
 
 exports[`modules -> sounds createWatch add, adds 1`] = `
-Array [
-  Object {
-    "level": "debug",
-    "message": "addSound(add test)",
-    Symbol(level): "debug",
-    Symbol(message): "{\\"message\\":\\"addSound(add test)\\",\\"level\\":\\"debug\\"}",
-  },
-]
-`;
-
-exports[`modules -> sounds createWatch add, adds 2`] = `
-Array [
-  Object {
-    "level": "silly",
-    "message": "addSound(add test)",
-    "sounds": Array [
-      Object {
-        "basename": "add test",
-        "filename": "add test",
-        "id": "0",
-      },
-    ],
-    Symbol(level): "silly",
-    Symbol(message): "{\\"message\\":\\"addSound(add test)\\",\\"sounds\\":[{\\"filename\\":\\"add test\\",\\"id\\":\\"0\\",\\"basename\\":\\"add test\\"}],\\"level\\":\\"silly\\"}",
-  },
-]
-`;
-
-exports[`modules -> sounds createWatch add, adds 3`] = `
 Array [
   Object {
     "level": "debug",

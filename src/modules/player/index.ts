@@ -1,10 +1,10 @@
 // import * as playSound from 'play-sound'
 import * as winston from 'winston'
 import { soundService, ISoundService } from '../sounds'
-import { createModuleLogger } from '../logging'
+import { createLogger } from '../logging'
 import { createPlayer, IPlayer } from './types'
 
-const playerServiceLogger = createModuleLogger('PlayerService')
+const playerServiceLogger = createLogger('PlayerService')
 
 // tsd creation fail
 const createPlayer: createPlayer = require('play-sound')

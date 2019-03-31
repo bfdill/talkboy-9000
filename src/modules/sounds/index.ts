@@ -1,10 +1,10 @@
 import { join, resolve, sep, basename } from 'path'
 import * as winston from 'winston'
-import { createModuleLogger } from '../logging'
+import { createLogger } from '../logging'
 import * as sane from 'sane'
 import * as glob from 'glob'
 
-export const soundServiceLogger = createModuleLogger('SoundService')
+export const soundServiceLogger = createLogger('SoundService')
 export const PATH_TO_SOUNDS = join(process.cwd(), 'audio')
 
 export type Sound = {
@@ -40,7 +40,7 @@ export class SoundService implements ISoundService {
     })
 
   addSound = (filename: string) => {
-    this.logger.debug(`addSound(${filename})`)
+    // this.logger.debug(`addSound(${filename})`)
 
     this.sounds = [
       ...this.sounds,
@@ -56,10 +56,10 @@ export class SoundService implements ISoundService {
         return v
       })
 
-    this.logger.silly({
-      message: `addSound(${filename})`,
-      sounds: this.sounds
-    })
+    // this.logger.silly({
+    //   message: `addSound(${filename})`,
+    //   sounds: this.sounds
+    // })
   }
 
   createWatch = (): sane.Watcher => {

@@ -1,7 +1,5 @@
-import * as Koa from 'koa'
+import { App } from './app'
 
-import { KoaApp, router, logger } from './app'
+export const app = App.getInstance()
 
-export const koaApp = new KoaApp(new Koa(), router, logger)
-
-koaApp.listen(3000)
+app.listen(3000)

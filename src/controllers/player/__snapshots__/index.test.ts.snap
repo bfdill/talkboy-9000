@@ -3,26 +3,23 @@
 exports[`controllers -> player has known exports 1`] = `
 Array [
   "PlayerController",
-  "playerRouter",
+  "getPlayerRouter",
 ]
 `;
 
-exports[`controllers -> player playRando not found when no sounds 1`] = `
-Object {
-  "params": Object {
-    "soundId": undefined,
-  },
-  "status": 404,
-}
-`;
+exports[`controllers -> player playRando not found when no sounds 1`] = `404`;
 
 exports[`controllers -> player playRando not found when no sounds 2`] = `
 Array [
   Object {
+    "controller": Object {
+      "method": "playRando",
+      "name": "PlayerController",
+    },
     "level": "info",
     "message": "playRando()",
     Symbol(level): "info",
-    Symbol(message): "{\\"message\\":\\"playRando()\\",\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playRando\\"},\\"message\\":\\"playRando()\\",\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -30,67 +27,41 @@ Array [
 exports[`controllers -> player playRando not found when no sounds 3`] = `
 Array [
   Object {
-    "level": "silly",
-    "message": "playRando()",
-    "sounds": Array [],
-    Symbol(level): "silly",
-    Symbol(message): "{\\"sounds\\":[],\\"message\\":\\"playRando()\\",\\"level\\":\\"silly\\"}",
-  },
-]
-`;
-
-exports[`controllers -> player playRando not found when no sounds 4`] = `
-Array [
-  Object {
+    "controller": Object {
+      "method": "playRando",
+      "name": "PlayerController",
+    },
     "level": "error",
     "message": "playRando().sounds.length === 0",
     Symbol(level): "error",
-    Symbol(message): "{\\"message\\":\\"playRando().sounds.length === 0\\",\\"level\\":\\"error\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playRando\\"},\\"message\\":\\"playRando().sounds.length === 0\\",\\"level\\":\\"error\\"}",
   },
 ]
 `;
 
 exports[`controllers -> player playRando plays sound 1`] = `
 Object {
-  "body": Object {
-    "sound": Object {
-      "basename": "mommy shark",
-      "filename": "daddy shark",
-      "id": "baby_shark",
-    },
+  "sound": Object {
+    "basename": "mommy shark",
+    "filename": "daddy shark",
+    "id": "baby_shark",
   },
-  "params": Object {
-    "soundId": "baby_shark",
-  },
-  "status": 200,
 }
 `;
 
-exports[`controllers -> player playRando plays sound 2`] = `
-Array [
-  Object {
-    "level": "info",
-    "message": "playRando()",
-    Symbol(level): "info",
-    Symbol(message): "{\\"message\\":\\"playRando()\\",\\"level\\":\\"info\\"}",
-  },
-]
-`;
+exports[`controllers -> player playRando plays sound 2`] = `200`;
 
 exports[`controllers -> player playRando plays sound 3`] = `
 Array [
   Object {
-    "level": "silly",
+    "controller": Object {
+      "method": "playRando",
+      "name": "PlayerController",
+    },
+    "level": "info",
     "message": "playRando()",
-    "sounds": Array [
-      Object {
-        "basename": "mommy shark",
-        "filename": "daddy shark",
-        "id": "baby_shark",
-      },
-    ],
-    Symbol(level): "silly",
-    Symbol(message): "{\\"sounds\\":[{\\"basename\\":\\"mommy shark\\",\\"filename\\":\\"daddy shark\\",\\"id\\":\\"baby_shark\\"}],\\"message\\":\\"playRando()\\",\\"level\\":\\"silly\\"}",
+    Symbol(level): "info",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playRando\\"},\\"message\\":\\"playRando()\\",\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -98,143 +69,136 @@ Array [
 exports[`controllers -> player playRando plays sound 4`] = `
 Array [
   Object {
+    "controller": Object {
+      "method": "playRando",
+      "name": "PlayerController",
+    },
+    "level": "silly",
+    "message": "sounds length",
+    "soundLength": 1,
+    Symbol(level): "silly",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playRando\\"},\\"soundLength\\":1,\\"message\\":\\"sounds length\\",\\"level\\":\\"silly\\"}",
+  },
+]
+`;
+
+exports[`controllers -> player playRando plays sound 5`] = `
+Array [
+  Object {
+    "controller": Object {
+      "method": "playRando",
+      "name": "PlayerController",
+    },
     "level": "debug",
-    "message": "playRando()",
+    "message": "selected sound",
     "sound": Object {
       "basename": "mommy shark",
       "filename": "daddy shark",
       "id": "baby_shark",
     },
     Symbol(level): "debug",
-    Symbol(message): "{\\"sound\\":{\\"basename\\":\\"mommy shark\\",\\"filename\\":\\"daddy shark\\",\\"id\\":\\"baby_shark\\"},\\"message\\":\\"playRando()\\",\\"level\\":\\"debug\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playRando\\"},\\"sound\\":{\\"basename\\":\\"mommy shark\\",\\"filename\\":\\"daddy shark\\",\\"id\\":\\"baby_shark\\"},\\"message\\":\\"selected sound\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;
 
 exports[`controllers -> player playSound bad request on non-string 1`] = `
 Object {
-  "body": Object {
-    "soundId": undefined,
-  },
-  "params": Object {
-    "soundId": undefined,
-  },
-  "status": 400,
+  "soundId": undefined,
 }
 `;
 
-exports[`controllers -> player playSound bad request on non-string 2`] = `
-Array [
-  Object {
-    "level": "info",
-    "message": "playSound(undefined)",
-    Symbol(level): "info",
-    Symbol(message): "{\\"message\\":\\"playSound(undefined)\\",\\"level\\":\\"info\\"}",
-  },
-]
-`;
+exports[`controllers -> player playSound bad request on non-string 2`] = `400`;
 
 exports[`controllers -> player playSound bad request on non-string 3`] = `
 Array [
   Object {
-    "level": "error",
-    "message": "playSound().soundId !== string (undefined)",
-    "soundId": undefined,
-    Symbol(level): "error",
-    Symbol(message): "{\\"message\\":\\"playSound().soundId !== string (undefined)\\",\\"level\\":\\"error\\"}",
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
+    "level": "info",
+    "message": "soundId(undefined)",
+    Symbol(level): "info",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"message\\":\\"soundId(undefined)\\",\\"level\\":\\"info\\"}",
   },
 ]
 `;
 
 exports[`controllers -> player playSound bad request on non-string 4`] = `
-Object {
-  "body": Object {
-    "soundId": null,
+Array [
+  Object {
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
+    "level": "error",
+    "message": "soundId !== string",
+    "soundId": undefined,
+    Symbol(level): "error",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"message\\":\\"soundId !== string\\",\\"level\\":\\"error\\"}",
   },
-  "params": Object {
-    "soundId": null,
-  },
-  "status": 400,
-}
+]
 `;
 
 exports[`controllers -> player playSound bad request on non-string 5`] = `
-Array [
-  Object {
-    "level": "info",
-    "message": "playSound(null)",
-    Symbol(level): "info",
-    Symbol(message): "{\\"message\\":\\"playSound(null)\\",\\"level\\":\\"info\\"}",
-  },
-]
+Object {
+  "soundId": null,
+}
 `;
 
-exports[`controllers -> player playSound bad request on non-string 6`] = `
-Array [
-  Object {
-    "level": "error",
-    "message": "playSound().soundId !== string (null)",
-    "soundId": null,
-    Symbol(level): "error",
-    Symbol(message): "{\\"soundId\\":null,\\"message\\":\\"playSound().soundId !== string (null)\\",\\"level\\":\\"error\\"}",
-  },
-]
-`;
+exports[`controllers -> player playSound bad request on non-string 6`] = `400`;
 
 exports[`controllers -> player playSound bad request on non-string 7`] = `
-Object {
-  "body": Object {
-    "soundId": false,
+Array [
+  Object {
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
+    "level": "info",
+    "message": "soundId(null)",
+    Symbol(level): "info",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"message\\":\\"soundId(null)\\",\\"level\\":\\"info\\"}",
   },
-  "params": Object {
-    "soundId": false,
-  },
-  "status": 400,
-}
+]
 `;
 
 exports[`controllers -> player playSound bad request on non-string 8`] = `
 Array [
   Object {
-    "level": "info",
-    "message": "playSound(false)",
-    Symbol(level): "info",
-    Symbol(message): "{\\"message\\":\\"playSound(false)\\",\\"level\\":\\"info\\"}",
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
+    "level": "error",
+    "message": "soundId !== string",
+    "soundId": null,
+    Symbol(level): "error",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"soundId\\":null,\\"message\\":\\"soundId !== string\\",\\"level\\":\\"error\\"}",
   },
 ]
 `;
 
 exports[`controllers -> player playSound bad request on non-string 9`] = `
-Array [
-  Object {
-    "level": "error",
-    "message": "playSound().soundId !== string (false)",
-    "soundId": false,
-    Symbol(level): "error",
-    Symbol(message): "{\\"soundId\\":false,\\"message\\":\\"playSound().soundId !== string (false)\\",\\"level\\":\\"error\\"}",
-  },
-]
-`;
-
-exports[`controllers -> player playSound bad request on non-string 10`] = `
 Object {
-  "body": Object {
-    "soundId": true,
-  },
-  "params": Object {
-    "soundId": true,
-  },
-  "status": 400,
+  "soundId": false,
 }
 `;
+
+exports[`controllers -> player playSound bad request on non-string 10`] = `400`;
 
 exports[`controllers -> player playSound bad request on non-string 11`] = `
 Array [
   Object {
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "info",
-    "message": "playSound(true)",
+    "message": "soundId(false)",
     Symbol(level): "info",
-    Symbol(message): "{\\"message\\":\\"playSound(true)\\",\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"message\\":\\"soundId(false)\\",\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -242,46 +206,93 @@ Array [
 exports[`controllers -> player playSound bad request on non-string 12`] = `
 Array [
   Object {
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "error",
-    "message": "playSound().soundId !== string (true)",
-    "soundId": true,
+    "message": "soundId !== string",
+    "soundId": false,
     Symbol(level): "error",
-    Symbol(message): "{\\"soundId\\":true,\\"message\\":\\"playSound().soundId !== string (true)\\",\\"level\\":\\"error\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"soundId\\":false,\\"message\\":\\"soundId !== string\\",\\"level\\":\\"error\\"}",
   },
 ]
 `;
 
 exports[`controllers -> player playSound bad request on non-string 13`] = `
 Object {
-  "body": Object {
-    "soundId": 1,
-  },
-  "params": Object {
-    "soundId": 1,
-  },
-  "status": 400,
+  "soundId": true,
 }
 `;
 
-exports[`controllers -> player playSound bad request on non-string 14`] = `
-Array [
-  Object {
-    "level": "info",
-    "message": "playSound(1)",
-    Symbol(level): "info",
-    Symbol(message): "{\\"message\\":\\"playSound(1)\\",\\"level\\":\\"info\\"}",
-  },
-]
-`;
+exports[`controllers -> player playSound bad request on non-string 14`] = `400`;
 
 exports[`controllers -> player playSound bad request on non-string 15`] = `
 Array [
   Object {
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
+    "level": "info",
+    "message": "soundId(true)",
+    Symbol(level): "info",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"message\\":\\"soundId(true)\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`controllers -> player playSound bad request on non-string 16`] = `
+Array [
+  Object {
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "error",
-    "message": "playSound().soundId !== string (1)",
+    "message": "soundId !== string",
+    "soundId": true,
+    Symbol(level): "error",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"soundId\\":true,\\"message\\":\\"soundId !== string\\",\\"level\\":\\"error\\"}",
+  },
+]
+`;
+
+exports[`controllers -> player playSound bad request on non-string 17`] = `
+Object {
+  "soundId": 1,
+}
+`;
+
+exports[`controllers -> player playSound bad request on non-string 18`] = `400`;
+
+exports[`controllers -> player playSound bad request on non-string 19`] = `
+Array [
+  Object {
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
+    "level": "info",
+    "message": "soundId(1)",
+    Symbol(level): "info",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"message\\":\\"soundId(1)\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`controllers -> player playSound bad request on non-string 20`] = `
+Array [
+  Object {
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
+    "level": "error",
+    "message": "soundId !== string",
     "soundId": 1,
     Symbol(level): "error",
-    Symbol(message): "{\\"soundId\\":1,\\"message\\":\\"playSound().soundId !== string (1)\\",\\"level\\":\\"error\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"soundId\\":1,\\"message\\":\\"soundId !== string\\",\\"level\\":\\"error\\"}",
   },
 ]
 `;
@@ -290,6 +301,217 @@ exports[`controllers -> player playSound not found on unknown song 1`] = `
 Object {
   "body": Object {
     "soundId": "unknown",
+  },
+  "logger": DerivedLogger {
+    "_events": Object {
+      "data": [Function],
+      "end": [Function],
+      "prefinish": [Function],
+    },
+    "_eventsCount": 3,
+    "_maxListeners": undefined,
+    "_readableState": ReadableState {
+      "awaitDrain": 0,
+      "buffer": BufferList {
+        "head": null,
+        "length": 0,
+        "tail": null,
+      },
+      "decoder": null,
+      "defaultEncoding": "utf8",
+      "destroyed": false,
+      "emitClose": true,
+      "emittedReadable": false,
+      "encoding": null,
+      "endEmitted": false,
+      "ended": false,
+      "flowing": true,
+      "highWaterMark": 16,
+      "length": 0,
+      "needReadable": true,
+      "objectMode": true,
+      "pipes": WinstonJestTransport {
+        "__winstonerror": [Function],
+        "__winstonwarn": [Function],
+        "_events": Object {
+          "close": [Function],
+          "drain": [Function],
+          "error": Array [
+            [Function],
+            [Function],
+          ],
+          "finish": [Function],
+          "unpipe": Array [
+            [Function],
+            [Function],
+          ],
+          "warn": [Function],
+        },
+        "_eventsCount": 6,
+        "_maxListeners": undefined,
+        "_writableState": WritableState {
+          "bufferProcessing": false,
+          "bufferedRequest": null,
+          "bufferedRequestCount": 0,
+          "corked": 0,
+          "corkedRequestsFree": CorkedRequest {
+            "entry": null,
+            "finish": [Function],
+            "next": null,
+          },
+          "decodeStrings": true,
+          "defaultEncoding": "utf8",
+          "destroyed": false,
+          "ended": false,
+          "ending": false,
+          "errorEmitted": false,
+          "finalCalled": false,
+          "finished": false,
+          "highWaterMark": 16,
+          "lastBufferedRequest": null,
+          "length": 0,
+          "needDrain": false,
+          "objectMode": true,
+          "onwrite": [Function],
+          "pendingcb": 2,
+          "prefinished": false,
+          "sync": false,
+          "writecb": null,
+          "writelen": 0,
+          "writing": false,
+        },
+        "format": undefined,
+        "handleExceptions": undefined,
+        "level": undefined,
+        "levels": Object {
+          "debug": 5,
+          "error": 0,
+          "http": 3,
+          "info": 2,
+          "silly": 6,
+          "verbose": 4,
+          "warn": 1,
+        },
+        "log": [Function],
+        "logv": [Function],
+        "mock": [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "controller": Object {
+                  "method": "playSound",
+                  "name": "PlayerController",
+                },
+                "level": "info",
+                "message": "soundId(unknown)",
+                Symbol(level): "info",
+                Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"message\\":\\"soundId(unknown)\\",\\"level\\":\\"info\\"}",
+              },
+            ],
+            Array [
+              Object {
+                "controller": Object {
+                  "method": "playSound",
+                  "name": "PlayerController",
+                },
+                "level": "error",
+                "message": "sound === undefined",
+                "soundId": "unknown",
+                Symbol(level): "error",
+                Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"soundId\\":\\"unknown\\",\\"message\\":\\"sound === undefined\\",\\"level\\":\\"error\\"}",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        },
+        "parent": [Circular],
+        "silent": undefined,
+        "writable": true,
+      },
+      "pipesCount": 1,
+      "readableListening": false,
+      "reading": false,
+      "readingMore": true,
+      "resumeScheduled": true,
+      "sync": false,
+    },
+    "_transformState": Object {
+      "afterTransform": [Function],
+      "needTransform": true,
+      "transforming": false,
+      "writecb": null,
+      "writechunk": null,
+      "writeencoding": "utf8",
+    },
+    "_writableState": WritableState {
+      "bufferProcessing": false,
+      "bufferedRequest": null,
+      "bufferedRequestCount": 0,
+      "corked": 0,
+      "corkedRequestsFree": CorkedRequest {
+        "entry": null,
+        "finish": [Function],
+        "next": null,
+      },
+      "decodeStrings": true,
+      "defaultEncoding": "utf8",
+      "destroyed": false,
+      "emitClose": true,
+      "ended": false,
+      "ending": false,
+      "errorEmitted": false,
+      "finalCalled": false,
+      "finished": false,
+      "highWaterMark": 16,
+      "lastBufferedRequest": null,
+      "length": 0,
+      "needDrain": false,
+      "objectMode": true,
+      "onwrite": [Function],
+      "pendingcb": 2,
+      "prefinished": false,
+      "sync": false,
+      "writecb": null,
+      "writelen": 0,
+      "writing": false,
+    },
+    "allowHalfOpen": true,
+    "defaultMeta": null,
+    "exceptions": ExceptionHandler {
+      "handlers": Map {},
+      "logger": [Circular],
+    },
+    "exitOnError": true,
+    "format": Format {
+      "options": Object {},
+    },
+    "level": "silly",
+    "levels": Object {
+      "debug": 5,
+      "error": 0,
+      "http": 3,
+      "info": 2,
+      "silly": 6,
+      "verbose": 4,
+      "warn": 1,
+    },
+    "profilers": Object {},
+    "readable": true,
+    "rejections": RejectionHandler {
+      "handlers": Map {},
+      "logger": [Circular],
+    },
+    "silent": undefined,
+    "writable": true,
   },
   "params": Object {
     "soundId": "unknown",
@@ -301,10 +523,14 @@ Object {
 exports[`controllers -> player playSound not found on unknown song 2`] = `
 Array [
   Object {
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "info",
-    "message": "playSound(unknown)",
+    "message": "soundId(unknown)",
     Symbol(level): "info",
-    Symbol(message): "{\\"message\\":\\"playSound(unknown)\\",\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"message\\":\\"soundId(unknown)\\",\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -312,11 +538,15 @@ Array [
 exports[`controllers -> player playSound not found on unknown song 3`] = `
 Array [
   Object {
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "error",
-    "message": "playSound().sound === undefined",
+    "message": "sound === undefined",
     "soundId": "unknown",
     Symbol(level): "error",
-    Symbol(message): "{\\"soundId\\":\\"unknown\\",\\"message\\":\\"playSound().sound === undefined\\",\\"level\\":\\"error\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"soundId\\":\\"unknown\\",\\"message\\":\\"sound === undefined\\",\\"level\\":\\"error\\"}",
   },
 ]
 `;
@@ -330,6 +560,222 @@ Object {
       "id": "baby_shark",
     },
   },
+  "logger": DerivedLogger {
+    "_events": Object {
+      "data": [Function],
+      "end": [Function],
+      "prefinish": [Function],
+    },
+    "_eventsCount": 3,
+    "_maxListeners": undefined,
+    "_readableState": ReadableState {
+      "awaitDrain": 0,
+      "buffer": BufferList {
+        "head": null,
+        "length": 0,
+        "tail": null,
+      },
+      "decoder": null,
+      "defaultEncoding": "utf8",
+      "destroyed": false,
+      "emitClose": true,
+      "emittedReadable": false,
+      "encoding": null,
+      "endEmitted": false,
+      "ended": false,
+      "flowing": true,
+      "highWaterMark": 16,
+      "length": 0,
+      "needReadable": true,
+      "objectMode": true,
+      "pipes": WinstonJestTransport {
+        "__winstonerror": [Function],
+        "__winstonwarn": [Function],
+        "_events": Object {
+          "close": [Function],
+          "drain": [Function],
+          "error": Array [
+            [Function],
+            [Function],
+          ],
+          "finish": [Function],
+          "unpipe": Array [
+            [Function],
+            [Function],
+          ],
+          "warn": [Function],
+        },
+        "_eventsCount": 6,
+        "_maxListeners": undefined,
+        "_writableState": WritableState {
+          "bufferProcessing": false,
+          "bufferedRequest": null,
+          "bufferedRequestCount": 0,
+          "corked": 0,
+          "corkedRequestsFree": CorkedRequest {
+            "entry": null,
+            "finish": [Function],
+            "next": null,
+          },
+          "decodeStrings": true,
+          "defaultEncoding": "utf8",
+          "destroyed": false,
+          "ended": false,
+          "ending": false,
+          "errorEmitted": false,
+          "finalCalled": false,
+          "finished": false,
+          "highWaterMark": 16,
+          "lastBufferedRequest": null,
+          "length": 0,
+          "needDrain": false,
+          "objectMode": true,
+          "onwrite": [Function],
+          "pendingcb": 2,
+          "prefinished": false,
+          "sync": false,
+          "writecb": null,
+          "writelen": 0,
+          "writing": false,
+        },
+        "format": undefined,
+        "handleExceptions": undefined,
+        "level": undefined,
+        "levels": Object {
+          "debug": 5,
+          "error": 0,
+          "http": 3,
+          "info": 2,
+          "silly": 6,
+          "verbose": 4,
+          "warn": 1,
+        },
+        "log": [Function],
+        "logv": [Function],
+        "mock": [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "controller": Object {
+                  "method": "playSound",
+                  "name": "PlayerController",
+                },
+                "level": "info",
+                "message": "soundId(baby_shark)",
+                Symbol(level): "info",
+                Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"message\\":\\"soundId(baby_shark)\\",\\"level\\":\\"info\\"}",
+              },
+            ],
+            Array [
+              Object {
+                "controller": Object {
+                  "method": "playSound",
+                  "name": "PlayerController",
+                },
+                "level": "debug",
+                "message": "playSound()",
+                "sound": Object {
+                  "basename": "mommy shark",
+                  "filename": "daddy shark",
+                  "id": "baby_shark",
+                },
+                "soundId": "baby_shark",
+                Symbol(level): "debug",
+                Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"sound\\":{\\"basename\\":\\"mommy shark\\",\\"filename\\":\\"daddy shark\\",\\"id\\":\\"baby_shark\\"},\\"soundId\\":\\"baby_shark\\",\\"message\\":\\"playSound()\\",\\"level\\":\\"debug\\"}",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        },
+        "parent": [Circular],
+        "silent": undefined,
+        "writable": true,
+      },
+      "pipesCount": 1,
+      "readableListening": false,
+      "reading": false,
+      "readingMore": true,
+      "resumeScheduled": true,
+      "sync": false,
+    },
+    "_transformState": Object {
+      "afterTransform": [Function],
+      "needTransform": true,
+      "transforming": false,
+      "writecb": null,
+      "writechunk": null,
+      "writeencoding": "utf8",
+    },
+    "_writableState": WritableState {
+      "bufferProcessing": false,
+      "bufferedRequest": null,
+      "bufferedRequestCount": 0,
+      "corked": 0,
+      "corkedRequestsFree": CorkedRequest {
+        "entry": null,
+        "finish": [Function],
+        "next": null,
+      },
+      "decodeStrings": true,
+      "defaultEncoding": "utf8",
+      "destroyed": false,
+      "emitClose": true,
+      "ended": false,
+      "ending": false,
+      "errorEmitted": false,
+      "finalCalled": false,
+      "finished": false,
+      "highWaterMark": 16,
+      "lastBufferedRequest": null,
+      "length": 0,
+      "needDrain": false,
+      "objectMode": true,
+      "onwrite": [Function],
+      "pendingcb": 2,
+      "prefinished": false,
+      "sync": false,
+      "writecb": null,
+      "writelen": 0,
+      "writing": false,
+    },
+    "allowHalfOpen": true,
+    "defaultMeta": null,
+    "exceptions": ExceptionHandler {
+      "handlers": Map {},
+      "logger": [Circular],
+    },
+    "exitOnError": true,
+    "format": Format {
+      "options": Object {},
+    },
+    "level": "silly",
+    "levels": Object {
+      "debug": 5,
+      "error": 0,
+      "http": 3,
+      "info": 2,
+      "silly": 6,
+      "verbose": 4,
+      "warn": 1,
+    },
+    "profilers": Object {},
+    "readable": true,
+    "rejections": RejectionHandler {
+      "handlers": Map {},
+      "logger": [Circular],
+    },
+    "silent": undefined,
+    "writable": true,
+  },
   "params": Object {
     "soundId": "baby_shark",
   },
@@ -340,10 +786,14 @@ Object {
 exports[`controllers -> player playSound plays sound 2`] = `
 Array [
   Object {
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "info",
-    "message": "playSound(baby_shark)",
+    "message": "soundId(baby_shark)",
     Symbol(level): "info",
-    Symbol(message): "{\\"message\\":\\"playSound(baby_shark)\\",\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"message\\":\\"soundId(baby_shark)\\",\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -351,6 +801,10 @@ Array [
 exports[`controllers -> player playSound plays sound 3`] = `
 Array [
   Object {
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "debug",
     "message": "playSound()",
     "sound": Object {
@@ -360,7 +814,7 @@ Array [
     },
     "soundId": "baby_shark",
     Symbol(level): "debug",
-    Symbol(message): "{\\"sound\\":{\\"basename\\":\\"mommy shark\\",\\"filename\\":\\"daddy shark\\",\\"id\\":\\"baby_shark\\"},\\"soundId\\":\\"baby_shark\\",\\"message\\":\\"playSound()\\",\\"level\\":\\"debug\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"sound\\":{\\"basename\\":\\"mommy shark\\",\\"filename\\":\\"daddy shark\\",\\"id\\":\\"baby_shark\\"},\\"soundId\\":\\"baby_shark\\",\\"message\\":\\"playSound()\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;

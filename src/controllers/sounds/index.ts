@@ -1,10 +1,10 @@
 import * as koaRouter from 'koa-router'
 import { NOT_FOUND } from 'http-status-codes'
-import { createModuleLogger } from '../../modules/logging'
+import { createLogger } from '../../modules/logging'
 import winston = require('winston')
 import { ISoundService, soundService } from '../../modules/sounds'
 
-export const soundsControllerLogger = createModuleLogger('SoundsController')
+export const soundsControllerLogger = createLogger('SoundsController')
 
 interface ISoundsController {
   get: (ctx: koaRouter.RouterContext) => void
