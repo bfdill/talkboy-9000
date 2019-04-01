@@ -4,6 +4,15 @@ import { ISoundService, soundService } from '../../modules/sounds'
 import { IPlayerService, PlayerService } from '../../modules/player'
 import { randomIntFromInterval } from '../../utils'
 import { ApplicationState, IApplicationContext } from '../../types'
+import { createLogger } from '../../modules/logging'
+import winston = require('winston')
+
+export const getPlayerControllerLogger = () =>
+  createLogger({
+    controller: {
+      name: 'PlayerController'
+    }
+  })
 
 export interface IPlayerController {
   playSound: (context: IApplicationContext) => PromiseLike<void>
@@ -15,25 +24,24 @@ export class PlayerController implements IPlayerController {
 
   constructor(
     protected readonly playerService: IPlayerService,
-    protected readonly soundService: ISoundService
+    protected readonly soundService: ISoundService,
+    protected readonly logger: winston.Logger
   ) {}
 
   playSound = async (context: IApplicationContext) => {
-    const logger = context.logger.child({
-      controller: {
-        name: 'PlayerController',
-        method: 'playSound'
-      }
-    })
     const { soundId } = context.params
-    logger.info({
-      message: `soundId(${soundId})`
+    this.logger.info({
+      ...context.state,
+      message: `soundId(${soundId})`,
+      method: 'playSound'
     })
 
     if (typeof soundId !== 'string') {
-      logger.error({
+      this.logger.error({
+        ...context.state,
         soundId,
-        message: 'soundId !== string'
+        message: 'soundId !== string',
+        method: 'playSound'
       })
       context.body = { soundId }
       context.status = BAD_REQUEST
@@ -43,7 +51,8 @@ export class PlayerController implements IPlayerController {
     const sound = this.soundService.getBySoundId(soundId)
 
     if (sound === undefined) {
-      logger.error({
+      this.logger.error({
+        ...context.state,
         soundId,
         message: 'sound === undefined'
       })
@@ -52,52 +61,49 @@ export class PlayerController implements IPlayerController {
       return
     }
 
-    logger.debug({
+    this.logger.debug({
+      ...context.state,
       sound,
       soundId,
       message: 'playSound()'
     })
 
-    await this.playerService.playFile(sound.filename, logger)
+    await this.playerService.playFile(sound.filename, context.state)
 
     context.body = { sound }
     context.status = OK
   }
 
   playRando = async (context: IApplicationContext) => {
-    const logger = context.logger.child({
-      controller: {
-        name: 'PlayerController',
-        method: 'playRando'
-      }
-    })
-
-    logger.info({
-      message: 'playRando()'
+    this.logger.info({
+      method: 'playRando'
     })
     const sounds = this.soundService.getSounds()
 
     if (sounds.length === 0) {
-      logger.error({
-        message: 'playRando().sounds.length === 0'
+      this.logger.error({
+        message: 'sounds.length === 0',
+        method: 'playRando'
       })
       context.status = NOT_FOUND
       return
     }
 
-    logger.silly({
+    this.logger.silly({
       soundLength: sounds.length,
+      method: 'playRando',
       message: 'sounds length'
     })
 
     const sound = sounds[randomIntFromInterval(0, sounds.length - 1)]
 
-    logger.debug({
+    this.logger.debug({
       sound,
-      message: 'selected sound'
+      message: 'selected sound',
+      method: 'playRando'
     })
 
-    await this.playerService.playFile(sound.filename, logger)
+    await this.playerService.playFile(sound.filename, context.state)
 
     context.body = { sound }
     context.status = OK
@@ -108,7 +114,8 @@ export class PlayerController implements IPlayerController {
 
     this.instance = new PlayerController(
       PlayerService.getInstance(),
-      soundService
+      soundService,
+      getPlayerControllerLogger()
     )
 
     return this.instance

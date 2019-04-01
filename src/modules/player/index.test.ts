@@ -1,84 +1,94 @@
 import { createPlayer, IPlayer, What, PlayOptions, Next } from './types'
-import { PlayerService, IPlayerService } from '.'
+import { PlayerService, IPlayerService, getPlayerServiceLogger } from '.'
 import { ISoundService } from '../sounds'
 import { ChildProcess } from 'child_process'
-import { IJestLogger, getJestLogger } from '../winston-jest/index.test'
+import {
+  IJestLogger,
+  getJestLogger,
+  snapshotExistingLogger
+} from '../winston-jest/index.test'
+import { mockApplicationState } from '../../__mocks__/applicationState'
+import { getMockSoundService } from '../sounds/__mocks__/soundService'
 
 // tsd creation fail
 const createPlayer: createPlayer = require('play-sound')
 
 describe('modules -> player', () => {
-  const filename = 'this-file-totes-exists.mp3'
-  const mockIsPathValid: jest.Mock = jest.fn()
-  const mockNextInput: jest.Mock = jest.fn()
-  const fakePlay = (
-    _0: What,
-    options?: PlayOptions | Next,
-    _2?: Next
-  ): ChildProcess => {
-    if (typeof options === 'function') {
-      options(mockNextInput())
+  test('has known exports', () => {
+    expect(Object.keys(require('.'))).toMatchSnapshot()
+  })
+
+  test('getPlayerServiceLogger', () => {
+    snapshotExistingLogger(getPlayerServiceLogger())
+  })
+
+  describe('playerService', () => {
+    const filename = 'this-file-totes-exists.mp3'
+    const mockNextInput: jest.Mock = jest.fn()
+    const fakePlay = (
+      _0: What,
+      options?: PlayOptions | Next,
+      _2?: Next
+    ): ChildProcess => {
+      if (typeof options === 'function') {
+        options(mockNextInput())
+      }
+
+      return jest.fn() as any
     }
+    const player: IPlayer = {
+      play: fakePlay
+    }
+    const mockSoundService = getMockSoundService()
+    const jestLogger: IJestLogger = getJestLogger()
+    const playerService: IPlayerService = new PlayerService(
+      player,
+      mockSoundService,
+      jestLogger.logger
+    )
 
-    return jest.fn() as any
-  }
-  const player: IPlayer = {
-    play: fakePlay
-  }
-  const soundService: ISoundService = {
-    getBySoundId: jest.fn(),
-    getSounds: jest.fn(),
-    isPathValid: mockIsPathValid
-  }
-  let playerService: IPlayerService
-  let jestLogger: IJestLogger
+    beforeEach(() => {
+      mockSoundService.setIsPathValid(true)
+      mockNextInput.mockReturnValue(null)
+    })
 
-  beforeEach(() => {
-    mockIsPathValid.mockReturnValue(true)
-    mockNextInput.mockReturnValue(null)
-    jestLogger = getJestLogger()
-    playerService = new PlayerService(player, soundService)
-  })
+    test('rejects on invalid file', async () => {
+      expect.assertions(3)
+      mockSoundService.setIsPathValid(false)
 
-  test('rejects on invalid file', async () => {
-    expect.assertions(3)
-    mockIsPathValid.mockReturnValue(false)
+      await expect(
+        playerService.playFile(filename, mockApplicationState)
+      ).rejects.toMatchSnapshot()
 
-    await expect(
-      playerService.playFile(filename, jestLogger.logger)
-    ).rejects.toMatchSnapshot()
+      jestLogger.callsMatchSnapshot()
+    })
 
-    jestLogger.callsMatchSnapshot()
-  })
+    test('rejects on playback error', async () => {
+      expect.assertions(3)
+      mockNextInput.mockReturnValue({ error: 'KHAAAAAAN!' })
 
-  test('rejects on playback error', async () => {
-    expect.assertions(3)
-    mockNextInput.mockReturnValue({ error: 'KHAAAAAAN!' })
+      await expect(
+        playerService.playFile(filename, mockApplicationState)
+      ).rejects.toMatchSnapshot()
 
-    await expect(
-      playerService.playFile(filename, jestLogger.logger)
-    ).rejects.toMatchSnapshot()
+      jestLogger.callsMatchSnapshot()
+    })
 
-    jestLogger.callsMatchSnapshot()
-  })
+    test('playback happy path', async () => {
+      expect.assertions(3)
 
-  test('playback happy path', async () => {
-    expect.assertions(3)
+      await expect(
+        playerService.playFile(filename, mockApplicationState)
+      ).resolves.toMatchSnapshot()
 
-    await expect(
-      playerService.playFile(filename, jestLogger.logger)
-    ).resolves.toMatchSnapshot()
+      jestLogger.callsMatchSnapshot()
+    })
 
-    jestLogger.callsMatchSnapshot()
-  })
+    test('singleton works', () => {
+      const expected = PlayerService.getInstance()
+      const actual = PlayerService.getInstance()
 
-  test('playback happy path', async () => {
-    expect.assertions(3)
-
-    await expect(
-      playerService.playFile(filename, jestLogger.logger)
-    ).resolves.toMatchSnapshot()
-
-    jestLogger.callsMatchSnapshot()
+      expect(actual).toBe(expected)
+    })
   })
 })

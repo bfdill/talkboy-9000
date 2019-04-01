@@ -1,4 +1,3 @@
-import * as winston from 'winston'
 import * as Koa from 'koa'
 import * as KoaRouter from 'koa-router'
 import { Server } from 'http'
@@ -11,9 +10,7 @@ export type ApplicationState = {
   correlationId: string
 }
 export interface IApplicationContext
-  extends Koa.ParameterizedContext<ApplicationState> {
-  logger: winston.Logger
-}
+  extends Koa.ParameterizedContext<ApplicationState> {}
 export type ApplicationMiddleware = Koa.Middleware<
   ApplicationState,
   IApplicationContext

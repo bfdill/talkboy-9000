@@ -1,8 +1,8 @@
 import {
   getHealthcheckRouter,
-  Healthcheck,
-  IHealthcheck,
-  getHealthcheckLogger
+  HealthcheckController,
+  IHealthcheckController,
+  getHealthcheckControllerLogger
 } from '.'
 import { IApplicationContext, ApplicationState } from '../../types'
 import { OK } from 'http-status-codes'
@@ -14,17 +14,23 @@ import {
 
 describe('controllers -> healthcheck', () => {
   const jestLogger: IJestLogger = getJestLogger()
-  const healthcheck: IHealthcheck = new Healthcheck(jestLogger.logger)
+  const healthcheck: IHealthcheckController = new HealthcheckController(
+    jestLogger.logger
+  )
   const testState: ApplicationState = { correlationId: 'abc123' }
   const testContext: IApplicationContext = { state: testState } as any
 
+  test('has known exports', () => {
+    expect(Object.keys(require('.'))).toMatchSnapshot()
+  })
+
   test('getHealthcheckLogger', () => {
-    snapshotExistingLogger(getHealthcheckLogger())
+    snapshotExistingLogger(getHealthcheckControllerLogger())
   })
 
   test('singleton works', () => {
-    const expected = Healthcheck.getInstance()
-    const actual = Healthcheck.getInstance()
+    const expected = HealthcheckController.getInstance()
+    const actual = HealthcheckController.getInstance()
 
     expect(actual).toBe(expected)
   })

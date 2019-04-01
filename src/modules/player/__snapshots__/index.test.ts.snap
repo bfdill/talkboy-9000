@@ -1,127 +1,118 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`modules -> player playback happy path 1`] = `undefined`;
+exports[`modules -> player getPlayerServiceLogger 1`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "✅test works✅",
+    "service": "PlayerService",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"✅test works✅\\",\\"level\\":\\"info\\",\\"service\\":\\"PlayerService\\"}",
+  },
+]
+`;
 
-exports[`modules -> player playback happy path 2`] = `
+exports[`modules -> player has known exports 1`] = `
+Array [
+  "getPlayerServiceLogger",
+  "PlayerService",
+]
+`;
+
+exports[`modules -> player playerService playback happy path 1`] = `undefined`;
+
+exports[`modules -> player playerService playback happy path 2`] = `
 Array [
   Object {
     "level": "info",
     "message": Object {
       "filename": "this-file-totes-exists.mp3",
-    },
-    "service": Object {
-      "name": "PlayerService",
+      "method": "playFile",
+      "state": Object {
+        "correlationId": "1234567890",
+      },
     },
     Symbol(level): "info",
-    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\"},\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\"},\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"method\\":\\"playFile\\",\\"state\\":{\\"correlationId\\":\\"1234567890\\"}},\\"level\\":\\"info\\"}",
   },
 ]
 `;
 
-exports[`modules -> player playback happy path 3`] = `
+exports[`modules -> player playerService playback happy path 3`] = `
 Array [
   Object {
     "filename": "this-file-totes-exists.mp3",
     "level": "debug",
     "message": "playback success",
-    "service": Object {
-      "name": "PlayerService",
+    "method": "playFile",
+    "state": Object {
+      "correlationId": "1234567890",
     },
     Symbol(level): "debug",
-    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\"},\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"playback success\\",\\"level\\":\\"debug\\"}",
+    Symbol(message): "{\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"method\\":\\"playFile\\",\\"state\\":{\\"correlationId\\":\\"1234567890\\"},\\"message\\":\\"playback success\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;
 
-exports[`modules -> player playback happy path 4`] = `undefined`;
+exports[`modules -> player playerService rejects on invalid file 1`] = `"filename path is invalid"`;
 
-exports[`modules -> player playback happy path 5`] = `
+exports[`modules -> player playerService rejects on invalid file 2`] = `
 Array [
   Object {
     "level": "info",
     "message": Object {
       "filename": "this-file-totes-exists.mp3",
-    },
-    "service": Object {
-      "name": "PlayerService",
-    },
-    Symbol(level): "info",
-    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\"},\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\"},\\"level\\":\\"info\\"}",
-  },
-]
-`;
-
-exports[`modules -> player playback happy path 6`] = `
-Array [
-  Object {
-    "filename": "this-file-totes-exists.mp3",
-    "level": "debug",
-    "message": "playback success",
-    "service": Object {
-      "name": "PlayerService",
-    },
-    Symbol(level): "debug",
-    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\"},\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"playback success\\",\\"level\\":\\"debug\\"}",
-  },
-]
-`;
-
-exports[`modules -> player rejects on invalid file 1`] = `"filename path is invalid"`;
-
-exports[`modules -> player rejects on invalid file 2`] = `
-Array [
-  Object {
-    "level": "info",
-    "message": Object {
-      "filename": "this-file-totes-exists.mp3",
-    },
-    "service": Object {
-      "name": "PlayerService",
+      "method": "playFile",
+      "state": Object {
+        "correlationId": "1234567890",
+      },
     },
     Symbol(level): "info",
-    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\"},\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\"},\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"method\\":\\"playFile\\",\\"state\\":{\\"correlationId\\":\\"1234567890\\"}},\\"level\\":\\"info\\"}",
   },
 ]
 `;
 
-exports[`modules -> player rejects on invalid file 3`] = `
+exports[`modules -> player playerService rejects on invalid file 3`] = `
 Array [
   Object {
     "filename": "this-file-totes-exists.mp3",
     "level": "error",
     "message": "filename path is invalid",
-    "service": Object {
-      "name": "PlayerService",
+    "method": "playFile",
+    "state": Object {
+      "correlationId": "1234567890",
     },
     Symbol(level): "error",
-    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\"},\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"filename path is invalid\\",\\"level\\":\\"error\\"}",
+    Symbol(message): "{\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"filename path is invalid\\",\\"method\\":\\"playFile\\",\\"state\\":{\\"correlationId\\":\\"1234567890\\"},\\"level\\":\\"error\\"}",
   },
 ]
 `;
 
-exports[`modules -> player rejects on playback error 1`] = `
+exports[`modules -> player playerService rejects on playback error 1`] = `
 Object {
   "error": "KHAAAAAAN!",
 }
 `;
 
-exports[`modules -> player rejects on playback error 2`] = `
+exports[`modules -> player playerService rejects on playback error 2`] = `
 Array [
   Object {
     "level": "info",
     "message": Object {
       "filename": "this-file-totes-exists.mp3",
-    },
-    "service": Object {
-      "name": "PlayerService",
+      "method": "playFile",
+      "state": Object {
+        "correlationId": "1234567890",
+      },
     },
     Symbol(level): "info",
-    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\"},\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\"},\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"method\\":\\"playFile\\",\\"state\\":{\\"correlationId\\":\\"1234567890\\"}},\\"level\\":\\"info\\"}",
   },
 ]
 `;
 
-exports[`modules -> player rejects on playback error 3`] = `
+exports[`modules -> player playerService rejects on playback error 3`] = `
 Array [
   Object {
     "error": Object {
@@ -130,11 +121,12 @@ Array [
     "filename": "this-file-totes-exists.mp3",
     "level": "debug",
     "message": "playback failure",
-    "service": Object {
-      "name": "PlayerService",
+    "method": "playFile",
+    "state": Object {
+      "correlationId": "1234567890",
     },
     Symbol(level): "debug",
-    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\"},\\"error\\":{\\"error\\":\\"KHAAAAAAN!\\"},\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"playback failure\\",\\"level\\":\\"debug\\"}",
+    Symbol(message): "{\\"error\\":{\\"error\\":\\"KHAAAAAAN!\\"},\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"method\\":\\"playFile\\",\\"state\\":{\\"correlationId\\":\\"1234567890\\"},\\"message\\":\\"playback failure\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;

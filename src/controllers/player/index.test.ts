@@ -1,11 +1,16 @@
-import { PlayerController, IPlayerController } from '.'
+import {
+  PlayerController,
+  IPlayerController,
+  getPlayerControllerLogger
+} from '.'
 import { IPlayerService } from '../../modules/player'
 import { ISoundService, Sound } from '../../modules/sounds'
 import {
   getJestLogger,
-  IJestLogger
+  IJestLogger,
+  snapshotExistingLogger
 } from '../../modules/winston-jest/index.test'
-import { IApplicationContext } from '../../types'
+import { IApplicationContext, ApplicationState } from '../../types'
 
 describe('controllers -> player', () => {
   const playerService: IPlayerService = {
@@ -22,23 +27,31 @@ describe('controllers -> player', () => {
     filename: 'daddy shark',
     id: 'baby_shark'
   }
-  let jestLogger: IJestLogger
-  let playerController: IPlayerController
+  const jestLogger: IJestLogger = getJestLogger()
+  const playerController: IPlayerController = new PlayerController(
+    playerService,
+    soundService,
+    jestLogger.logger
+  )
+  const testState: ApplicationState = { correlationId: 'abc123' }
+
   const contextBuilder = (soundId?: any): IApplicationContext =>
     ({
       params: { soundId },
-      logger: jestLogger.logger
+      logger: jestLogger.logger,
+      state: testState
     } as any)
 
   beforeEach(() => {
     mockGetSounds.mockReturnValue([])
-    jestLogger = getJestLogger()
-    playerController = new PlayerController(playerService, soundService)
   })
 
   test('has known exports', () => {
     expect(Object.keys(require('.'))).toMatchSnapshot()
   })
+
+  test('getPlayerControllerLogger', () =>
+    snapshotExistingLogger(getPlayerControllerLogger()))
 
   describe('playSound', () => {
     test.each([undefined, null, false, true, 1])(
@@ -62,7 +75,8 @@ describe('controllers -> player', () => {
 
       await playerController.playSound(context)
 
-      expect(context).toMatchSnapshot()
+      expect(context.body).toMatchSnapshot()
+      expect(context.status).toMatchSnapshot()
       jestLogger.callsMatchSnapshot()
     })
 
@@ -74,8 +88,9 @@ describe('controllers -> player', () => {
 
       await playerController.playSound(context)
 
-      expect(context).toMatchSnapshot()
-      expect(playerService.playFile).toBeCalledWith(sound.filename, {})
+      expect(context.body).toMatchSnapshot()
+      expect(context.status).toMatchSnapshot()
+      expect(playerService.playFile).toBeCalledWith(sound.filename, testState)
       jestLogger.callsMatchSnapshot()
     })
   })
@@ -88,6 +103,7 @@ describe('controllers -> player', () => {
 
       await playerController.playRando(context)
 
+      expect(context.body).toMatchSnapshot()
       expect(context.status).toMatchSnapshot()
       jestLogger.callsMatchSnapshot()
     })
@@ -103,7 +119,7 @@ describe('controllers -> player', () => {
 
       expect(context.body).toMatchSnapshot()
       expect(context.status).toMatchSnapshot()
-      expect(playerService.playFile).toBeCalledWith(sound.filename, {})
+      expect(playerService.playFile).toBeCalledWith(sound.filename, testState)
       jestLogger.callsMatchSnapshot()
     })
   })

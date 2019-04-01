@@ -14,9 +14,11 @@ exports[`app App listen logs 1`] = `
 Array [
   Object {
     "level": "info",
-    "message": "listen(12345)",
+    "message": Object {
+      "listen": 12345,
+    },
     Symbol(level): "info",
-    Symbol(message): "{\\"message\\":\\"listen(12345)\\",\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"message\\":{\\"listen\\":12345},\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -25,9 +27,11 @@ exports[`app App on error is registered and logs an error 1`] = `
 Array [
   Object {
     "level": "info",
-    "message": "listen(12345)",
+    "message": Object {
+      "listen": 12345,
+    },
     Symbol(level): "info",
-    Symbol(message): "{\\"message\\":\\"listen(12345)\\",\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"message\\":{\\"listen\\":12345},\\"level\\":\\"info\\"}",
   },
 ]
 `;

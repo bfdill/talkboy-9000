@@ -4,19 +4,19 @@ import { ApplicationState, IApplicationContext } from '../../types'
 import winston = require('winston')
 import { createLogger } from '../../modules/logging'
 
-export const getHealthcheckLogger = () =>
+export const getHealthcheckControllerLogger = () =>
   createLogger({
     controller: {
-      name: 'healthcheck'
+      name: 'HealthcheckController'
     }
   })
 
-export interface IHealthcheck {
+export interface IHealthcheckController {
   health: (context: IApplicationContext) => PromiseLike<void>
 }
 
-export class Healthcheck implements IHealthcheck {
-  private static instance: IHealthcheck | undefined
+export class HealthcheckController implements IHealthcheckController {
+  private static instance: IHealthcheckController | undefined
 
   constructor(protected logger: winston.Logger) {}
 
@@ -24,13 +24,13 @@ export class Healthcheck implements IHealthcheck {
     context.body = { healthy: true }
     context.status = OK
 
-    this.logger.silly('success')
+    this.logger.silly('success', context.state)
   }
 
-  static getInstance(): IHealthcheck {
+  static getInstance(): IHealthcheckController {
     if (this.instance !== undefined) return this.instance
 
-    this.instance = new Healthcheck(getHealthcheckLogger())
+    this.instance = new HealthcheckController(getHealthcheckControllerLogger())
 
     return this.instance
   }
@@ -39,5 +39,5 @@ export class Healthcheck implements IHealthcheck {
 export const getHealthcheckRouter = () =>
   new KoaRouter<ApplicationState, IApplicationContext>().get(
     '/',
-    Healthcheck.getInstance().health
+    HealthcheckController.getInstance().health
   )

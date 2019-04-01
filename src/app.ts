@@ -64,7 +64,7 @@ export class App implements IApplication {
   }
 
   listen = (port: number) => {
-    this.logger.info(`listen(${port})`)
+    this.logger.info({ listen: port })
     this.setup(this.koa, this.router, this.logger, this.loggingMiddleware)
 
     return this.koa.listen(port)

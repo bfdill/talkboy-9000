@@ -4,12 +4,12 @@ exports[`controllers -> healthcheck getHealthcheckLogger 1`] = `
 Array [
   Object {
     "controller": Object {
-      "name": "healthcheck",
+      "name": "HealthcheckController",
     },
     "level": "info",
     "message": "✅test works✅",
     Symbol(level): "info",
-    Symbol(message): "{\\"message\\":\\"✅test works✅\\",\\"level\\":\\"info\\",\\"controller\\":{\\"name\\":\\"healthcheck\\"}}",
+    Symbol(message): "{\\"message\\":\\"✅test works✅\\",\\"level\\":\\"info\\",\\"controller\\":{\\"name\\":\\"HealthcheckController\\"}}",
   },
 ]
 `;
@@ -53,13 +53,27 @@ Router {
 }
 `;
 
+exports[`controllers -> healthcheck has known exports 1`] = `
+Array [
+  "getHealthcheckControllerLogger",
+  "HealthcheckController",
+  "getHealthcheckRouter",
+]
+`;
+
 exports[`controllers -> healthcheck healthy, so healthy! 1`] = `
 Array [
   Object {
+    "correlationId": "abc123",
     "level": "silly",
     "message": "success",
     Symbol(level): "silly",
-    Symbol(message): "{\\"message\\":\\"success\\",\\"level\\":\\"silly\\"}",
+    Symbol(splat): Array [
+      Object {
+        "correlationId": "abc123",
+      },
+    ],
+    Symbol(message): "{\\"correlationId\\":\\"abc123\\",\\"level\\":\\"silly\\",\\"message\\":\\"success\\"}",
   },
 ]
 `;
