@@ -1,14 +1,7 @@
-import * as Koa from 'koa'
-import * as KoaRouter from 'koa-router'
 import * as winston from 'winston'
 import { inspect } from 'util'
 
-import {
-  IApplicationContext,
-  ApplicationState,
-  ApplicationRouter,
-  ApplicationKoa
-} from './types'
+import { ApplicationRouter, ApplicationKoa } from './types'
 import { App, configureRouter, getAppLogger, getAppRouter } from './app'
 import { getJestLogger } from './modules/winston-jest/index.test'
 import { ILoggingMiddleware, LoggingMiddleware } from './modules/logging'

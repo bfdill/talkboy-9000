@@ -1,6 +1,5 @@
 import { createPlayer, IPlayer, What, PlayOptions, Next } from './types'
 import { PlayerService, IPlayerService, getPlayerServiceLogger } from '.'
-import { ISoundService } from '../sounds'
 import { ChildProcess } from 'child_process'
 import {
   IJestLogger,
