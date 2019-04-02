@@ -2,6 +2,7 @@ import { SoundService, PATH_TO_SOUNDS, ISoundService } from '.'
 import * as sane from 'sane'
 import { getJestLogger, IJestLogger } from '../winston-jest/index.test'
 import { join } from 'path'
+import { mockApplicationState } from '../../__mocks__/applicationState'
 
 describe('modules -> sounds', () => {
   const saneOnMock = jest.fn()
@@ -11,17 +12,16 @@ describe('modules -> sounds', () => {
   const saneFunctionMock = (_: string, _1?: sane.Options): sane.Watcher => {
     return saneWatcherMock as any
   }
-  let jestLogger: IJestLogger
+  const jestLogger: IJestLogger = getJestLogger()
   let soundService: ISoundService
   let baseSoundService: SoundService
 
   beforeEach(() => {
     saneOnMock.mockReturnValue(saneWatcherMock)
-    jestLogger = getJestLogger()
     soundService = new SoundService(
       PATH_TO_SOUNDS,
-      jestLogger.logger,
-      saneFunctionMock as any
+      saneFunctionMock as any,
+      jestLogger.logger
     )
     baseSoundService = soundService as SoundService
   })
@@ -32,16 +32,26 @@ describe('modules -> sounds', () => {
 
   describe('addSound', () => {
     test('id = ordinal position by filename alpha', () => {
-      expect(soundService.getSounds()).toHaveLength(0)
+      expect(
+        soundService.getSounds(mockApplicationState, jestLogger.logger)
+      ).toHaveLength(0)
       baseSoundService.addSound('/tmp/fake_sound_0.mp3')
 
-      expect(soundService.getSounds()).toHaveLength(1)
-      expect(soundService.getSounds()).toMatchSnapshot()
+      expect(
+        soundService.getSounds(mockApplicationState, jestLogger.logger)
+      ).toHaveLength(1)
+      expect(
+        soundService.getSounds(mockApplicationState, jestLogger.logger)
+      ).toMatchSnapshot()
 
       baseSoundService.addSound('/tmp/a_fake_sound_0.mp3')
 
-      expect(soundService.getSounds()).toHaveLength(2)
-      expect(soundService.getSounds()).toMatchSnapshot()
+      expect(
+        soundService.getSounds(mockApplicationState, jestLogger.logger)
+      ).toHaveLength(2)
+      expect(
+        soundService.getSounds(mockApplicationState, jestLogger.logger)
+      ).toMatchSnapshot()
 
       jestLogger.callsMatchSnapshot()
     })
@@ -80,7 +90,13 @@ describe('modules -> sounds', () => {
         baseSoundService.addSound('/tmp/fake_sound_0.mp3')
         jestLogger.transport.mock.mockReset()
 
-        expect(soundService.getBySoundId(soundId)).toMatchSnapshot()
+        expect(
+          soundService.getBySoundId(
+            soundId,
+            mockApplicationState,
+            jestLogger.logger
+          )
+        ).toMatchSnapshot()
         jestLogger.callsMatchSnapshot()
       }
     )
@@ -88,19 +104,26 @@ describe('modules -> sounds', () => {
 
   describe('getSounds', () => {
     test('no sounds', () => {
-      expect(soundService.getSounds()).toHaveLength(0)
+      expect(
+        soundService.getSounds(mockApplicationState, jestLogger.logger)
+      ).toHaveLength(0)
 
       jestLogger.callsMatchSnapshot()
     })
 
     test('two sounds', () => {
-      expect(soundService.getSounds()).toHaveLength(0)
+      expect(
+        soundService.getSounds(mockApplicationState, jestLogger.logger)
+      ).toHaveLength(0)
 
       baseSoundService.addSound('/tmp/fake_sound_0.mp3')
       baseSoundService.addSound('/tmp/a_fake_sound.mp3')
       jestLogger.transport.mock.mockReset()
 
-      const sounds = soundService.getSounds()
+      const sounds = soundService.getSounds(
+        mockApplicationState,
+        jestLogger.logger
+      )
       expect(sounds).toHaveLength(2)
       expect(sounds).toMatchSnapshot()
 
@@ -113,7 +136,11 @@ describe('modules -> sounds', () => {
       ['/tmp/invalid_af', false],
       [join(PATH_TO_SOUNDS, 'too_legit'), true]
     ])('validity test', (filename: string, expected) => {
-      const actual = soundService.isPathValid(filename)
+      const actual = soundService.isPathValid(
+        filename,
+        mockApplicationState,
+        jestLogger.logger
+      )
 
       expect(actual).toEqual(expected)
     })
@@ -128,13 +155,19 @@ describe('modules -> sounds', () => {
     })
 
     test('unknown file, no action', () => {
-      const expected = baseSoundService.getSounds()
+      const expected = baseSoundService.getSounds(
+        mockApplicationState,
+        jestLogger.logger
+      )
       jestLogger.transport.mock.mockReset()
 
       baseSoundService.removeSound('f')
       jestLogger.callsMatchSnapshot()
 
-      const actual = baseSoundService.getSounds()
+      const actual = baseSoundService.getSounds(
+        mockApplicationState,
+        jestLogger.logger
+      )
       expect(actual).toEqual(expected)
       expect(actual).toHaveLength(3)
     })
@@ -145,7 +178,9 @@ describe('modules -> sounds', () => {
         baseSoundService.removeSound(filename)
         jestLogger.callsMatchSnapshot()
 
-        expect(baseSoundService.getSounds()).toMatchSnapshot()
+        expect(
+          baseSoundService.getSounds(mockApplicationState, jestLogger.logger)
+        ).toMatchSnapshot()
       }
     )
   })

@@ -17,7 +17,9 @@ export class SystemMiddleware implements ISystemMiddleware {
     context: IApplicationContext,
     next: () => Promise<void>
   ) => {
-    context.logger = this.logger
+    context.logger = this.logger.child({
+      correlationId: context.state.correlationId
+    })
     await next()
   }
 
@@ -64,8 +66,8 @@ export class SystemMiddleware implements ISystemMiddleware {
   }
 
   middleware = compose<IApplicationContext>([
-    this.addLoggerToContext,
     this.setInitialState,
+    this.addLoggerToContext,
     this.requestLogger
   ])
 }

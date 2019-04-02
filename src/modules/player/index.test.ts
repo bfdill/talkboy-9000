@@ -1,11 +1,7 @@
 import { createPlayer, IPlayer, What, PlayOptions, Next } from './types'
-import { PlayerService, IPlayerService, getPlayerServiceLogger } from '.'
+import { PlayerService, IPlayerService } from '.'
 import { ChildProcess } from 'child_process'
-import {
-  IJestLogger,
-  getJestLogger,
-  snapshotExistingLogger
-} from '../winston-jest/index.test'
+import { IJestLogger, getJestLogger } from '../winston-jest/index.test'
 import { mockApplicationState } from '../../__mocks__/applicationState'
 import { getMockSoundService } from '../sounds/__mocks__/soundService'
 
@@ -15,10 +11,6 @@ const createPlayer: createPlayer = require('play-sound')
 describe('modules -> player', () => {
   test('has known exports', () => {
     expect(Object.keys(require('.'))).toMatchSnapshot()
-  })
-
-  test('getPlayerServiceLogger', () => {
-    snapshotExistingLogger(getPlayerServiceLogger())
   })
 
   describe('playerService', () => {
@@ -42,8 +34,7 @@ describe('modules -> player', () => {
     const jestLogger: IJestLogger = getJestLogger()
     const playerService: IPlayerService = new PlayerService(
       player,
-      mockSoundService,
-      jestLogger.logger
+      mockSoundService
     )
 
     beforeEach(() => {
@@ -56,7 +47,11 @@ describe('modules -> player', () => {
       mockSoundService.setIsPathValid(false)
 
       await expect(
-        playerService.playFile(filename, mockApplicationState)
+        playerService.playFile(
+          filename,
+          mockApplicationState,
+          jestLogger.logger
+        )
       ).rejects.toMatchSnapshot()
 
       jestLogger.callsMatchSnapshot()
@@ -67,7 +62,11 @@ describe('modules -> player', () => {
       mockNextInput.mockReturnValue({ error: 'KHAAAAAAN!' })
 
       await expect(
-        playerService.playFile(filename, mockApplicationState)
+        playerService.playFile(
+          filename,
+          mockApplicationState,
+          jestLogger.logger
+        )
       ).rejects.toMatchSnapshot()
 
       jestLogger.callsMatchSnapshot()
@@ -77,7 +76,11 @@ describe('modules -> player', () => {
       expect.assertions(3)
 
       await expect(
-        playerService.playFile(filename, mockApplicationState)
+        playerService.playFile(
+          filename,
+          mockApplicationState,
+          jestLogger.logger
+        )
       ).resolves.toMatchSnapshot()
 
       jestLogger.callsMatchSnapshot()

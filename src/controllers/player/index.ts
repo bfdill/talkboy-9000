@@ -1,18 +1,9 @@
 import * as koaRouter from 'koa-router'
 import { NOT_FOUND, BAD_REQUEST, OK } from 'http-status-codes'
-import { ISoundService, soundService } from '../../modules/sounds'
+import { ISoundService, SoundService } from '../../modules/sounds'
 import { IPlayerService, PlayerService } from '../../modules/player'
 import { randomIntFromInterval } from '../../utils'
 import { ApplicationState, IApplicationContext } from '../../types'
-import { createLogger } from '../../modules/logging'
-import winston = require('winston')
-
-export const getPlayerControllerLogger = () =>
-  createLogger({
-    controller: {
-      name: 'PlayerController'
-    }
-  })
 
 export interface IPlayerController {
   playSound: (context: IApplicationContext) => PromiseLike<void>
@@ -24,35 +15,33 @@ export class PlayerController implements IPlayerController {
 
   constructor(
     protected readonly playerService: IPlayerService,
-    protected readonly soundService: ISoundService,
-    protected readonly logger: winston.Logger
+    protected readonly soundService: ISoundService
   ) {}
 
   playSound = async (context: IApplicationContext) => {
-    const { soundId } = context.params
-    this.logger.info({
-      ...context.state,
-      message: `soundId(${soundId})`,
-      method: 'playSound'
+    const logger = context.logger.child({
+      controller: {
+        name: 'PlayerController',
+        method: 'playSound'
+      }
     })
+    const { soundId } = context.params
+    logger.info({ soundId })
 
     if (typeof soundId !== 'string') {
-      this.logger.error({
-        ...context.state,
+      logger.error({
         soundId,
-        message: 'soundId !== string',
-        method: 'playSound'
+        message: 'soundId !== string'
       })
       context.body = { soundId }
       context.status = BAD_REQUEST
       return
     }
 
-    const sound = this.soundService.getBySoundId(soundId)
+    const sound = this.soundService.getBySoundId(soundId, context.state, logger)
 
     if (sound === undefined) {
-      this.logger.error({
-        ...context.state,
+      logger.error({
         soundId,
         message: 'sound === undefined'
       })
@@ -61,49 +50,49 @@ export class PlayerController implements IPlayerController {
       return
     }
 
-    this.logger.debug({
-      ...context.state,
+    logger.debug({
       sound,
       soundId,
-      message: 'playSound()'
+      message: 'playFile'
     })
 
-    await this.playerService.playFile(sound.filename, context.state)
+    await this.playerService.playFile(sound.filename, context.state, logger)
 
     context.body = { sound }
     context.status = OK
   }
 
   playRando = async (context: IApplicationContext) => {
-    this.logger.info({
-      method: 'playRando'
+    const logger = context.logger.child({
+      controller: {
+        name: 'PlayerController',
+        method: 'playRando'
+      }
     })
-    const sounds = this.soundService.getSounds()
+    logger.info('request')
+    const sounds = this.soundService.getSounds(context.state, logger)
 
     if (sounds.length === 0) {
-      this.logger.error({
-        message: 'sounds.length === 0',
-        method: 'playRando'
+      logger.error({
+        message: 'sounds.length === 0'
       })
       context.status = NOT_FOUND
       return
     }
 
-    this.logger.silly({
+    logger.silly({
       soundLength: sounds.length,
-      method: 'playRando',
       message: 'sounds length'
     })
 
     const sound = sounds[randomIntFromInterval(0, sounds.length - 1)]
 
-    this.logger.debug({
+    logger.debug({
       sound,
-      message: 'selected sound',
-      method: 'playRando'
+      message: 'selected sound'
     })
 
-    await this.playerService.playFile(sound.filename, context.state)
+    await this.playerService.playFile(sound.filename, context.state, logger)
 
     context.body = { sound }
     context.status = OK
@@ -114,8 +103,7 @@ export class PlayerController implements IPlayerController {
 
     this.instance = new PlayerController(
       PlayerService.getInstance(),
-      soundService,
-      getPlayerControllerLogger()
+      SoundService.getInstance()
     )
 
     return this.instance

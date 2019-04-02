@@ -1,22 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`controllers -> player getPlayerControllerLogger 1`] = `
-Array [
-  Object {
-    "controller": Object {
-      "name": "PlayerController",
-    },
-    "level": "info",
-    "message": "✅test works✅",
-    Symbol(level): "info",
-    Symbol(message): "{\\"message\\":\\"✅test works✅\\",\\"level\\":\\"info\\",\\"controller\\":{\\"name\\":\\"PlayerController\\"}}",
-  },
-]
-`;
-
 exports[`controllers -> player has known exports 1`] = `
 Array [
-  "getPlayerControllerLogger",
   "PlayerController",
   "getPlayerRouter",
 ]
@@ -29,12 +14,14 @@ exports[`controllers -> player playRando not found when no sounds 2`] = `404`;
 exports[`controllers -> player playRando not found when no sounds 3`] = `
 Array [
   Object {
-    "level": "info",
-    "message": Object {
+    "controller": Object {
       "method": "playRando",
+      "name": "PlayerController",
     },
+    "level": "info",
+    "message": "request",
     Symbol(level): "info",
-    Symbol(message): "{\\"message\\":{\\"method\\":\\"playRando\\"},\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playRando\\"},\\"message\\":\\"request\\",\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -42,11 +29,14 @@ Array [
 exports[`controllers -> player playRando not found when no sounds 4`] = `
 Array [
   Object {
+    "controller": Object {
+      "method": "playRando",
+      "name": "PlayerController",
+    },
     "level": "error",
     "message": "sounds.length === 0",
-    "method": "playRando",
     Symbol(level): "error",
-    Symbol(message): "{\\"message\\":\\"sounds.length === 0\\",\\"method\\":\\"playRando\\",\\"level\\":\\"error\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playRando\\"},\\"message\\":\\"sounds.length === 0\\",\\"level\\":\\"error\\"}",
   },
 ]
 `;
@@ -66,12 +56,14 @@ exports[`controllers -> player playRando plays sound 2`] = `200`;
 exports[`controllers -> player playRando plays sound 3`] = `
 Array [
   Object {
-    "level": "info",
-    "message": Object {
+    "controller": Object {
       "method": "playRando",
+      "name": "PlayerController",
     },
+    "level": "info",
+    "message": "request",
     Symbol(level): "info",
-    Symbol(message): "{\\"message\\":{\\"method\\":\\"playRando\\"},\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playRando\\"},\\"message\\":\\"request\\",\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -79,12 +71,15 @@ Array [
 exports[`controllers -> player playRando plays sound 4`] = `
 Array [
   Object {
+    "controller": Object {
+      "method": "playRando",
+      "name": "PlayerController",
+    },
     "level": "silly",
     "message": "sounds length",
-    "method": "playRando",
     "soundLength": 1,
     Symbol(level): "silly",
-    Symbol(message): "{\\"soundLength\\":1,\\"method\\":\\"playRando\\",\\"message\\":\\"sounds length\\",\\"level\\":\\"silly\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playRando\\"},\\"soundLength\\":1,\\"message\\":\\"sounds length\\",\\"level\\":\\"silly\\"}",
   },
 ]
 `;
@@ -92,16 +87,19 @@ Array [
 exports[`controllers -> player playRando plays sound 5`] = `
 Array [
   Object {
+    "controller": Object {
+      "method": "playRando",
+      "name": "PlayerController",
+    },
     "level": "debug",
     "message": "selected sound",
-    "method": "playRando",
     "sound": Object {
       "basename": "mommy shark",
       "filename": "daddy shark",
       "id": "baby_shark",
     },
     Symbol(level): "debug",
-    Symbol(message): "{\\"sound\\":{\\"basename\\":\\"mommy shark\\",\\"filename\\":\\"daddy shark\\",\\"id\\":\\"baby_shark\\"},\\"message\\":\\"selected sound\\",\\"method\\":\\"playRando\\",\\"level\\":\\"debug\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playRando\\"},\\"sound\\":{\\"basename\\":\\"mommy shark\\",\\"filename\\":\\"daddy shark\\",\\"id\\":\\"baby_shark\\"},\\"message\\":\\"selected sound\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;
@@ -117,12 +115,16 @@ exports[`controllers -> player playSound bad request on non-string 2`] = `400`;
 exports[`controllers -> player playSound bad request on non-string 3`] = `
 Array [
   Object {
-    "correlationId": "abc123",
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "info",
-    "message": "soundId(undefined)",
-    "method": "playSound",
+    "message": Object {
+      "soundId": undefined,
+    },
     Symbol(level): "info",
-    Symbol(message): "{\\"correlationId\\":\\"abc123\\",\\"message\\":\\"soundId(undefined)\\",\\"method\\":\\"playSound\\",\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"message\\":{},\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -130,13 +132,15 @@ Array [
 exports[`controllers -> player playSound bad request on non-string 4`] = `
 Array [
   Object {
-    "correlationId": "abc123",
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "error",
     "message": "soundId !== string",
-    "method": "playSound",
     "soundId": undefined,
     Symbol(level): "error",
-    Symbol(message): "{\\"correlationId\\":\\"abc123\\",\\"message\\":\\"soundId !== string\\",\\"method\\":\\"playSound\\",\\"level\\":\\"error\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"message\\":\\"soundId !== string\\",\\"level\\":\\"error\\"}",
   },
 ]
 `;
@@ -152,12 +156,16 @@ exports[`controllers -> player playSound bad request on non-string 6`] = `400`;
 exports[`controllers -> player playSound bad request on non-string 7`] = `
 Array [
   Object {
-    "correlationId": "abc123",
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "info",
-    "message": "soundId(null)",
-    "method": "playSound",
+    "message": Object {
+      "soundId": null,
+    },
     Symbol(level): "info",
-    Symbol(message): "{\\"correlationId\\":\\"abc123\\",\\"message\\":\\"soundId(null)\\",\\"method\\":\\"playSound\\",\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"message\\":{\\"soundId\\":null},\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -165,13 +173,15 @@ Array [
 exports[`controllers -> player playSound bad request on non-string 8`] = `
 Array [
   Object {
-    "correlationId": "abc123",
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "error",
     "message": "soundId !== string",
-    "method": "playSound",
     "soundId": null,
     Symbol(level): "error",
-    Symbol(message): "{\\"correlationId\\":\\"abc123\\",\\"soundId\\":null,\\"message\\":\\"soundId !== string\\",\\"method\\":\\"playSound\\",\\"level\\":\\"error\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"soundId\\":null,\\"message\\":\\"soundId !== string\\",\\"level\\":\\"error\\"}",
   },
 ]
 `;
@@ -187,12 +197,16 @@ exports[`controllers -> player playSound bad request on non-string 10`] = `400`;
 exports[`controllers -> player playSound bad request on non-string 11`] = `
 Array [
   Object {
-    "correlationId": "abc123",
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "info",
-    "message": "soundId(false)",
-    "method": "playSound",
+    "message": Object {
+      "soundId": false,
+    },
     Symbol(level): "info",
-    Symbol(message): "{\\"correlationId\\":\\"abc123\\",\\"message\\":\\"soundId(false)\\",\\"method\\":\\"playSound\\",\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"message\\":{\\"soundId\\":false},\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -200,13 +214,15 @@ Array [
 exports[`controllers -> player playSound bad request on non-string 12`] = `
 Array [
   Object {
-    "correlationId": "abc123",
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "error",
     "message": "soundId !== string",
-    "method": "playSound",
     "soundId": false,
     Symbol(level): "error",
-    Symbol(message): "{\\"correlationId\\":\\"abc123\\",\\"soundId\\":false,\\"message\\":\\"soundId !== string\\",\\"method\\":\\"playSound\\",\\"level\\":\\"error\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"soundId\\":false,\\"message\\":\\"soundId !== string\\",\\"level\\":\\"error\\"}",
   },
 ]
 `;
@@ -222,12 +238,16 @@ exports[`controllers -> player playSound bad request on non-string 14`] = `400`;
 exports[`controllers -> player playSound bad request on non-string 15`] = `
 Array [
   Object {
-    "correlationId": "abc123",
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "info",
-    "message": "soundId(true)",
-    "method": "playSound",
+    "message": Object {
+      "soundId": true,
+    },
     Symbol(level): "info",
-    Symbol(message): "{\\"correlationId\\":\\"abc123\\",\\"message\\":\\"soundId(true)\\",\\"method\\":\\"playSound\\",\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"message\\":{\\"soundId\\":true},\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -235,13 +255,15 @@ Array [
 exports[`controllers -> player playSound bad request on non-string 16`] = `
 Array [
   Object {
-    "correlationId": "abc123",
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "error",
     "message": "soundId !== string",
-    "method": "playSound",
     "soundId": true,
     Symbol(level): "error",
-    Symbol(message): "{\\"correlationId\\":\\"abc123\\",\\"soundId\\":true,\\"message\\":\\"soundId !== string\\",\\"method\\":\\"playSound\\",\\"level\\":\\"error\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"soundId\\":true,\\"message\\":\\"soundId !== string\\",\\"level\\":\\"error\\"}",
   },
 ]
 `;
@@ -257,12 +279,16 @@ exports[`controllers -> player playSound bad request on non-string 18`] = `400`;
 exports[`controllers -> player playSound bad request on non-string 19`] = `
 Array [
   Object {
-    "correlationId": "abc123",
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "info",
-    "message": "soundId(1)",
-    "method": "playSound",
+    "message": Object {
+      "soundId": 1,
+    },
     Symbol(level): "info",
-    Symbol(message): "{\\"correlationId\\":\\"abc123\\",\\"message\\":\\"soundId(1)\\",\\"method\\":\\"playSound\\",\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"message\\":{\\"soundId\\":1},\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -270,13 +296,15 @@ Array [
 exports[`controllers -> player playSound bad request on non-string 20`] = `
 Array [
   Object {
-    "correlationId": "abc123",
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "error",
     "message": "soundId !== string",
-    "method": "playSound",
     "soundId": 1,
     Symbol(level): "error",
-    Symbol(message): "{\\"correlationId\\":\\"abc123\\",\\"soundId\\":1,\\"message\\":\\"soundId !== string\\",\\"method\\":\\"playSound\\",\\"level\\":\\"error\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"soundId\\":1,\\"message\\":\\"soundId !== string\\",\\"level\\":\\"error\\"}",
   },
 ]
 `;
@@ -292,12 +320,16 @@ exports[`controllers -> player playSound not found on unknown song 2`] = `404`;
 exports[`controllers -> player playSound not found on unknown song 3`] = `
 Array [
   Object {
-    "correlationId": "abc123",
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "info",
-    "message": "soundId(unknown)",
-    "method": "playSound",
+    "message": Object {
+      "soundId": "unknown",
+    },
     Symbol(level): "info",
-    Symbol(message): "{\\"correlationId\\":\\"abc123\\",\\"message\\":\\"soundId(unknown)\\",\\"method\\":\\"playSound\\",\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"message\\":{\\"soundId\\":\\"unknown\\"},\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -305,12 +337,15 @@ Array [
 exports[`controllers -> player playSound not found on unknown song 4`] = `
 Array [
   Object {
-    "correlationId": "abc123",
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "error",
     "message": "sound === undefined",
     "soundId": "unknown",
     Symbol(level): "error",
-    Symbol(message): "{\\"correlationId\\":\\"abc123\\",\\"soundId\\":\\"unknown\\",\\"message\\":\\"sound === undefined\\",\\"level\\":\\"error\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"soundId\\":\\"unknown\\",\\"message\\":\\"sound === undefined\\",\\"level\\":\\"error\\"}",
   },
 ]
 `;
@@ -330,12 +365,16 @@ exports[`controllers -> player playSound plays sound 2`] = `200`;
 exports[`controllers -> player playSound plays sound 3`] = `
 Array [
   Object {
-    "correlationId": "abc123",
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "info",
-    "message": "soundId(baby_shark)",
-    "method": "playSound",
+    "message": Object {
+      "soundId": "baby_shark",
+    },
     Symbol(level): "info",
-    Symbol(message): "{\\"correlationId\\":\\"abc123\\",\\"message\\":\\"soundId(baby_shark)\\",\\"method\\":\\"playSound\\",\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"message\\":{\\"soundId\\":\\"baby_shark\\"},\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -343,9 +382,12 @@ Array [
 exports[`controllers -> player playSound plays sound 4`] = `
 Array [
   Object {
-    "correlationId": "abc123",
+    "controller": Object {
+      "method": "playSound",
+      "name": "PlayerController",
+    },
     "level": "debug",
-    "message": "playSound()",
+    "message": "playFile",
     "sound": Object {
       "basename": "mommy shark",
       "filename": "daddy shark",
@@ -353,7 +395,7 @@ Array [
     },
     "soundId": "baby_shark",
     Symbol(level): "debug",
-    Symbol(message): "{\\"correlationId\\":\\"abc123\\",\\"sound\\":{\\"basename\\":\\"mommy shark\\",\\"filename\\":\\"daddy shark\\",\\"id\\":\\"baby_shark\\"},\\"soundId\\":\\"baby_shark\\",\\"message\\":\\"playSound()\\",\\"level\\":\\"debug\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"PlayerController\\",\\"method\\":\\"playSound\\"},\\"sound\\":{\\"basename\\":\\"mommy shark\\",\\"filename\\":\\"daddy shark\\",\\"id\\":\\"baby_shark\\"},\\"soundId\\":\\"baby_shark\\",\\"message\\":\\"playFile\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;

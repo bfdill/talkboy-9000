@@ -1,4 +1,7 @@
-import { getJestLogger } from './modules/winston-jest/index.test'
+import {
+  getJestLogger,
+  snapshotExistingLogger
+} from './modules/winston-jest/index.test'
 import { SystemMiddleware } from './middleware'
 import { IApplicationContext } from './types'
 import { getMockApplicationContext } from './__mocks__/applicationContext'
@@ -13,7 +16,7 @@ describe('middleware', () => {
       Promise.resolve()
     )
 
-    expect(applicationContext.logger).toBe(jestLogger.logger)
+    snapshotExistingLogger(applicationContext.logger)
   })
 
   test('requestLogger', async () => {})

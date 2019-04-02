@@ -1,20 +1,18 @@
 // import * as playSound from 'play-sound'
-import { createPlayer, IPlayer } from './types'
-import { soundService, ISoundService } from '../sounds'
-import { createLogger } from '../logging'
+import * as winston from 'winston'
 import { ApplicationState } from '../../types'
-import winston = require('winston')
+import { createPlayer, IPlayer } from './types'
+import { ISoundService, SoundService } from '../sounds'
 
 // tsd creation fail
 const createPlayer: createPlayer = require('play-sound')
 
-export const getPlayerServiceLogger = () =>
-  createLogger({
-    service: 'PlayerService'
-  })
-
 export interface IPlayerService {
-  playFile: (filename: string, state: ApplicationState) => PromiseLike<void>
+  playFile: (
+    filename: string,
+    state: ApplicationState,
+    parentLogger: winston.Logger
+  ) => PromiseLike<void>
 }
 
 export class PlayerService implements IPlayerService {
@@ -22,39 +20,41 @@ export class PlayerService implements IPlayerService {
 
   constructor(
     protected readonly player: IPlayer,
-    protected readonly soundService: ISoundService,
-    protected readonly logger: winston.Logger
+    protected readonly soundService: ISoundService
   ) {}
 
-  playFile = (filename: string, state: ApplicationState): PromiseLike<void> => {
-    const method = 'playFile'
+  playFile = (
+    filename: string,
+    state: ApplicationState,
+    parentLogger: winston.Logger
+  ): PromiseLike<void> => {
+    const logger = parentLogger.child({
+      service: 'PlayerService',
+      method: 'playFile'
+    })
 
-    this.logger.info({ filename, method, state })
+    logger.info({ filename })
 
-    if (!this.soundService.isPathValid(filename)) {
+    if (!this.soundService.isPathValid(filename, state, logger)) {
       const message = 'filename path is invalid'
-      this.logger.error({ filename, message, method, state })
+      logger.error({ filename, message })
       return Promise.reject(message)
     }
 
     return new Promise((resolve, reject) => {
       const next = (error?: any) => {
         if (error === undefined || error === null) {
-          this.logger.debug({
+          logger.debug({
             filename,
-            method,
-            state,
             message: 'playback success'
           })
           resolve()
           return
         }
 
-        this.logger.debug({
+        logger.debug({
           error,
           filename,
-          method,
-          state,
           message: 'playback failure'
         })
         reject(error)
@@ -69,8 +69,7 @@ export class PlayerService implements IPlayerService {
 
     this.instance = new PlayerService(
       createPlayer(),
-      soundService,
-      getPlayerServiceLogger()
+      SoundService.getInstance()
     )
 
     return this.instance

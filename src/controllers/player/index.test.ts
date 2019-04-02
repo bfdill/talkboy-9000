@@ -1,16 +1,12 @@
-import {
-  PlayerController,
-  IPlayerController,
-  getPlayerControllerLogger
-} from '.'
+import { PlayerController, IPlayerController } from '.'
 import { IPlayerService } from '../../modules/player'
 import { ISoundService, Sound } from '../../modules/sounds'
 import {
   getJestLogger,
-  IJestLogger,
-  snapshotExistingLogger
+  IJestLogger
 } from '../../modules/winston-jest/index.test'
-import { IApplicationContext, ApplicationState } from '../../types'
+import { IApplicationContext } from '../../types'
+import { mockApplicationState } from '../../__mocks__/applicationState'
 
 describe('controllers -> player', () => {
   const playerService: IPlayerService = {
@@ -30,16 +26,13 @@ describe('controllers -> player', () => {
   const jestLogger: IJestLogger = getJestLogger()
   const playerController: IPlayerController = new PlayerController(
     playerService,
-    soundService,
-    jestLogger.logger
+    soundService
   )
-  const testState: ApplicationState = { correlationId: 'abc123' }
-
   const contextBuilder = (soundId?: any): IApplicationContext =>
     ({
       params: { soundId },
       logger: jestLogger.logger,
-      state: testState
+      state: mockApplicationState
     } as any)
 
   beforeEach(() => {
@@ -49,9 +42,6 @@ describe('controllers -> player', () => {
   test('has known exports', () => {
     expect(Object.keys(require('.'))).toMatchSnapshot()
   })
-
-  test('getPlayerControllerLogger', () =>
-    snapshotExistingLogger(getPlayerControllerLogger()))
 
   describe('playSound', () => {
     test.each([undefined, null, false, true, 1])(
@@ -90,7 +80,10 @@ describe('controllers -> player', () => {
 
       expect(context.body).toMatchSnapshot()
       expect(context.status).toMatchSnapshot()
-      expect(playerService.playFile).toBeCalledWith(sound.filename, testState)
+      expect(playerService.playFile).toBeCalledWith(
+        sound.filename,
+        mockApplicationState
+      )
       jestLogger.callsMatchSnapshot()
     })
   })
@@ -119,7 +112,10 @@ describe('controllers -> player', () => {
 
       expect(context.body).toMatchSnapshot()
       expect(context.status).toMatchSnapshot()
-      expect(playerService.playFile).toBeCalledWith(sound.filename, testState)
+      expect(playerService.playFile).toBeCalledWith(
+        sound.filename,
+        mockApplicationState
+      )
       jestLogger.callsMatchSnapshot()
     })
   })

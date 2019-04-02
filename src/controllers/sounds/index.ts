@@ -2,7 +2,7 @@ import * as KoaRouter from 'koa-router'
 import { NOT_FOUND, OK } from 'http-status-codes'
 
 import { IApplicationContext, ApplicationState } from '../../types'
-import { ISoundService, soundService } from '../../modules/sounds'
+import { ISoundService, SoundService } from '../../modules/sounds'
 
 export interface ISoundsController {
   get: (ctx: IApplicationContext) => void
@@ -20,7 +20,7 @@ export class SoundsController implements ISoundsController {
         method: 'get'
       }
     })
-    const sounds = this.soundService.getSounds()
+    const sounds = this.soundService.getSounds(context.state, logger)
 
     context.body = { sounds }
 
@@ -39,7 +39,7 @@ export class SoundsController implements ISoundsController {
   static getInstance(): ISoundsController {
     if (this.instance !== undefined) return this.instance
 
-    this.instance = new SoundsController(soundService)
+    this.instance = new SoundsController(SoundService.getInstance())
 
     return this.instance
   }
