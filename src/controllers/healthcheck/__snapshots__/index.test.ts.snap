@@ -1,19 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`controllers -> healthcheck getHealthcheckLogger 1`] = `
-Array [
-  Object {
-    "controller": Object {
-      "name": "HealthcheckController",
-    },
-    "level": "info",
-    "message": "✅test works✅",
-    Symbol(level): "info",
-    Symbol(message): "{\\"message\\":\\"✅test works✅\\",\\"level\\":\\"info\\",\\"controller\\":{\\"name\\":\\"HealthcheckController\\"}}",
-  },
-]
-`;
-
 exports[`controllers -> healthcheck getHealthcheckRouter 1`] = `
 Router {
   "methods": Array [
@@ -55,7 +41,6 @@ Router {
 
 exports[`controllers -> healthcheck has known exports 1`] = `
 Array [
-  "getHealthcheckControllerLogger",
   "HealthcheckController",
   "getHealthcheckRouter",
 ]
@@ -64,16 +49,19 @@ Array [
 exports[`controllers -> healthcheck healthy, so healthy! 1`] = `
 Array [
   Object {
-    "correlationId": "abc123",
+    "controller": Object {
+      "name": "HealthcheckController",
+    },
+    "correlationId": "default_mock_correlation_id",
     "level": "silly",
     "message": "success",
     Symbol(level): "silly",
     Symbol(splat): Array [
       Object {
-        "correlationId": "abc123",
+        "correlationId": "default_mock_correlation_id",
       },
     ],
-    Symbol(message): "{\\"correlationId\\":\\"abc123\\",\\"level\\":\\"silly\\",\\"message\\":\\"success\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"HealthcheckController\\"},\\"correlationId\\":\\"default_mock_correlation_id\\",\\"level\\":\\"silly\\",\\"message\\":\\"success\\"}",
   },
 ]
 `;

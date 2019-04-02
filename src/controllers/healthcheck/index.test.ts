@@ -1,31 +1,26 @@
 import {
   getHealthcheckRouter,
   HealthcheckController,
-  IHealthcheckController,
-  getHealthcheckControllerLogger
+  IHealthcheckController
 } from '.'
-import { IApplicationContext, ApplicationState } from '../../types'
+import { IApplicationContext } from '../../types'
 import { OK } from 'http-status-codes'
 import {
   getJestLogger,
-  IJestLogger,
-  snapshotExistingLogger
+  IJestLogger
 } from '../../modules/winston-jest/index.test'
+import { mockApplicationState } from '../../__mocks__/applicationState'
 
 describe('controllers -> healthcheck', () => {
   const jestLogger: IJestLogger = getJestLogger()
-  const healthcheck: IHealthcheckController = new HealthcheckController(
-    jestLogger.logger
-  )
-  const testState: ApplicationState = { correlationId: 'abc123' }
-  const testContext: IApplicationContext = { state: testState } as any
+  const testContext: IApplicationContext = {
+    state: mockApplicationState,
+    logger: jestLogger.logger
+  } as any
+  const healthcheckController: IHealthcheckController = new HealthcheckController()
 
   test('has known exports', () => {
     expect(Object.keys(require('.'))).toMatchSnapshot()
-  })
-
-  test('getHealthcheckLogger', () => {
-    snapshotExistingLogger(getHealthcheckControllerLogger())
   })
 
   test('singleton works', () => {
@@ -36,7 +31,7 @@ describe('controllers -> healthcheck', () => {
   })
 
   test('healthy, so healthy!', async () => {
-    await healthcheck.health(testContext)
+    await healthcheckController.health(testContext)
 
     expect(testContext.body).toEqual({ healthy: true })
     expect(testContext.status).toEqual(OK)
