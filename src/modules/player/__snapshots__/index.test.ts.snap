@@ -29,11 +29,11 @@ Array [
       "filename": "this-file-totes-exists.mp3",
       "method": "playFile",
       "state": Object {
-        "correlationId": "1234567890",
+        "correlationId": "default_mock_correlation_id",
       },
     },
     Symbol(level): "info",
-    Symbol(message): "{\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"method\\":\\"playFile\\",\\"state\\":{\\"correlationId\\":\\"1234567890\\"}},\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"method\\":\\"playFile\\",\\"state\\":{\\"correlationId\\":\\"default_mock_correlation_id\\"}},\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -46,10 +46,10 @@ Array [
     "message": "playback success",
     "method": "playFile",
     "state": Object {
-      "correlationId": "1234567890",
+      "correlationId": "default_mock_correlation_id",
     },
     Symbol(level): "debug",
-    Symbol(message): "{\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"method\\":\\"playFile\\",\\"state\\":{\\"correlationId\\":\\"1234567890\\"},\\"message\\":\\"playback success\\",\\"level\\":\\"debug\\"}",
+    Symbol(message): "{\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"method\\":\\"playFile\\",\\"state\\":{\\"correlationId\\":\\"default_mock_correlation_id\\"},\\"message\\":\\"playback success\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;
@@ -64,11 +64,11 @@ Array [
       "filename": "this-file-totes-exists.mp3",
       "method": "playFile",
       "state": Object {
-        "correlationId": "1234567890",
+        "correlationId": "default_mock_correlation_id",
       },
     },
     Symbol(level): "info",
-    Symbol(message): "{\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"method\\":\\"playFile\\",\\"state\\":{\\"correlationId\\":\\"1234567890\\"}},\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"method\\":\\"playFile\\",\\"state\\":{\\"correlationId\\":\\"default_mock_correlation_id\\"}},\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -81,10 +81,10 @@ Array [
     "message": "filename path is invalid",
     "method": "playFile",
     "state": Object {
-      "correlationId": "1234567890",
+      "correlationId": "default_mock_correlation_id",
     },
     Symbol(level): "error",
-    Symbol(message): "{\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"filename path is invalid\\",\\"method\\":\\"playFile\\",\\"state\\":{\\"correlationId\\":\\"1234567890\\"},\\"level\\":\\"error\\"}",
+    Symbol(message): "{\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"filename path is invalid\\",\\"method\\":\\"playFile\\",\\"state\\":{\\"correlationId\\":\\"default_mock_correlation_id\\"},\\"level\\":\\"error\\"}",
   },
 ]
 `;
@@ -103,11 +103,11 @@ Array [
       "filename": "this-file-totes-exists.mp3",
       "method": "playFile",
       "state": Object {
-        "correlationId": "1234567890",
+        "correlationId": "default_mock_correlation_id",
       },
     },
     Symbol(level): "info",
-    Symbol(message): "{\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"method\\":\\"playFile\\",\\"state\\":{\\"correlationId\\":\\"1234567890\\"}},\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"method\\":\\"playFile\\",\\"state\\":{\\"correlationId\\":\\"default_mock_correlation_id\\"}},\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -123,10 +123,10 @@ Array [
     "message": "playback failure",
     "method": "playFile",
     "state": Object {
-      "correlationId": "1234567890",
+      "correlationId": "default_mock_correlation_id",
     },
     Symbol(level): "debug",
-    Symbol(message): "{\\"error\\":{\\"error\\":\\"KHAAAAAAN!\\"},\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"method\\":\\"playFile\\",\\"state\\":{\\"correlationId\\":\\"1234567890\\"},\\"message\\":\\"playback failure\\",\\"level\\":\\"debug\\"}",
+    Symbol(message): "{\\"error\\":{\\"error\\":\\"KHAAAAAAN!\\"},\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"method\\":\\"playFile\\",\\"state\\":{\\"correlationId\\":\\"default_mock_correlation_id\\"},\\"message\\":\\"playback failure\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;

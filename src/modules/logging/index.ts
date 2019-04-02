@@ -1,6 +1,6 @@
 import * as winston from 'winston'
 
-export * from './middleware'
+export * from '../../middleware'
 
 export const getDefaultTransports = () => [
   new winston.transports.Console({

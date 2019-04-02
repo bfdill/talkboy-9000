@@ -1,5 +1,5 @@
 import { ApplicationState } from '../types'
 
 export const mockApplicationState: ApplicationState = {
-  correlationId: '1234567890'
+  correlationId: 'default_mock_correlation_id'
 }

@@ -3,8 +3,11 @@ import { inspect } from 'util'
 
 import { ApplicationRouter, ApplicationKoa } from './types'
 import { App, configureRouter, getAppLogger, getAppRouter } from './app'
-import { getJestLogger } from './modules/winston-jest/index.test'
-import { ILoggingMiddleware, LoggingMiddleware } from './modules/logging'
+import {
+  getJestLogger,
+  snapshotExistingLogger
+} from './modules/winston-jest/index.test'
+import { ISystemMiddleware, SystemMiddleware } from './modules/logging'
 
 describe('app', () => {
   test('has expected exports', () => {
@@ -24,9 +27,7 @@ describe('app', () => {
   })
 
   test('getAppLogger', () => {
-    const logger = getAppLogger()
-
-    expect(logger).toBeDefined()
+    snapshotExistingLogger(getAppLogger())
   })
 
   test('getAppRouter', () => {
@@ -52,7 +53,9 @@ describe('app', () => {
       koa: ApplicationKoa = mockKoa,
       router: ApplicationRouter = mockRouter,
       logger: winston.Logger = jestLogger.logger,
-      loggerMiddleware: ILoggingMiddleware = new LoggingMiddleware()
+      loggerMiddleware: ISystemMiddleware = new SystemMiddleware(
+        jestLogger.logger
+      )
     ) => new App(koa, router, logger, loggerMiddleware)
 
     const TEST_PORT = 12345

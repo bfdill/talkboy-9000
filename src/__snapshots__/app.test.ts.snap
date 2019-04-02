@@ -63,6 +63,21 @@ Array [
 ]
 `;
 
+exports[`app getAppLogger 1`] = `
+Array [
+  Object {
+    "app": Object {
+      "name": "talkboy-9000",
+      "version": "2.3.6",
+    },
+    "level": "info",
+    "message": "✅test works✅",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"✅test works✅\\",\\"level\\":\\"info\\",\\"app\\":{\\"name\\":\\"talkboy-9000\\",\\"version\\":\\"2.3.6\\"}}",
+  },
+]
+`;
+
 exports[`app getAppRouter 1`] = `
 Router {
   "methods": Array [

@@ -1,6 +1,7 @@
-import { IApplicationContext } from '../types'
 import { mockApplicationState } from './applicationState'
+import { IApplicationContext } from '../types'
 
-export const mockApplicationContext: IApplicationContext = {
-  state: mockApplicationState
-} as any
+export const getMockApplicationContext = (): IApplicationContext =>
+  ({
+    state: mockApplicationState
+  } as any)
