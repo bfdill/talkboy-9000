@@ -1,6 +1,5 @@
 // import * as playSound from 'play-sound'
 import * as winston from 'winston'
-import { ApplicationState } from '../../types'
 import { createPlayer, IPlayer } from './types'
 import { ISoundService, SoundService } from '../sounds'
 
@@ -10,7 +9,6 @@ const createPlayer: createPlayer = require('play-sound')
 export interface IPlayerService {
   playFile: (
     filename: string,
-    state: ApplicationState,
     parentLogger: winston.Logger
   ) => PromiseLike<void>
 }
@@ -25,7 +23,6 @@ export class PlayerService implements IPlayerService {
 
   playFile = (
     filename: string,
-    state: ApplicationState,
     parentLogger: winston.Logger
   ): PromiseLike<void> => {
     const logger = parentLogger.child({
@@ -35,7 +32,7 @@ export class PlayerService implements IPlayerService {
 
     logger.info({ filename })
 
-    if (!this.soundService.isPathValid(filename, state, logger)) {
+    if (!this.soundService.isPathValid(filename, logger)) {
       const message = 'filename path is invalid'
       logger.error({ filename, message })
       return Promise.reject(message)

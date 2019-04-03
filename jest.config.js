@@ -9,7 +9,7 @@ module.exports = {
     '!src/**/*.smoke.ts',
     '!src/**/*.integration.ts',
     '!src/**/*.test.ts',
-    '!src/**/*.d.ts',
+    '!src/**/*.d.ts'
   ],
   testMatch: ['**/src/**/*.test.ts'],
   verbose: true,
@@ -31,4 +31,4 @@ module.exports = {
   },
   resetMocks: true,
   resetModules: true
-};
+}

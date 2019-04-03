@@ -38,7 +38,7 @@ export class PlayerController implements IPlayerController {
       return
     }
 
-    const sound = this.soundService.getBySoundId(soundId, context.state, logger)
+    const sound = this.soundService.getBySoundId(soundId, logger)
 
     if (sound === undefined) {
       logger.error({
@@ -56,7 +56,7 @@ export class PlayerController implements IPlayerController {
       message: 'playFile'
     })
 
-    await this.playerService.playFile(sound.filename, context.state, logger)
+    await this.playerService.playFile(sound.filename, logger)
 
     context.body = { sound }
     context.status = OK
@@ -70,7 +70,7 @@ export class PlayerController implements IPlayerController {
       }
     })
     logger.info('request')
-    const sounds = this.soundService.getSounds(context.state, logger)
+    const sounds = this.soundService.getSounds(logger)
 
     if (sounds.length === 0) {
       logger.error({
@@ -92,7 +92,7 @@ export class PlayerController implements IPlayerController {
       message: 'selected sound'
     })
 
-    await this.playerService.playFile(sound.filename, context.state, logger)
+    await this.playerService.playFile(sound.filename, logger)
 
     context.body = { sound }
     context.status = OK

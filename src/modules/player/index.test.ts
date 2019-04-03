@@ -2,7 +2,6 @@ import { createPlayer, IPlayer, What, PlayOptions, Next } from './types'
 import { PlayerService, IPlayerService } from '.'
 import { ChildProcess } from 'child_process'
 import { IJestLogger, getJestLogger } from '../winston-jest/index.test'
-import { mockApplicationState } from '../../__mocks__/applicationState'
 import { getMockSoundService } from '../sounds/__mocks__/soundService'
 
 // tsd creation fail
@@ -47,11 +46,7 @@ describe('modules -> player', () => {
       mockSoundService.setIsPathValid(false)
 
       await expect(
-        playerService.playFile(
-          filename,
-          mockApplicationState,
-          jestLogger.logger
-        )
+        playerService.playFile(filename, jestLogger.logger)
       ).rejects.toMatchSnapshot()
 
       jestLogger.callsMatchSnapshot()
@@ -62,11 +57,7 @@ describe('modules -> player', () => {
       mockNextInput.mockReturnValue({ error: 'KHAAAAAAN!' })
 
       await expect(
-        playerService.playFile(
-          filename,
-          mockApplicationState,
-          jestLogger.logger
-        )
+        playerService.playFile(filename, jestLogger.logger)
       ).rejects.toMatchSnapshot()
 
       jestLogger.callsMatchSnapshot()
@@ -76,11 +67,7 @@ describe('modules -> player', () => {
       expect.assertions(3)
 
       await expect(
-        playerService.playFile(
-          filename,
-          mockApplicationState,
-          jestLogger.logger
-        )
+        playerService.playFile(filename, jestLogger.logger)
       ).resolves.toMatchSnapshot()
 
       jestLogger.callsMatchSnapshot()

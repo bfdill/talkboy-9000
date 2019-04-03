@@ -20,7 +20,7 @@ export class SoundsController implements ISoundsController {
         method: 'get'
       }
     })
-    const sounds = this.soundService.getSounds(context.state, logger)
+    const sounds = this.soundService.getSounds(logger)
 
     context.body = { sounds }
 

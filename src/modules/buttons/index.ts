@@ -18,9 +18,7 @@ const gpiop: rpiGpio.IGpioPromise = rpiGpio.promise
 // const nine: Button = { ledPin: 7, switchPin: 8 }
 // const ten: Button = { ledPin: 7, switchPin: 8 }
 
-export interface IButtonService {
-
-}
+export interface IButtonService {}
 
 export class ButtonService implements IButtonService {
   // toggleLed = async (buttons: Button[], on: boolean) => {
@@ -28,8 +26,6 @@ export class ButtonService implements IButtonService {
   // }
 
   setup = () => {
-    return gpiop
-      .setup('7', 'out', 'both')
-      .then(() => gpiop.write('7', true))
+    return gpiop.setup('7', 'out', 'both').then(() => gpiop.write('7', true))
   }
 }

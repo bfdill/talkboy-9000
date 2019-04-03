@@ -82,7 +82,7 @@ describe('controllers -> player', () => {
       expect(context.status).toMatchSnapshot()
       expect(playerService.playFile).toBeCalledWith(
         sound.filename,
-        mockApplicationState
+        expect.any(Object)
       )
       jestLogger.callsMatchSnapshot()
     })
@@ -114,7 +114,7 @@ describe('controllers -> player', () => {
       expect(context.status).toMatchSnapshot()
       expect(playerService.playFile).toBeCalledWith(
         sound.filename,
-        mockApplicationState
+        expect.any(Object)
       )
       jestLogger.callsMatchSnapshot()
     })

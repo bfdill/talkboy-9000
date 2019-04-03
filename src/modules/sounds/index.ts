@@ -1,8 +1,8 @@
 import { join, resolve, sep, basename } from 'path'
 import * as winston from 'winston'
 import * as sane from 'sane'
-import * as glob from 'glob'
-import { ApplicationState } from '../../types'
+import { sync } from 'glob'
+import { createLogger } from '../logging'
 
 export const PATH_TO_SOUNDS = join(process.cwd(), 'audio')
 
@@ -13,17 +13,9 @@ export type Sound = {
 }
 
 export interface ISoundService {
-  getBySoundId(
-    soundId: string,
-    state: ApplicationState,
-    parentLogger: winston.Logger
-  ): Sound | undefined
-  getSounds: (state: ApplicationState, parentLogger: winston.Logger) => Sound[]
-  isPathValid: (
-    filename: string,
-    state: ApplicationState,
-    parentLogger: winston.Logger
-  ) => boolean
+  getBySoundId(soundId: string, parentLogger: winston.Logger): Sound | undefined
+  getSounds: (parentLogger: winston.Logger) => Sound[]
+  isPathValid: (filename: string, parentLogger: winston.Logger) => boolean
 }
 
 export class SoundService implements ISoundService {
@@ -43,17 +35,9 @@ export class SoundService implements ISoundService {
   }
 
   addSounds = () => {
-    // logging after test finishes
-    // this needs to be async and awaited maybe?
     this.logger.info('add sounds')
 
-    console.log('xxasjjs;adlkjfas;ldkfja => before glob')
-
-    glob(join(this.pathToSounds, this.FILE_GLOB), (_, matches) => {
-      matches.forEach(this.addSound)
-    })
-
-    console.log('xxasjjs;adlkjfas;ldkfja => after glob')
+    sync(join(this.pathToSounds, this.FILE_GLOB)).forEach(this.addSound)
   }
 
   addSound = (filename: string) => {
@@ -101,7 +85,6 @@ export class SoundService implements ISoundService {
 
   getBySoundId = (
     soundId: string,
-    _: ApplicationState,
     parentLogger: winston.Logger
   ): Sound | undefined => {
     const result = this.sounds.find(s => s.id === soundId)
@@ -120,7 +103,7 @@ export class SoundService implements ISoundService {
     return result
   }
 
-  getSounds = (_: ApplicationState, parentLogger: winston.Logger): Sound[] => {
+  getSounds = (parentLogger: winston.Logger): Sound[] => {
     parentLogger
       .child({
         service: {
@@ -132,11 +115,7 @@ export class SoundService implements ISoundService {
     return this.sounds
   }
 
-  isPathValid = (
-    filename: string,
-    _: ApplicationState,
-    parentLogger: winston.Logger
-  ): boolean => {
+  isPathValid = (filename: string, parentLogger: winston.Logger): boolean => {
     const absCandidate = resolve(filename) + sep
     const result =
       absCandidate.substring(0, PATH_TO_SOUNDS.length) === PATH_TO_SOUNDS
@@ -184,7 +163,7 @@ export class SoundService implements ISoundService {
     this.instance = new SoundService(
       PATH_TO_SOUNDS,
       sane,
-      winston.createLogger().child({
+      createLogger({
         service: {
           name: 'SoundService',
           method: 'addSound'
