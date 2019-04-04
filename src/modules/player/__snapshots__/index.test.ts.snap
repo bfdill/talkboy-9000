@@ -15,10 +15,12 @@ Array [
     "message": Object {
       "filename": "this-file-totes-exists.mp3",
     },
-    "method": "playFile",
-    "service": "PlayerService",
+    "service": Object {
+      "method": "playFile",
+      "name": "PlayerService",
+    },
     Symbol(level): "info",
-    Symbol(message): "{\\"service\\":\\"PlayerService\\",\\"method\\":\\"playFile\\",\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\"},\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\",\\"method\\":\\"playFile\\"},\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\"},\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -29,10 +31,12 @@ Array [
     "filename": "this-file-totes-exists.mp3",
     "level": "debug",
     "message": "playback success",
-    "method": "playFile",
-    "service": "PlayerService",
+    "service": Object {
+      "method": "playFile",
+      "name": "PlayerService",
+    },
     Symbol(level): "debug",
-    Symbol(message): "{\\"service\\":\\"PlayerService\\",\\"method\\":\\"playFile\\",\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"playback success\\",\\"level\\":\\"debug\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\",\\"method\\":\\"playFile\\"},\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"playback success\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;
@@ -46,10 +50,12 @@ Array [
     "message": Object {
       "filename": "this-file-totes-exists.mp3",
     },
-    "method": "playFile",
-    "service": "PlayerService",
+    "service": Object {
+      "method": "playFile",
+      "name": "PlayerService",
+    },
     Symbol(level): "info",
-    Symbol(message): "{\\"service\\":\\"PlayerService\\",\\"method\\":\\"playFile\\",\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\"},\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\",\\"method\\":\\"playFile\\"},\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\"},\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -60,10 +66,12 @@ Array [
     "filename": "this-file-totes-exists.mp3",
     "level": "error",
     "message": "filename path is invalid",
-    "method": "playFile",
-    "service": "PlayerService",
+    "service": Object {
+      "method": "playFile",
+      "name": "PlayerService",
+    },
     Symbol(level): "error",
-    Symbol(message): "{\\"service\\":\\"PlayerService\\",\\"method\\":\\"playFile\\",\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"filename path is invalid\\",\\"level\\":\\"error\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\",\\"method\\":\\"playFile\\"},\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"filename path is invalid\\",\\"level\\":\\"error\\"}",
   },
 ]
 `;
@@ -81,10 +89,12 @@ Array [
     "message": Object {
       "filename": "this-file-totes-exists.mp3",
     },
-    "method": "playFile",
-    "service": "PlayerService",
+    "service": Object {
+      "method": "playFile",
+      "name": "PlayerService",
+    },
     Symbol(level): "info",
-    Symbol(message): "{\\"service\\":\\"PlayerService\\",\\"method\\":\\"playFile\\",\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\"},\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\",\\"method\\":\\"playFile\\"},\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\"},\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -98,10 +108,12 @@ Array [
     "filename": "this-file-totes-exists.mp3",
     "level": "debug",
     "message": "playback failure",
-    "method": "playFile",
-    "service": "PlayerService",
+    "service": Object {
+      "method": "playFile",
+      "name": "PlayerService",
+    },
     Symbol(level): "debug",
-    Symbol(message): "{\\"service\\":\\"PlayerService\\",\\"method\\":\\"playFile\\",\\"error\\":{\\"error\\":\\"KHAAAAAAN!\\"},\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"playback failure\\",\\"level\\":\\"debug\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\",\\"method\\":\\"playFile\\"},\\"error\\":{\\"error\\":\\"KHAAAAAAN!\\"},\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"playback failure\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;

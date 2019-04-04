@@ -2,7 +2,7 @@ import { join, resolve, sep, basename } from 'path'
 import * as winston from 'winston'
 import * as sane from 'sane'
 import { sync } from 'glob'
-import { createLogger } from '../logging'
+import { getAppLogger } from '../../app'
 
 export const PATH_TO_SOUNDS = join(process.cwd(), 'audio')
 
@@ -163,7 +163,7 @@ export class SoundService implements ISoundService {
     this.instance = new SoundService(
       PATH_TO_SOUNDS,
       sane,
-      createLogger({
+      getAppLogger().child({
         service: {
           name: 'SoundService',
           method: 'addSound'
