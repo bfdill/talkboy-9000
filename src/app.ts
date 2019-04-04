@@ -1,49 +1,87 @@
-import { Server } from 'http'
 import * as Koa from 'koa'
-import * as helmet from 'koa-helmet'
-import * as bodyParser from 'koa-body'
-import * as koaRouter from 'koa-router'
+import * as KoaHelmet from 'koa-helmet'
+import * as KoaBody from 'koa-body'
+import * as KoaRouter from 'koa-router'
 import * as winston from 'winston'
-import { createModuleLogger } from './modules/logging'
-import { healthCheckRouter } from './controllers/healthcheck'
-import { playerRouter } from './controllers/player'
-import { soundsRouter } from './controllers/sounds'
+import {
+  createLogger,
+  ISystemMiddleware,
+  SystemMiddleware
+} from './modules/logging'
+import { getHealthcheckRouter } from './controllers/healthcheck'
+import { getPlayerRouter } from './controllers/player'
+import { getSoundsRouter } from './controllers/sounds'
+import {
+  ApplicationRouter,
+  ApplicationKoa,
+  ApplicationState,
+  IApplicationContext,
+  IApplication
+} from './types'
 
-export interface IKoaApp {
-  listen: (port: number) => Server
-}
+export const configureRouter = (router: ApplicationRouter) =>
+  router
+    .use('/healthcheck', getHealthcheckRouter().routes())
+    .use('/player', getPlayerRouter().routes())
+    .use('/sounds', getSoundsRouter().routes())
+export const getAppLogger = () =>
+  createLogger({
+    app: {
+      // uhh, got config
+      name: 'talkboy-9000',
+      version: '2.3.6'
+    }
+  })
+export const getAppRouter = () =>
+  configureRouter(new KoaRouter<ApplicationState, IApplicationContext>())
 
-export const configureRouter = (koaRouter: koaRouter) =>
-  koaRouter
-    .use('/healthcheck', healthCheckRouter.routes())
-    .use('/player', playerRouter.routes())
-    .use('/sounds', soundsRouter.routes())
+export class App implements IApplication {
+  private static instance: IApplication | undefined
 
-export class KoaApp implements IKoaApp {
   constructor(
-    protected koa: Koa,
-    protected router: koaRouter,
-    protected logger: winston.Logger
+    protected readonly koa: ApplicationKoa,
+    protected readonly router: ApplicationRouter,
+    protected readonly logger: winston.Logger,
+    protected readonly systemMiddleware: ISystemMiddleware
   ) {}
 
-  protected setup = (koa: Koa, router: koaRouter, logger: winston.Logger) => {
+  protected setup = (
+    koa: ApplicationKoa,
+    router: ApplicationRouter,
+    logger: winston.Logger,
+    systemMiddleware: ISystemMiddleware
+  ) => {
     koa.on('error', err => {
       logger.error(err)
     })
 
     koa
-      .use(helmet())
-      .use(bodyParser())
+      .use(KoaHelmet())
+      .use(KoaBody())
+      .use(systemMiddleware.middleware)
       .use(router.routes())
       .use(router.allowedMethods())
   }
 
   listen = (port: number) => {
-    this.setup(this.koa, this.router, this.logger)
+    this.logger.info({ listen: port })
+    this.setup(this.koa, this.router, this.logger, this.systemMiddleware)
 
     return this.koa.listen(port)
   }
-}
 
-export const router = configureRouter(new koaRouter())
-export const logger = createModuleLogger('app')
+  static getInstance(): IApplication {
+    if (this.instance !== undefined) return this.instance
+
+    const logger = getAppLogger()
+
+    this.instance = new App(
+      new Koa<ApplicationState, IApplicationContext>(),
+      getAppRouter(),
+      logger,
+      new SystemMiddleware(logger)
+    )
+
+    return this.instance
+  }
+}

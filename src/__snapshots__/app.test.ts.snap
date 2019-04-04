@@ -1,12 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`app KoaApp koa.use matches snapshot 1`] = `"[ { [Function: middleware] _name: 'helmet' } ]"`;
+exports[`app App koa.use matches snapshot 1`] = `"[ { [Function: middleware] _name: 'helmet' } ]"`;
 
-exports[`app KoaApp koa.use matches snapshot 2`] = `"[ [Function] ]"`;
+exports[`app App koa.use matches snapshot 2`] = `"[ [Function] ]"`;
 
-exports[`app KoaApp koa.use matches snapshot 3`] = `"[ undefined ]"`;
+exports[`app App koa.use matches snapshot 3`] = `"[ [Function] ]"`;
 
-exports[`app KoaApp koa.use matches snapshot 4`] = `"[ undefined ]"`;
+exports[`app App koa.use matches snapshot 4`] = `"[ undefined ]"`;
+
+exports[`app App koa.use matches snapshot 5`] = `"[ undefined ]"`;
+
+exports[`app App listen logs 1`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": Object {
+      "listen": 12345,
+    },
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":{\\"listen\\":12345},\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`app App on error is registered and logs an error 1`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": Object {
+      "listen": 12345,
+    },
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":{\\"listen\\":12345},\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`app App on error is registered and logs an error 2`] = `
+Array [
+  [Error: can has error],
+]
+`;
 
 exports[`app configureRouter 1`] = `
 Array [
@@ -29,11 +63,139 @@ Array [
 ]
 `;
 
+exports[`app getAppLogger 1`] = `
+Array [
+  Object {
+    "app": Object {
+      "name": "talkboy-9000",
+      "version": "2.3.6",
+    },
+    "level": "info",
+    "message": "✅test works✅",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"✅test works✅\\",\\"level\\":\\"info\\",\\"app\\":{\\"name\\":\\"talkboy-9000\\",\\"version\\":\\"2.3.6\\"}}",
+  },
+]
+`;
+
+exports[`app getAppRouter 1`] = `
+Router {
+  "methods": Array [
+    "HEAD",
+    "OPTIONS",
+    "GET",
+    "PUT",
+    "PATCH",
+    "POST",
+    "DELETE",
+  ],
+  "opts": Object {},
+  "params": Object {},
+  "stack": Array [
+    Layer {
+      "methods": Array [
+        "HEAD",
+        "GET",
+      ],
+      "name": null,
+      "opts": Object {
+        "end": true,
+        "ignoreCaptures": undefined,
+        "name": null,
+        "prefix": "",
+        "sensitive": false,
+        "strict": false,
+      },
+      "paramNames": Array [],
+      "path": "/healthcheck/",
+      "regexp": /\\^\\\\/healthcheck\\(\\?:\\\\/\\(\\?=\\$\\)\\)\\?\\$/i,
+      "stack": Array [
+        [Function],
+      ],
+    },
+    Layer {
+      "methods": Array [
+        "HEAD",
+        "GET",
+      ],
+      "name": null,
+      "opts": Object {
+        "end": true,
+        "ignoreCaptures": undefined,
+        "name": null,
+        "prefix": "",
+        "sensitive": false,
+        "strict": false,
+      },
+      "paramNames": Array [],
+      "path": "/player/rando",
+      "regexp": /\\^\\\\/player\\\\/rando\\(\\?:\\\\/\\(\\?=\\$\\)\\)\\?\\$/i,
+      "stack": Array [
+        [Function],
+      ],
+    },
+    Layer {
+      "methods": Array [
+        "HEAD",
+        "GET",
+      ],
+      "name": null,
+      "opts": Object {
+        "end": true,
+        "ignoreCaptures": undefined,
+        "name": null,
+        "prefix": "",
+        "sensitive": false,
+        "strict": false,
+      },
+      "paramNames": Array [
+        Object {
+          "asterisk": false,
+          "delimiter": "/",
+          "name": "soundId",
+          "optional": false,
+          "partial": false,
+          "pattern": "[^\\\\/]+?",
+          "prefix": "/",
+          "repeat": false,
+        },
+      ],
+      "path": "/player/:soundId",
+      "regexp": /\\^\\\\/player\\\\/\\(\\(\\?:\\[\\^\\\\/\\]\\+\\?\\)\\)\\(\\?:\\\\/\\(\\?=\\$\\)\\)\\?\\$/i,
+      "stack": Array [
+        [Function],
+      ],
+    },
+    Layer {
+      "methods": Array [
+        "HEAD",
+        "GET",
+      ],
+      "name": null,
+      "opts": Object {
+        "end": true,
+        "ignoreCaptures": undefined,
+        "name": null,
+        "prefix": "",
+        "sensitive": false,
+        "strict": false,
+      },
+      "paramNames": Array [],
+      "path": "/sounds/",
+      "regexp": /\\^\\\\/sounds\\(\\?:\\\\/\\(\\?=\\$\\)\\)\\?\\$/i,
+      "stack": Array [
+        [Function],
+      ],
+    },
+  ],
+}
+`;
+
 exports[`app has expected exports 1`] = `
 Array [
   "configureRouter",
-  "KoaApp",
-  "router",
-  "logger",
+  "getAppLogger",
+  "getAppRouter",
+  "App",
 ]
 `;

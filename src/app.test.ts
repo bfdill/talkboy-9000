@@ -1,8 +1,13 @@
-import * as Koa from 'koa'
-import * as koaRouter from 'koa-router'
 import * as winston from 'winston'
-import { KoaApp, configureRouter } from './app'
 import { inspect } from 'util'
+
+import { ApplicationRouter, ApplicationKoa } from './types'
+import { App, configureRouter, getAppLogger, getAppRouter } from './app'
+import {
+  getJestLogger,
+  snapshotExistingLogger
+} from './modules/winston-jest/index.test'
+import { ISystemMiddleware, SystemMiddleware } from './modules/logging'
 
 describe('app', () => {
   test('has expected exports', () => {
@@ -10,7 +15,7 @@ describe('app', () => {
   })
 
   test('configureRouter', () => {
-    const fakeRouter: koaRouter = {} as any
+    const fakeRouter: ApplicationRouter = {} as any
     const mockUse = jest.fn().mockReturnValue(fakeRouter)
     fakeRouter.use = mockUse
 
@@ -21,23 +26,38 @@ describe('app', () => {
     })
   })
 
-  describe('KoaApp', () => {
+  test('getAppLogger', () => {
+    snapshotExistingLogger(getAppLogger())
+  })
+
+  test('getAppRouter', () => {
+    const router = getAppRouter()
+
+    expect(router).toBeDefined()
+    expect(router).toMatchSnapshot()
+  })
+
+  describe('App', () => {
     const mockKoaUse = jest.fn()
-    const mockKoa: Koa = {
+    const mockKoa: ApplicationKoa = {
       listen: jest.fn(),
       on: jest.fn(),
       use: mockKoaUse
     } as any
-    const mockRouter: koaRouter = {
+    const mockRouter: ApplicationRouter = {
       allowedMethods: jest.fn(),
       routes: jest.fn()
     } as any
-    const mockLogger: winston.Logger = { error: jest.fn() } as any
+    const jestLogger = getJestLogger()
     const getSut = (
-      koa: Koa = mockKoa,
-      router: koaRouter = mockRouter,
-      logger: winston.Logger = mockLogger
-    ) => new KoaApp(koa, router, logger)
+      koa: ApplicationKoa = mockKoa,
+      router: ApplicationRouter = mockRouter,
+      logger: winston.Logger = jestLogger.logger,
+      loggerMiddleware: ISystemMiddleware = new SystemMiddleware(
+        jestLogger.logger
+      )
+    ) => new App(koa, router, logger, loggerMiddleware)
+
     const TEST_PORT = 12345
 
     beforeEach(() => {
@@ -47,8 +67,12 @@ describe('app', () => {
       sut.listen(TEST_PORT)
     })
 
+    test('listen logs', () => {
+      jestLogger.callsMatchSnapshot()
+    })
+
     test('koa.use matches snapshot', () => {
-      expect.assertions(4)
+      expect.assertions(5)
       mockKoaUse.mock.calls.forEach(call => {
         // this is like super meh 🦐
         expect(inspect(call)).toMatchSnapshot()
@@ -69,7 +93,7 @@ describe('app', () => {
 
       expect(koaOn[0]).toEqual('error')
       koaOn[1](error)
-      expect(mockLogger.error).toBeCalledWith(error)
+      jestLogger.callsMatchSnapshot()
     })
   })
 })

@@ -1,91 +1,116 @@
 import * as koaRouter from 'koa-router'
 import { NOT_FOUND, BAD_REQUEST, OK } from 'http-status-codes'
-import { createModuleLogger } from '../../modules/logging'
-import winston = require('winston')
-import { ISoundService, soundService } from '../../modules/sounds'
-import { IPlayerService, playerService } from '../../modules/player'
+import { ISoundService, SoundService } from '../../modules/sounds'
+import { IPlayerService, PlayerService } from '../../modules/player'
 import { randomIntFromInterval } from '../../utils'
-
-const playerControllerLogger = createModuleLogger('PlayerController')
+import { ApplicationState, IApplicationContext } from '../../types'
 
 export interface IPlayerController {
-  playSound: (ctx: koaRouter.RouterContext) => PromiseLike<void>
-  playRando: (ctx: koaRouter.RouterContext) => PromiseLike<void>
+  playSound: (context: IApplicationContext) => PromiseLike<void>
+  playRando: (context: IApplicationContext) => PromiseLike<void>
 }
 
 export class PlayerController implements IPlayerController {
+  private static instance: IPlayerController | undefined
+
   constructor(
     protected readonly playerService: IPlayerService,
-    protected readonly soundService: ISoundService,
-    protected readonly logger: winston.Logger
+    protected readonly soundService: ISoundService
   ) {}
 
-  playSound = async (ctx: koaRouter.RouterContext) => {
-    const { soundId } = ctx.params
+  playSound = async (context: IApplicationContext) => {
+    const logger = context.logger.child({
+      controller: {
+        name: 'PlayerController',
+        method: 'playSound'
+      }
+    })
+    const { soundId } = context.params
+    logger.info({ soundId })
 
     if (typeof soundId !== 'string') {
-      this.logger.warn({
+      logger.error({
         soundId,
-        message: `playSound().soundId !== string (${soundId})`
+        message: 'soundId !== string'
       })
-      ctx.status = BAD_REQUEST
-      ctx.body = { soundId }
+      context.body = { soundId }
+      context.status = BAD_REQUEST
       return
     }
 
-    const sound = this.soundService.getBySoundId(soundId)
+    const sound = this.soundService.getBySoundId(soundId, logger)
 
     if (sound === undefined) {
-      this.logger.error({
+      logger.error({
         soundId,
-        message: 'playSound().sound === undefined'
+        message: 'sound === undefined'
       })
-      ctx.status = NOT_FOUND
-      ctx.body = { soundId }
+      context.body = { soundId }
+      context.status = NOT_FOUND
       return
     }
 
-    this.logger.debug({
+    logger.debug({
       sound,
       soundId,
-      message: 'playSound()'
+      message: 'playFile'
     })
-    await this.playerService.playFile(sound.filename)
-    ctx.status = OK
-    ctx.body = { sound }
+
+    await this.playerService.playFile(sound.filename, logger)
+
+    context.body = { sound }
+    context.status = OK
   }
 
-  playRando = async (ctx: koaRouter.RouterContext) => {
-    this.logger.info({
-      message: 'playRando()'
+  playRando = async (context: IApplicationContext) => {
+    const logger = context.logger.child({
+      controller: {
+        name: 'PlayerController',
+        method: 'playRando'
+      }
     })
-    const sounds = this.soundService.getSounds()
+    logger.info('request')
+    const sounds = this.soundService.getSounds(logger)
 
     if (sounds.length === 0) {
-      this.logger.error({
-        message: 'playRando().sounds.length === 0'
+      logger.error({
+        message: 'sounds.length === 0'
       })
-      ctx.status = NOT_FOUND
+      context.status = NOT_FOUND
       return
     }
+
+    logger.silly({
+      soundLength: sounds.length,
+      message: 'sounds length'
+    })
 
     const sound = sounds[randomIntFromInterval(0, sounds.length - 1)]
 
-    this.logger.debug({
+    logger.debug({
       sound,
-      message: 'playRando()'
+      message: 'selected sound'
     })
-    await this.playerService.playFile(sound.filename)
-    ctx.body = { sound }
+
+    await this.playerService.playFile(sound.filename, logger)
+
+    context.body = { sound }
+    context.status = OK
+  }
+
+  static getInstance(): IPlayerController {
+    if (this.instance !== undefined) return this.instance
+
+    this.instance = new PlayerController(
+      PlayerService.getInstance(),
+      SoundService.getInstance()
+    )
+
+    return this.instance
   }
 }
 
-const controllerInstance = new PlayerController(
-  playerService,
-  soundService,
-  playerControllerLogger
-)
-
-export const playerRouter = new koaRouter()
-  .get('/rando', controllerInstance.playRando)
-  .get('/:soundId', controllerInstance.playSound)
+export const getPlayerRouter = () =>
+  new koaRouter<ApplicationState, IApplicationContext>()
+    .get('/rando', PlayerController.getInstance().playRando)
+    .get('/:soundId', PlayerController.getInstance().playSound)

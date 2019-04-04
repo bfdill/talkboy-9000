@@ -1,37 +1,52 @@
-import * as koaRouter from 'koa-router'
-import { NOT_FOUND } from 'http-status-codes'
-import { createModuleLogger } from '../../modules/logging'
-import winston = require('winston')
-import { ISoundService, soundService } from '../../modules/sounds'
+import * as KoaRouter from 'koa-router'
+import { NOT_FOUND, OK } from 'http-status-codes'
 
-export const soundsControllerLogger = createModuleLogger('SoundsController')
+import { IApplicationContext, ApplicationState } from '../../types'
+import { ISoundService, SoundService } from '../../modules/sounds'
 
-interface ISoundsController {
-  get: (ctx: koaRouter.RouterContext) => void
+export interface ISoundsController {
+  get: (ctx: IApplicationContext) => void
 }
 
 export class SoundsController implements ISoundsController {
-  constructor(
-    protected readonly soundService: ISoundService,
-    protected readonly logger: winston.Logger
-  ) {}
+  private static instance: ISoundsController | undefined
 
-  get = async (ctx: koaRouter.RouterContext) => {
-    const sounds = this.soundService.getSounds()
+  constructor(protected readonly soundService: ISoundService) {}
+
+  get = async (context: IApplicationContext) => {
+    const logger = context.logger.child({
+      controller: {
+        name: 'SoundsController',
+        method: 'get'
+      }
+    })
+    const sounds = this.soundService.getSounds(logger)
+
+    context.body = { sounds }
 
     if (sounds === null) {
-      ctx.status = NOT_FOUND
-      ctx.body = { sounds }
+      logger.warn('no sounds from service')
+      context.status = NOT_FOUND
       return
     }
 
-    ctx.body = sounds
+    logger.info({
+      soundsLength: sounds.length
+    })
+    context.status = OK
+  }
+
+  static getInstance(): ISoundsController {
+    if (this.instance !== undefined) return this.instance
+
+    this.instance = new SoundsController(SoundService.getInstance())
+
+    return this.instance
   }
 }
 
-const controllerInstance = new SoundsController(
-  soundService,
-  soundsControllerLogger
-)
-
-export const soundsRouter = new koaRouter().get('/', controllerInstance.get)
+export const getSoundsRouter = () =>
+  new KoaRouter<ApplicationState, IApplicationContext>().get(
+    '/',
+    SoundsController.getInstance().get
+  )

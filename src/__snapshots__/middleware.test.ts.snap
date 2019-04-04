@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`middleware addLoggerToContext 1`] = `
+Array [
+  Object {
+    "correlationId": "default_mock_correlation_id",
+    "level": "info",
+    "message": "✅test works✅",
+    Symbol(level): "info",
+    Symbol(message): "{\\"correlationId\\":\\"default_mock_correlation_id\\",\\"message\\":\\"✅test works✅\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;

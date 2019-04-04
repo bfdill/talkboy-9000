@@ -28,11 +28,10 @@ Array [
 exports[`modules -> sounds addSound id = ordinal position by filename alpha 3`] = `
 Array [
   Object {
-    "level": "silly",
-    "message": "getSounds()",
-    "sounds": Array [],
-    Symbol(level): "silly",
-    Symbol(message): "{\\"message\\":\\"getSounds()\\",\\"sounds\\":[],\\"level\\":\\"silly\\"}",
+    "level": "info",
+    "message": "add sounds",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"add sounds\\",\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -40,10 +39,16 @@ Array [
 exports[`modules -> sounds addSound id = ordinal position by filename alpha 4`] = `
 Array [
   Object {
-    "level": "debug",
-    "message": "addSound(/tmp/fake_sound_0.mp3)",
-    Symbol(level): "debug",
-    Symbol(message): "{\\"message\\":\\"addSound(/tmp/fake_sound_0.mp3)\\",\\"level\\":\\"debug\\"}",
+    "level": "silly",
+    "message": Object {
+      "sounds": Array [],
+    },
+    "service": Object {
+      "method": "getSounds",
+      "name": "SoundService",
+    },
+    Symbol(level): "silly",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"SoundService\\",\\"method\\":\\"getSounds\\"},\\"message\\":{\\"sounds\\":[]},\\"level\\":\\"silly\\"}",
   },
 ]
 `;
@@ -51,17 +56,12 @@ Array [
 exports[`modules -> sounds addSound id = ordinal position by filename alpha 5`] = `
 Array [
   Object {
-    "level": "silly",
-    "message": "addSound(/tmp/fake_sound_0.mp3)",
-    "sounds": Array [
-      Object {
-        "basename": "fake_sound_0.mp3",
-        "filename": "/tmp/fake_sound_0.mp3",
-        "id": "1",
-      },
-    ],
-    Symbol(level): "silly",
-    Symbol(message): "{\\"message\\":\\"addSound(/tmp/fake_sound_0.mp3)\\",\\"sounds\\":[{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"fake_sound_0.mp3\\"}],\\"level\\":\\"silly\\"}",
+    "level": "debug",
+    "message": Object {
+      "filename": "/tmp/fake_sound_0.mp3",
+    },
+    Symbol(level): "debug",
+    Symbol(message): "{\\"message\\":{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\"},\\"level\\":\\"debug\\"}",
   },
 ]
 `;
@@ -70,16 +70,18 @@ exports[`modules -> sounds addSound id = ordinal position by filename alpha 6`] 
 Array [
   Object {
     "level": "silly",
-    "message": "getSounds()",
-    "sounds": Array [
-      Object {
-        "basename": "fake_sound_0.mp3",
-        "filename": "/tmp/fake_sound_0.mp3",
-        "id": "1",
-      },
-    ],
+    "message": Object {
+      "filename": "/tmp/fake_sound_0.mp3",
+      "sounds": Array [
+        Object {
+          "basename": "fake_sound_0.mp3",
+          "filename": "/tmp/fake_sound_0.mp3",
+          "id": "1",
+        },
+      ],
+    },
     Symbol(level): "silly",
-    Symbol(message): "{\\"message\\":\\"getSounds()\\",\\"sounds\\":[{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"fake_sound_0.mp3\\"}],\\"level\\":\\"silly\\"}",
+    Symbol(message): "{\\"message\\":{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"sounds\\":[{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"fake_sound_0.mp3\\"}]},\\"level\\":\\"silly\\"}",
   },
 ]
 `;
@@ -88,16 +90,21 @@ exports[`modules -> sounds addSound id = ordinal position by filename alpha 7`] 
 Array [
   Object {
     "level": "silly",
-    "message": "getSounds()",
-    "sounds": Array [
-      Object {
-        "basename": "fake_sound_0.mp3",
-        "filename": "/tmp/fake_sound_0.mp3",
-        "id": "1",
-      },
-    ],
+    "message": Object {
+      "sounds": Array [
+        Object {
+          "basename": "fake_sound_0.mp3",
+          "filename": "/tmp/fake_sound_0.mp3",
+          "id": "1",
+        },
+      ],
+    },
+    "service": Object {
+      "method": "getSounds",
+      "name": "SoundService",
+    },
     Symbol(level): "silly",
-    Symbol(message): "{\\"message\\":\\"getSounds()\\",\\"sounds\\":[{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"fake_sound_0.mp3\\"}],\\"level\\":\\"silly\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"SoundService\\",\\"method\\":\\"getSounds\\"},\\"message\\":{\\"sounds\\":[{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"fake_sound_0.mp3\\"}]},\\"level\\":\\"silly\\"}",
   },
 ]
 `;
@@ -105,10 +112,22 @@ Array [
 exports[`modules -> sounds addSound id = ordinal position by filename alpha 8`] = `
 Array [
   Object {
-    "level": "debug",
-    "message": "addSound(/tmp/a_fake_sound_0.mp3)",
-    Symbol(level): "debug",
-    Symbol(message): "{\\"message\\":\\"addSound(/tmp/a_fake_sound_0.mp3)\\",\\"level\\":\\"debug\\"}",
+    "level": "silly",
+    "message": Object {
+      "sounds": Array [
+        Object {
+          "basename": "fake_sound_0.mp3",
+          "filename": "/tmp/fake_sound_0.mp3",
+          "id": "1",
+        },
+      ],
+    },
+    "service": Object {
+      "method": "getSounds",
+      "name": "SoundService",
+    },
+    Symbol(level): "silly",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"SoundService\\",\\"method\\":\\"getSounds\\"},\\"message\\":{\\"sounds\\":[{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"fake_sound_0.mp3\\"}]},\\"level\\":\\"silly\\"}",
   },
 ]
 `;
@@ -116,22 +135,12 @@ Array [
 exports[`modules -> sounds addSound id = ordinal position by filename alpha 9`] = `
 Array [
   Object {
-    "level": "silly",
-    "message": "addSound(/tmp/a_fake_sound_0.mp3)",
-    "sounds": Array [
-      Object {
-        "basename": "a_fake_sound_0.mp3",
-        "filename": "/tmp/a_fake_sound_0.mp3",
-        "id": "0",
-      },
-      Object {
-        "basename": "fake_sound_0.mp3",
-        "filename": "/tmp/fake_sound_0.mp3",
-        "id": "1",
-      },
-    ],
-    Symbol(level): "silly",
-    Symbol(message): "{\\"message\\":\\"addSound(/tmp/a_fake_sound_0.mp3)\\",\\"sounds\\":[{\\"filename\\":\\"/tmp/a_fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"a_fake_sound_0.mp3\\"},{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"1\\",\\"basename\\":\\"fake_sound_0.mp3\\"}],\\"level\\":\\"silly\\"}",
+    "level": "debug",
+    "message": Object {
+      "filename": "/tmp/a_fake_sound_0.mp3",
+    },
+    Symbol(level): "debug",
+    Symbol(message): "{\\"message\\":{\\"filename\\":\\"/tmp/a_fake_sound_0.mp3\\"},\\"level\\":\\"debug\\"}",
   },
 ]
 `;
@@ -140,21 +149,23 @@ exports[`modules -> sounds addSound id = ordinal position by filename alpha 10`]
 Array [
   Object {
     "level": "silly",
-    "message": "getSounds()",
-    "sounds": Array [
-      Object {
-        "basename": "a_fake_sound_0.mp3",
-        "filename": "/tmp/a_fake_sound_0.mp3",
-        "id": "0",
-      },
-      Object {
-        "basename": "fake_sound_0.mp3",
-        "filename": "/tmp/fake_sound_0.mp3",
-        "id": "1",
-      },
-    ],
+    "message": Object {
+      "filename": "/tmp/a_fake_sound_0.mp3",
+      "sounds": Array [
+        Object {
+          "basename": "a_fake_sound_0.mp3",
+          "filename": "/tmp/a_fake_sound_0.mp3",
+          "id": "0",
+        },
+        Object {
+          "basename": "fake_sound_0.mp3",
+          "filename": "/tmp/fake_sound_0.mp3",
+          "id": "1",
+        },
+      ],
+    },
     Symbol(level): "silly",
-    Symbol(message): "{\\"message\\":\\"getSounds()\\",\\"sounds\\":[{\\"filename\\":\\"/tmp/a_fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"a_fake_sound_0.mp3\\"},{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"1\\",\\"basename\\":\\"fake_sound_0.mp3\\"}],\\"level\\":\\"silly\\"}",
+    Symbol(message): "{\\"message\\":{\\"filename\\":\\"/tmp/a_fake_sound_0.mp3\\",\\"sounds\\":[{\\"filename\\":\\"/tmp/a_fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"a_fake_sound_0.mp3\\"},{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"1\\",\\"basename\\":\\"fake_sound_0.mp3\\"}]},\\"level\\":\\"silly\\"}",
   },
 ]
 `;
@@ -163,21 +174,54 @@ exports[`modules -> sounds addSound id = ordinal position by filename alpha 11`]
 Array [
   Object {
     "level": "silly",
-    "message": "getSounds()",
-    "sounds": Array [
-      Object {
-        "basename": "a_fake_sound_0.mp3",
-        "filename": "/tmp/a_fake_sound_0.mp3",
-        "id": "0",
-      },
-      Object {
-        "basename": "fake_sound_0.mp3",
-        "filename": "/tmp/fake_sound_0.mp3",
-        "id": "1",
-      },
-    ],
+    "message": Object {
+      "sounds": Array [
+        Object {
+          "basename": "a_fake_sound_0.mp3",
+          "filename": "/tmp/a_fake_sound_0.mp3",
+          "id": "0",
+        },
+        Object {
+          "basename": "fake_sound_0.mp3",
+          "filename": "/tmp/fake_sound_0.mp3",
+          "id": "1",
+        },
+      ],
+    },
+    "service": Object {
+      "method": "getSounds",
+      "name": "SoundService",
+    },
     Symbol(level): "silly",
-    Symbol(message): "{\\"message\\":\\"getSounds()\\",\\"sounds\\":[{\\"filename\\":\\"/tmp/a_fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"a_fake_sound_0.mp3\\"},{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"1\\",\\"basename\\":\\"fake_sound_0.mp3\\"}],\\"level\\":\\"silly\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"SoundService\\",\\"method\\":\\"getSounds\\"},\\"message\\":{\\"sounds\\":[{\\"filename\\":\\"/tmp/a_fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"a_fake_sound_0.mp3\\"},{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"1\\",\\"basename\\":\\"fake_sound_0.mp3\\"}]},\\"level\\":\\"silly\\"}",
+  },
+]
+`;
+
+exports[`modules -> sounds addSound id = ordinal position by filename alpha 12`] = `
+Array [
+  Object {
+    "level": "silly",
+    "message": Object {
+      "sounds": Array [
+        Object {
+          "basename": "a_fake_sound_0.mp3",
+          "filename": "/tmp/a_fake_sound_0.mp3",
+          "id": "0",
+        },
+        Object {
+          "basename": "fake_sound_0.mp3",
+          "filename": "/tmp/fake_sound_0.mp3",
+          "id": "1",
+        },
+      ],
+    },
+    "service": Object {
+      "method": "getSounds",
+      "name": "SoundService",
+    },
+    Symbol(level): "silly",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"SoundService\\",\\"method\\":\\"getSounds\\"},\\"message\\":{\\"sounds\\":[{\\"filename\\":\\"/tmp/a_fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"a_fake_sound_0.mp3\\"},{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"1\\",\\"basename\\":\\"fake_sound_0.mp3\\"}]},\\"level\\":\\"silly\\"}",
   },
 ]
 `;
@@ -185,10 +229,10 @@ Array [
 exports[`modules -> sounds createWatch add, adds 1`] = `
 Array [
   Object {
-    "level": "debug",
-    "message": "addSound(add test)",
-    Symbol(level): "debug",
-    Symbol(message): "{\\"message\\":\\"addSound(add test)\\",\\"level\\":\\"debug\\"}",
+    "level": "info",
+    "message": "add sounds",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"add sounds\\",\\"level\\":\\"info\\"}",
   },
 ]
 `;
@@ -196,17 +240,12 @@ Array [
 exports[`modules -> sounds createWatch add, adds 2`] = `
 Array [
   Object {
-    "level": "silly",
-    "message": "addSound(add test)",
-    "sounds": Array [
-      Object {
-        "basename": "add test",
-        "filename": "add test",
-        "id": "0",
-      },
-    ],
-    Symbol(level): "silly",
-    Symbol(message): "{\\"message\\":\\"addSound(add test)\\",\\"sounds\\":[{\\"filename\\":\\"add test\\",\\"id\\":\\"0\\",\\"basename\\":\\"add test\\"}],\\"level\\":\\"silly\\"}",
+    "level": "debug",
+    "message": Object {
+      "filename": "add test",
+    },
+    Symbol(level): "debug",
+    Symbol(message): "{\\"message\\":{\\"filename\\":\\"add test\\"},\\"level\\":\\"debug\\"}",
   },
 ]
 `;
@@ -214,16 +253,47 @@ Array [
 exports[`modules -> sounds createWatch add, adds 3`] = `
 Array [
   Object {
+    "level": "silly",
+    "message": Object {
+      "filename": "add test",
+      "sounds": Array [
+        Object {
+          "basename": "add test",
+          "filename": "add test",
+          "id": "0",
+        },
+      ],
+    },
+    Symbol(level): "silly",
+    Symbol(message): "{\\"message\\":{\\"filename\\":\\"add test\\",\\"sounds\\":[{\\"filename\\":\\"add test\\",\\"id\\":\\"0\\",\\"basename\\":\\"add test\\"}]},\\"level\\":\\"silly\\"}",
+  },
+]
+`;
+
+exports[`modules -> sounds createWatch add, adds 4`] = `
+Array [
+  Object {
     "level": "debug",
-    "message": "add",
+    "message": "watch:add",
     "path": "add test",
     Symbol(level): "debug",
-    Symbol(message): "{\\"path\\":\\"add test\\",\\"message\\":\\"add\\",\\"level\\":\\"debug\\"}",
+    Symbol(message): "{\\"path\\":\\"add test\\",\\"message\\":\\"watch:add\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;
 
 exports[`modules -> sounds createWatch delete, removes 1`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "add sounds",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"add sounds\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> sounds createWatch delete, removes 2`] = `
 Array [
   Object {
     "level": "debug",
@@ -234,14 +304,14 @@ Array [
 ]
 `;
 
-exports[`modules -> sounds createWatch delete, removes 2`] = `
+exports[`modules -> sounds createWatch delete, removes 3`] = `
 Array [
   Object {
     "level": "debug",
-    "message": "delete",
+    "message": "watch:delete",
     "path": "remove test",
     Symbol(level): "debug",
-    Symbol(message): "{\\"path\\":\\"remove test\\",\\"message\\":\\"delete\\",\\"level\\":\\"debug\\"}",
+    Symbol(message): "{\\"path\\":\\"remove test\\",\\"message\\":\\"watch:delete\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;
@@ -260,6 +330,17 @@ Array [
 ]
 `;
 
+exports[`modules -> sounds createWatch wires add and delete on instantiation 3`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "add sounds",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"add sounds\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
 exports[`modules -> sounds getBySoundId getBySoundId('') 1`] = `undefined`;
 
 exports[`modules -> sounds getBySoundId getBySoundId('') 2`] = `
@@ -268,8 +349,13 @@ Array [
     "level": "debug",
     "message": "getBySoundId()",
     "result": undefined,
+    "service": Object {
+      "method": "getBySoundId",
+      "name": "SoundService",
+    },
+    "soundId": "",
     Symbol(level): "debug",
-    Symbol(message): "{\\"message\\":\\"getBySoundId()\\",\\"level\\":\\"debug\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"SoundService\\",\\"method\\":\\"getBySoundId\\"},\\"soundId\\":\\"\\",\\"message\\":\\"getBySoundId()\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;
@@ -292,8 +378,13 @@ Array [
       "filename": "/tmp/fake_sound_0.mp3",
       "id": "0",
     },
+    "service": Object {
+      "method": "getBySoundId",
+      "name": "SoundService",
+    },
+    "soundId": "0",
     Symbol(level): "debug",
-    Symbol(message): "{\\"result\\":{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"fake_sound_0.mp3\\"},\\"message\\":\\"getBySoundId(0)\\",\\"level\\":\\"debug\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"SoundService\\",\\"method\\":\\"getBySoundId\\"},\\"result\\":{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"fake_sound_0.mp3\\"},\\"soundId\\":\\"0\\",\\"message\\":\\"getBySoundId(0)\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;
@@ -306,8 +397,13 @@ Array [
     "level": "debug",
     "message": "getBySoundId(dog)",
     "result": undefined,
+    "service": Object {
+      "method": "getBySoundId",
+      "name": "SoundService",
+    },
+    "soundId": "dog",
     Symbol(level): "debug",
-    Symbol(message): "{\\"message\\":\\"getBySoundId(dog)\\",\\"level\\":\\"debug\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"SoundService\\",\\"method\\":\\"getBySoundId\\"},\\"soundId\\":\\"dog\\",\\"message\\":\\"getBySoundId(dog)\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;
@@ -320,8 +416,13 @@ Array [
     "level": "debug",
     "message": "getBySoundId(null)",
     "result": undefined,
+    "service": Object {
+      "method": "getBySoundId",
+      "name": "SoundService",
+    },
+    "soundId": null,
     Symbol(level): "debug",
-    Symbol(message): "{\\"message\\":\\"getBySoundId(null)\\",\\"level\\":\\"debug\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"SoundService\\",\\"method\\":\\"getBySoundId\\"},\\"soundId\\":null,\\"message\\":\\"getBySoundId(null)\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;
@@ -334,8 +435,13 @@ Array [
     "level": "debug",
     "message": "getBySoundId(undefined)",
     "result": undefined,
+    "service": Object {
+      "method": "getBySoundId",
+      "name": "SoundService",
+    },
+    "soundId": undefined,
     Symbol(level): "debug",
-    Symbol(message): "{\\"message\\":\\"getBySoundId(undefined)\\",\\"level\\":\\"debug\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"SoundService\\",\\"method\\":\\"getBySoundId\\"},\\"message\\":\\"getBySoundId(undefined)\\",\\"level\\":\\"debug\\"}",
   },
 ]
 `;
@@ -343,11 +449,27 @@ Array [
 exports[`modules -> sounds getSounds no sounds 1`] = `
 Array [
   Object {
+    "level": "info",
+    "message": "add sounds",
+    Symbol(level): "info",
+    Symbol(message): "{\\"message\\":\\"add sounds\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> sounds getSounds no sounds 2`] = `
+Array [
+  Object {
     "level": "silly",
-    "message": "getSounds()",
-    "sounds": Array [],
+    "message": Object {
+      "sounds": Array [],
+    },
+    "service": Object {
+      "method": "getSounds",
+      "name": "SoundService",
+    },
     Symbol(level): "silly",
-    Symbol(message): "{\\"message\\":\\"getSounds()\\",\\"sounds\\":[],\\"level\\":\\"silly\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"SoundService\\",\\"method\\":\\"getSounds\\"},\\"message\\":{\\"sounds\\":[]},\\"level\\":\\"silly\\"}",
   },
 ]
 `;
@@ -371,31 +493,34 @@ exports[`modules -> sounds getSounds two sounds 2`] = `
 Array [
   Object {
     "level": "silly",
-    "message": "getSounds()",
-    "sounds": Array [
-      Object {
-        "basename": "a_fake_sound.mp3",
-        "filename": "/tmp/a_fake_sound.mp3",
-        "id": "0",
-      },
-      Object {
-        "basename": "fake_sound_0.mp3",
-        "filename": "/tmp/fake_sound_0.mp3",
-        "id": "1",
-      },
-    ],
+    "message": Object {
+      "sounds": Array [
+        Object {
+          "basename": "a_fake_sound.mp3",
+          "filename": "/tmp/a_fake_sound.mp3",
+          "id": "0",
+        },
+        Object {
+          "basename": "fake_sound_0.mp3",
+          "filename": "/tmp/fake_sound_0.mp3",
+          "id": "1",
+        },
+      ],
+    },
+    "service": Object {
+      "method": "getSounds",
+      "name": "SoundService",
+    },
     Symbol(level): "silly",
-    Symbol(message): "{\\"message\\":\\"getSounds()\\",\\"sounds\\":[{\\"filename\\":\\"/tmp/a_fake_sound.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"a_fake_sound.mp3\\"},{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"1\\",\\"basename\\":\\"fake_sound_0.mp3\\"}],\\"level\\":\\"silly\\"}",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"SoundService\\",\\"method\\":\\"getSounds\\"},\\"message\\":{\\"sounds\\":[{\\"filename\\":\\"/tmp/a_fake_sound.mp3\\",\\"id\\":\\"0\\",\\"basename\\":\\"a_fake_sound.mp3\\"},{\\"filename\\":\\"/tmp/fake_sound_0.mp3\\",\\"id\\":\\"1\\",\\"basename\\":\\"fake_sound_0.mp3\\"}]},\\"level\\":\\"silly\\"}",
   },
 ]
 `;
 
 exports[`modules -> sounds has known exports 1`] = `
 Array [
-  "soundServiceLogger",
   "PATH_TO_SOUNDS",
   "SoundService",
-  "soundService",
 ]
 `;
 

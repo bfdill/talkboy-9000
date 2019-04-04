@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`controllers -> healthcheck getHealthcheckRouter 1`] = `
+Router {
+  "methods": Array [
+    "HEAD",
+    "OPTIONS",
+    "GET",
+    "PUT",
+    "PATCH",
+    "POST",
+    "DELETE",
+  ],
+  "opts": Object {},
+  "params": Object {},
+  "stack": Array [
+    Layer {
+      "methods": Array [
+        "HEAD",
+        "GET",
+      ],
+      "name": null,
+      "opts": Object {
+        "end": true,
+        "ignoreCaptures": undefined,
+        "name": null,
+        "prefix": "",
+        "sensitive": false,
+        "strict": false,
+      },
+      "paramNames": Array [],
+      "path": "/",
+      "regexp": /\\^\\(\\?:\\\\/\\(\\?=\\$\\)\\)\\?\\$/i,
+      "stack": Array [
+        [Function],
+      ],
+    },
+  ],
+}
+`;
+
+exports[`controllers -> healthcheck has known exports 1`] = `
+Array [
+  "HealthcheckController",
+  "getHealthcheckRouter",
+]
+`;
+
+exports[`controllers -> healthcheck healthy, so healthy! 1`] = `
+Array [
+  Object {
+    "controller": Object {
+      "name": "HealthcheckController",
+    },
+    "correlationId": "default_mock_correlation_id",
+    "level": "silly",
+    "message": "success",
+    Symbol(level): "silly",
+    Symbol(splat): Array [
+      Object {
+        "correlationId": "default_mock_correlation_id",
+      },
+    ],
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"HealthcheckController\\"},\\"correlationId\\":\\"default_mock_correlation_id\\",\\"level\\":\\"silly\\",\\"message\\":\\"success\\"}",
+  },
+]
+`;

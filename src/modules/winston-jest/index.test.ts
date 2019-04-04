@@ -6,6 +6,7 @@ import * as winstonTransport from 'winston-transport'
 
 export interface IWinstonJestTransport extends winstonTransport {
   readonly mock: jest.Mock
+  callsMatchSnapshot: () => void
 }
 
 export class WinstonJestTransport extends winstonTransport
@@ -25,6 +26,9 @@ export class WinstonJestTransport extends winstonTransport
     this.mock(info)
     next()
   }
+
+  callsMatchSnapshot = () =>
+    this.mock.mock.calls.forEach(call => expect(call).toMatchSnapshot())
 }
 
 export interface IJestLogger {
@@ -33,13 +37,24 @@ export interface IJestLogger {
   transport: WinstonJestTransport
 }
 
+export const snapshotExistingLogger = (logger: winston.Logger) => {
+  const transport = new WinstonJestTransport()
+  logger.clear()
+  logger.add(transport)
+  logger.info('✅test works✅')
+  transport.callsMatchSnapshot()
+}
+
 export const getJestLogger = (): IJestLogger => {
   const transport: WinstonJestTransport = new WinstonJestTransport()
   return {
     transport,
-    callsMatchSnapshot: () =>
-      transport.mock.mock.calls.forEach(call => expect(call).toMatchSnapshot()),
-    logger: winston.createLogger({ level: 'silly', transports: [transport] })
+    callsMatchSnapshot: () => transport.callsMatchSnapshot(),
+    logger: winston.createLogger({
+      level: 'silly',
+      levels: winston.config.npm.levels,
+      transports: [transport]
+    })
   }
 }
 

@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`server has known exports 1`] = `
-Array [
-  "koaApp",
-]
-`;
