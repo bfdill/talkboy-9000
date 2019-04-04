@@ -14,7 +14,7 @@ describe('controllers -> sounds -> index', () => {
     expect(Object.keys(require('.'))).toMatchSnapshot()
   })
 
-  test.each([[null], [mockSound]])(
+  test.each([null, [mockSound]])(
     'get matches snapshot',
     async (sounds?: Sound[] | null) => {
       const mockSoundService: ISoundService = {

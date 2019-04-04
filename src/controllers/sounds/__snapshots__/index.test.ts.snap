@@ -25,11 +25,13 @@ Array [
 
 exports[`controllers -> sounds -> index get matches snapshot 4`] = `
 Object {
-  "sounds": Object {
-    "basename": "mock basename",
-    "filename": "mock filename",
-    "id": "mock id",
-  },
+  "sounds": Array [
+    Object {
+      "basename": "mock basename",
+      "filename": "mock filename",
+      "id": "mock id",
+    },
+  ],
 }
 `;
 
@@ -44,10 +46,10 @@ Array [
     },
     "level": "info",
     "message": Object {
-      "soundsLength": undefined,
+      "soundsLength": 1,
     },
     Symbol(level): "info",
-    Symbol(message): "{\\"controller\\":{\\"name\\":\\"SoundsController\\",\\"method\\":\\"get\\"},\\"message\\":{},\\"level\\":\\"info\\"}",
+    Symbol(message): "{\\"controller\\":{\\"name\\":\\"SoundsController\\",\\"method\\":\\"get\\"},\\"message\\":{\\"soundsLength\\":1},\\"level\\":\\"info\\"}",
   },
 ]
 `;

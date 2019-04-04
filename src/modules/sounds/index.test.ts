@@ -73,7 +73,7 @@ describe('modules -> sounds', () => {
   })
 
   describe('getBySoundId', () => {
-    test.each([undefined, null, '', '0', 'dog'])(
+    test.each<any>([undefined, null, '', '0', 'dog'])(
       "getBySoundId('%s')",
       (soundId: string) => {
         baseSoundService.addSound('/tmp/fake_sound_0.mp3')
@@ -110,7 +110,7 @@ describe('modules -> sounds', () => {
   })
 
   describe('isPathValid', () => {
-    test.each([
+    test.each<[string, boolean]>([
       ['/tmp/invalid_af', false],
       [join(PATH_TO_SOUNDS, 'too_legit'), true]
     ])('validity test', (filename: string, expected) => {
