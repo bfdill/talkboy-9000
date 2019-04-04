@@ -6,11 +6,12 @@ export * from '../../middleware'
 export const getDefaultTransports = () => [
   new winston.transports.Console({
     level: 'silly',
-    format: winston.format.prettyPrint(),
+    format: winston.format.simple(),
     silent: true
   }),
   new winstonDailyRotateFile({
     level: 'silly',
+    format: winston.format.prettyPrint(),
     filename: 'logs/%DATE%.log',
     datePattern: 'YYYY-MM-DD',
     maxSize: '20m',
