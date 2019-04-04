@@ -26,8 +26,10 @@ export class PlayerService implements IPlayerService {
     parentLogger: winston.Logger
   ): PromiseLike<void> => {
     const logger = parentLogger.child({
-      service: 'PlayerService',
-      method: 'playFile'
+      service: {
+        name: 'PlayerService',
+        method: 'playFile'
+      }
     })
 
     logger.info({ filename })

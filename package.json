@@ -18,7 +18,7 @@
     "serve": "node .",
     "start": "ts-node src/server.ts",
     "start:watch": "nodemon --watch 'src/**/*' -e ts --exec 'ts-node' src/server.ts",
-    "test": "jest --no-cache",
+    "test": "NODE_ENV=development jest --no-cache",
     "test:coverage": "yarn test --coverage",
     "test:watch": "yarn test --watch",
     "zip": "node dist/archiver.js"
