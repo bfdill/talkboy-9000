@@ -4,8 +4,8 @@
   "description": "soundboard app",
   "main": "dist/src/server.js",
   "engines": {
-    "node": "11.10.0",
-    "yarn": "1.13.0"
+    "node": "11.13.0",
+    "yarn": "1.15.2"
   },
   "license": "Unlicense",
   "rant": "Unlicense says fight the man, no license field. Yarn says, include it or warning. 😩🐼",

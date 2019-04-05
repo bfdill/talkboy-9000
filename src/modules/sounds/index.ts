@@ -165,8 +165,7 @@ export class SoundService implements ISoundService {
       sane,
       getAppLogger().child({
         service: {
-          name: 'SoundService',
-          method: 'addSound'
+          name: 'SoundService'
         }
       })
     )
