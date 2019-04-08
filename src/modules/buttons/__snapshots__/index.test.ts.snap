@@ -1,0 +1,752 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`modules -> buttons button service registerChangeListener newly active getBySoundId 1`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "setup 👜👜👜 complete",
+    "method": "startButtonService",
+    "service": "ButtonService",
+    Symbol(level): "info",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"setup 👜👜👜 complete\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service registerChangeListener newly active getBySoundId 2`] = `
+Array [
+  Object {
+    "level": "debug",
+    "message": "registeredSwitches",
+    "method": "startButtonService",
+    "registeredSwitches": Object {
+      "3": Object {
+        "active": true,
+        "button": Object {
+          "led": "8",
+          "soundId": "0",
+          "switch": "3",
+        },
+        "pushed": false,
+      },
+      "5": Object {
+        "active": false,
+        "button": Object {
+          "led": "10",
+          "soundId": "1",
+          "switch": "5",
+        },
+        "pushed": false,
+      },
+    },
+    "service": "ButtonService",
+    Symbol(level): "debug",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"registeredSwitches\\",\\"registeredSwitches\\":{\\"3\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"3\\",\\"led\\":\\"8\\",\\"soundId\\":\\"0\\"},\\"pushed\\":false},\\"5\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"5\\",\\"led\\":\\"10\\",\\"soundId\\":\\"1\\"},\\"pushed\\":false}},\\"level\\":\\"debug\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service registerChangeListener newly active playFile 1`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "setup 👜👜👜 complete",
+    "method": "startButtonService",
+    "service": "ButtonService",
+    Symbol(level): "info",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"setup 👜👜👜 complete\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service registerChangeListener newly active playFile 2`] = `
+Array [
+  Object {
+    "level": "debug",
+    "message": "registeredSwitches",
+    "method": "startButtonService",
+    "registeredSwitches": Object {
+      "3": Object {
+        "active": true,
+        "button": Object {
+          "led": "8",
+          "soundId": "0",
+          "switch": "3",
+        },
+        "pushed": false,
+      },
+      "5": Object {
+        "active": false,
+        "button": Object {
+          "led": "10",
+          "soundId": "1",
+          "switch": "5",
+        },
+        "pushed": false,
+      },
+    },
+    "service": "ButtonService",
+    Symbol(level): "debug",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"registeredSwitches\\",\\"registeredSwitches\\":{\\"3\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"3\\",\\"led\\":\\"8\\",\\"soundId\\":\\"0\\"},\\"pushed\\":false},\\"5\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"5\\",\\"led\\":\\"10\\",\\"soundId\\":\\"1\\"},\\"pushed\\":false}},\\"level\\":\\"debug\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service registerChangeListener no action if active === pushed(false) 1`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "setup 👜👜👜 complete",
+    "method": "startButtonService",
+    "service": "ButtonService",
+    Symbol(level): "info",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"setup 👜👜👜 complete\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service registerChangeListener no action if active === pushed(false) 2`] = `
+Array [
+  Object {
+    "level": "debug",
+    "message": "registeredSwitches",
+    "method": "startButtonService",
+    "registeredSwitches": Object {
+      "3": Object {
+        "active": false,
+        "button": Object {
+          "led": "8",
+          "soundId": "0",
+          "switch": "3",
+        },
+        "pushed": false,
+      },
+      "5": Object {
+        "active": false,
+        "button": Object {
+          "led": "10",
+          "soundId": "1",
+          "switch": "5",
+        },
+        "pushed": false,
+      },
+    },
+    "service": "ButtonService",
+    Symbol(level): "debug",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"registeredSwitches\\",\\"registeredSwitches\\":{\\"3\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"3\\",\\"led\\":\\"8\\",\\"soundId\\":\\"0\\"},\\"pushed\\":false},\\"5\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"5\\",\\"led\\":\\"10\\",\\"soundId\\":\\"1\\"},\\"pushed\\":false}},\\"level\\":\\"debug\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service registerChangeListener no action if active === pushed(true) 1`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "setup 👜👜👜 complete",
+    "method": "startButtonService",
+    "service": "ButtonService",
+    Symbol(level): "info",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"setup 👜👜👜 complete\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service registerChangeListener no action if active === pushed(true) 2`] = `
+Array [
+  Object {
+    "level": "debug",
+    "message": "registeredSwitches",
+    "method": "startButtonService",
+    "registeredSwitches": Object {
+      "3": Object {
+        "active": true,
+        "button": Object {
+          "led": "8",
+          "soundId": "0",
+          "switch": "3",
+        },
+        "pushed": false,
+      },
+      "5": Object {
+        "active": false,
+        "button": Object {
+          "led": "10",
+          "soundId": "1",
+          "switch": "5",
+        },
+        "pushed": false,
+      },
+    },
+    "service": "ButtonService",
+    Symbol(level): "debug",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"registeredSwitches\\",\\"registeredSwitches\\":{\\"3\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"3\\",\\"led\\":\\"8\\",\\"soundId\\":\\"0\\"},\\"pushed\\":false},\\"5\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"5\\",\\"led\\":\\"10\\",\\"soundId\\":\\"1\\"},\\"pushed\\":false}},\\"level\\":\\"debug\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service registerChangeListener not pushed = not active 1`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "setup 👜👜👜 complete",
+    "method": "startButtonService",
+    "service": "ButtonService",
+    Symbol(level): "info",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"setup 👜👜👜 complete\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service registerChangeListener not pushed = not active 2`] = `
+Array [
+  Object {
+    "level": "debug",
+    "message": "registeredSwitches",
+    "method": "startButtonService",
+    "registeredSwitches": Object {
+      "3": Object {
+        "active": false,
+        "button": Object {
+          "led": "8",
+          "soundId": "0",
+          "switch": "3",
+        },
+        "pushed": false,
+      },
+      "5": Object {
+        "active": false,
+        "button": Object {
+          "led": "10",
+          "soundId": "1",
+          "switch": "5",
+        },
+        "pushed": false,
+      },
+    },
+    "service": "ButtonService",
+    Symbol(level): "debug",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"registeredSwitches\\",\\"registeredSwitches\\":{\\"3\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"3\\",\\"led\\":\\"8\\",\\"soundId\\":\\"0\\"},\\"pushed\\":false},\\"5\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"5\\",\\"led\\":\\"10\\",\\"soundId\\":\\"1\\"},\\"pushed\\":false}},\\"level\\":\\"debug\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service registerChangeListener unknown channel(pin) 1`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "setup 👜👜👜 complete",
+    "method": "startButtonService",
+    "service": "ButtonService",
+    Symbol(level): "info",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"setup 👜👜👜 complete\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service registerChangeListener unknown channel(pin) 2`] = `
+Array [
+  Object {
+    "level": "debug",
+    "message": "registeredSwitches",
+    "method": "startButtonService",
+    "registeredSwitches": Object {
+      "3": Object {
+        "active": false,
+        "button": Object {
+          "led": "8",
+          "soundId": "0",
+          "switch": "3",
+        },
+        "pushed": false,
+      },
+      "5": Object {
+        "active": false,
+        "button": Object {
+          "led": "10",
+          "soundId": "1",
+          "switch": "5",
+        },
+        "pushed": false,
+      },
+    },
+    "service": "ButtonService",
+    Symbol(level): "debug",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"registeredSwitches\\",\\"registeredSwitches\\":{\\"3\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"3\\",\\"led\\":\\"8\\",\\"soundId\\":\\"0\\"},\\"pushed\\":false},\\"5\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"5\\",\\"led\\":\\"10\\",\\"soundId\\":\\"1\\"},\\"pushed\\":false}},\\"level\\":\\"debug\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service setupFromConfig config.cb 1`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "setup 👜👜👜 complete",
+    "method": "startButtonService",
+    "service": "ButtonService",
+    Symbol(level): "info",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"setup 👜👜👜 complete\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service setupFromConfig config.cb 2`] = `
+Array [
+  Object {
+    "level": "debug",
+    "message": "registeredSwitches",
+    "method": "startButtonService",
+    "registeredSwitches": Object {
+      "3": Object {
+        "active": false,
+        "button": Object {
+          "led": "8",
+          "soundId": "0",
+          "switch": "3",
+        },
+        "pushed": false,
+      },
+      "5": Object {
+        "active": false,
+        "button": Object {
+          "led": "10",
+          "soundId": "1",
+          "switch": "5",
+        },
+        "pushed": false,
+      },
+    },
+    "service": "ButtonService",
+    Symbol(level): "debug",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"registeredSwitches\\",\\"registeredSwitches\\":{\\"3\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"3\\",\\"led\\":\\"8\\",\\"soundId\\":\\"0\\"},\\"pushed\\":false},\\"5\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"5\\",\\"led\\":\\"10\\",\\"soundId\\":\\"1\\"},\\"pushed\\":false}},\\"level\\":\\"debug\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service setupFromConfig gpiop.setup 1`] = `
+Array [
+  "8",
+  "out",
+  "none",
+]
+`;
+
+exports[`modules -> buttons button service setupFromConfig gpiop.setup 2`] = `
+Array [
+  "3",
+  "in",
+  "both",
+]
+`;
+
+exports[`modules -> buttons button service setupFromConfig gpiop.setup 3`] = `
+Array [
+  "10",
+  "out",
+  "none",
+]
+`;
+
+exports[`modules -> buttons button service setupFromConfig gpiop.setup 4`] = `
+Array [
+  "5",
+  "in",
+  "both",
+]
+`;
+
+exports[`modules -> buttons button service setupFromConfig gpiop.setup 5`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "setup 👜👜👜 complete",
+    "method": "startButtonService",
+    "service": "ButtonService",
+    Symbol(level): "info",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"setup 👜👜👜 complete\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service setupFromConfig gpiop.setup 6`] = `
+Array [
+  Object {
+    "level": "debug",
+    "message": "registeredSwitches",
+    "method": "startButtonService",
+    "registeredSwitches": Object {
+      "3": Object {
+        "active": false,
+        "button": Object {
+          "led": "8",
+          "soundId": "0",
+          "switch": "3",
+        },
+        "pushed": false,
+      },
+      "5": Object {
+        "active": false,
+        "button": Object {
+          "led": "10",
+          "soundId": "1",
+          "switch": "5",
+        },
+        "pushed": false,
+      },
+    },
+    "service": "ButtonService",
+    Symbol(level): "debug",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"registeredSwitches\\",\\"registeredSwitches\\":{\\"3\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"3\\",\\"led\\":\\"8\\",\\"soundId\\":\\"0\\"},\\"pushed\\":false},\\"5\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"5\\",\\"led\\":\\"10\\",\\"soundId\\":\\"1\\"},\\"pushed\\":false}},\\"level\\":\\"debug\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service startButtonService error logs error 1`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "setup 👜👜👜 complete",
+    "method": "startButtonService",
+    "service": "ButtonService",
+    Symbol(level): "info",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"setup 👜👜👜 complete\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service startButtonService error logs error 2`] = `
+Array [
+  Object {
+    "level": "debug",
+    "message": "registeredSwitches",
+    "method": "startButtonService",
+    "registeredSwitches": Object {
+      "3": Object {
+        "active": false,
+        "button": Object {
+          "led": "8",
+          "soundId": "0",
+          "switch": "3",
+        },
+        "pushed": false,
+      },
+      "5": Object {
+        "active": false,
+        "button": Object {
+          "led": "10",
+          "soundId": "1",
+          "switch": "5",
+        },
+        "pushed": false,
+      },
+    },
+    "service": "ButtonService",
+    Symbol(level): "debug",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"registeredSwitches\\",\\"registeredSwitches\\":{\\"3\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"3\\",\\"led\\":\\"8\\",\\"soundId\\":\\"0\\"},\\"pushed\\":false},\\"5\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"5\\",\\"led\\":\\"10\\",\\"soundId\\":\\"1\\"},\\"pushed\\":false}},\\"level\\":\\"debug\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service startButtonService error logs error 3`] = `
+Array [
+  Object {
+    "cause": [Error: borked],
+    "level": "error",
+    "message": "startButtonService error",
+    "method": "startButtonService",
+    "service": "ButtonService",
+    Symbol(level): "error",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"cause\\":{},\\"message\\":\\"startButtonService error\\",\\"level\\":\\"error\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service startButtonService error logs error 4`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "setup 👜👜👜 complete",
+    "method": "startButtonService",
+    "service": "ButtonService",
+    Symbol(level): "info",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"setup 👜👜👜 complete\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service startButtonService error logs error 5`] = `
+Array [
+  Object {
+    "level": "debug",
+    "message": "registeredSwitches",
+    "method": "startButtonService",
+    "registeredSwitches": Object {
+      "3": Object {
+        "active": false,
+        "button": Object {
+          "led": "8",
+          "soundId": "0",
+          "switch": "3",
+        },
+        "pushed": false,
+      },
+      "5": Object {
+        "active": false,
+        "button": Object {
+          "led": "10",
+          "soundId": "1",
+          "switch": "5",
+        },
+        "pushed": false,
+      },
+    },
+    "service": "ButtonService",
+    Symbol(level): "debug",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"registeredSwitches\\",\\"registeredSwitches\\":{\\"3\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"3\\",\\"led\\":\\"8\\",\\"soundId\\":\\"0\\"},\\"pushed\\":false},\\"5\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"5\\",\\"led\\":\\"10\\",\\"soundId\\":\\"1\\"},\\"pushed\\":false}},\\"level\\":\\"debug\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service startButtonService registerChangeListener 1`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "setup 👜👜👜 complete",
+    "method": "startButtonService",
+    "service": "ButtonService",
+    Symbol(level): "info",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"setup 👜👜👜 complete\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service startButtonService registerChangeListener 2`] = `
+Array [
+  Object {
+    "level": "debug",
+    "message": "registeredSwitches",
+    "method": "startButtonService",
+    "registeredSwitches": Object {
+      "3": Object {
+        "active": false,
+        "button": Object {
+          "led": "8",
+          "soundId": "0",
+          "switch": "3",
+        },
+        "pushed": false,
+      },
+      "5": Object {
+        "active": false,
+        "button": Object {
+          "led": "10",
+          "soundId": "1",
+          "switch": "5",
+        },
+        "pushed": false,
+      },
+    },
+    "service": "ButtonService",
+    Symbol(level): "debug",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"registeredSwitches\\",\\"registeredSwitches\\":{\\"3\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"3\\",\\"led\\":\\"8\\",\\"soundId\\":\\"0\\"},\\"pushed\\":false},\\"5\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"5\\",\\"led\\":\\"10\\",\\"soundId\\":\\"1\\"},\\"pushed\\":false}},\\"level\\":\\"debug\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service startButtonService registeredSwitches 1`] = `
+Object {
+  "3": Object {
+    "active": false,
+    "button": Object {
+      "led": "8",
+      "soundId": "0",
+      "switch": "3",
+    },
+    "pushed": false,
+  },
+  "5": Object {
+    "active": false,
+    "button": Object {
+      "led": "10",
+      "soundId": "1",
+      "switch": "5",
+    },
+    "pushed": false,
+  },
+}
+`;
+
+exports[`modules -> buttons button service startButtonService registeredSwitches 2`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "setup 👜👜👜 complete",
+    "method": "startButtonService",
+    "service": "ButtonService",
+    Symbol(level): "info",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"setup 👜👜👜 complete\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service startButtonService registeredSwitches 3`] = `
+Array [
+  Object {
+    "level": "debug",
+    "message": "registeredSwitches",
+    "method": "startButtonService",
+    "registeredSwitches": Object {
+      "3": Object {
+        "active": false,
+        "button": Object {
+          "led": "8",
+          "soundId": "0",
+          "switch": "3",
+        },
+        "pushed": false,
+      },
+      "5": Object {
+        "active": false,
+        "button": Object {
+          "led": "10",
+          "soundId": "1",
+          "switch": "5",
+        },
+        "pushed": false,
+      },
+    },
+    "service": "ButtonService",
+    Symbol(level): "debug",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"registeredSwitches\\",\\"registeredSwitches\\":{\\"3\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"3\\",\\"led\\":\\"8\\",\\"soundId\\":\\"0\\"},\\"pushed\\":false},\\"5\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"5\\",\\"led\\":\\"10\\",\\"soundId\\":\\"1\\"},\\"pushed\\":false}},\\"level\\":\\"debug\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service startButtonService setupFromConfig 1`] = `
+Array [
+  "8",
+  "out",
+  "none",
+]
+`;
+
+exports[`modules -> buttons button service startButtonService setupFromConfig 2`] = `
+Array [
+  "3",
+  "in",
+  "both",
+]
+`;
+
+exports[`modules -> buttons button service startButtonService setupFromConfig 3`] = `
+Array [
+  "10",
+  "out",
+  "none",
+]
+`;
+
+exports[`modules -> buttons button service startButtonService setupFromConfig 4`] = `
+Array [
+  "5",
+  "in",
+  "both",
+]
+`;
+
+exports[`modules -> buttons button service startButtonService setupFromConfig 5`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "setup 👜👜👜 complete",
+    "method": "startButtonService",
+    "service": "ButtonService",
+    Symbol(level): "info",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"setup 👜👜👜 complete\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service startButtonService setupFromConfig 6`] = `
+Array [
+  Object {
+    "level": "debug",
+    "message": "registeredSwitches",
+    "method": "startButtonService",
+    "registeredSwitches": Object {
+      "3": Object {
+        "active": false,
+        "button": Object {
+          "led": "8",
+          "soundId": "0",
+          "switch": "3",
+        },
+        "pushed": false,
+      },
+      "5": Object {
+        "active": false,
+        "button": Object {
+          "led": "10",
+          "soundId": "1",
+          "switch": "5",
+        },
+        "pushed": false,
+      },
+    },
+    "service": "ButtonService",
+    Symbol(level): "debug",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"registeredSwitches\\",\\"registeredSwitches\\":{\\"3\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"3\\",\\"led\\":\\"8\\",\\"soundId\\":\\"0\\"},\\"pushed\\":false},\\"5\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"5\\",\\"led\\":\\"10\\",\\"soundId\\":\\"1\\"},\\"pushed\\":false}},\\"level\\":\\"debug\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service startButtonService setupFromConfig 7`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "setup 👜👜👜 complete",
+    "method": "startButtonService",
+    "service": "ButtonService",
+    Symbol(level): "info",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"setup 👜👜👜 complete\\",\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons button service startButtonService setupFromConfig 8`] = `
+Array [
+  Object {
+    "level": "debug",
+    "message": "registeredSwitches",
+    "method": "startButtonService",
+    "registeredSwitches": Object {
+      "3": Object {
+        "active": false,
+        "button": Object {
+          "led": "8",
+          "soundId": "0",
+          "switch": "3",
+        },
+        "pushed": false,
+      },
+      "5": Object {
+        "active": false,
+        "button": Object {
+          "led": "10",
+          "soundId": "1",
+          "switch": "5",
+        },
+        "pushed": false,
+      },
+    },
+    "service": "ButtonService",
+    Symbol(level): "debug",
+    Symbol(message): "{\\"service\\":\\"ButtonService\\",\\"method\\":\\"startButtonService\\",\\"message\\":\\"registeredSwitches\\",\\"registeredSwitches\\":{\\"3\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"3\\",\\"led\\":\\"8\\",\\"soundId\\":\\"0\\"},\\"pushed\\":false},\\"5\\":{\\"active\\":false,\\"button\\":{\\"switch\\":\\"5\\",\\"led\\":\\"10\\",\\"soundId\\":\\"1\\"},\\"pushed\\":false}},\\"level\\":\\"debug\\"}",
+  },
+]
+`;
+
+exports[`modules -> buttons has known exports 1`] = `
+Array [
+  "ButtonService",
+]
+`;

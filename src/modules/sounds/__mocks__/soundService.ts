@@ -1,8 +1,8 @@
 import { ISoundService, Sound } from '..'
 
 export interface IMockSoundService extends ISoundService {
-  setGetBySoundId: (result: any) => void
-  setGetSounds: (result: any) => void
+  setGetBySoundId: (result: Sound | undefined) => void
+  setGetSounds: (result: Sound[]) => void
   setIsPathValid: (result: boolean) => void
   getBySoundIdMock: () => jest.Mock
   getSoundsMock: (result: any) => jest.Mock
