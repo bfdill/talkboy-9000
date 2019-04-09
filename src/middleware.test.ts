@@ -1,25 +1,73 @@
 import {
   getJestLogger,
-  snapshotExistingLogger
+  snapshotExistingLogger,
+  IJestLogger
 } from './modules/winston-jest/index.test'
-import { SystemMiddleware } from './middleware'
+import { SystemMiddleware, ISystemMiddleware } from './middleware'
 import { IApplicationContext } from './types'
 import { getMockApplicationContext } from './__mocks__/applicationContext'
 
+const snapshotLogEntryFailWhaleMethod = (loggedCall: any) => {
+  expect(loggedCall.middleware).toMatchSnapshot()
+  expect(loggedCall.level).toMatchSnapshot()
+  expect(loggedCall.request).toMatchSnapshot()
+  expect(loggedCall.start).toMatchSnapshot(expect.any(Number))
+  expect(loggedCall.end).toMatchSnapshot(expect.any(Number))
+  expect(loggedCall.duration).toMatchSnapshot(expect.any(Number))
+}
+
 describe('middleware', () => {
-  const jestLogger = getJestLogger()
-  const applicationContext = getMockApplicationContext()
-  const systemMiddleware = new SystemMiddleware(jestLogger.logger)
+  let jestLogger: IJestLogger
+  let applicationContext: IApplicationContext
+  let systemMiddleware: ISystemMiddleware
+
+  beforeEach(() => {
+    jestLogger = getJestLogger()
+    applicationContext = getMockApplicationContext()
+    applicationContext.logger = jestLogger.logger
+    systemMiddleware = new SystemMiddleware(jestLogger.logger)
+  })
 
   test('addLoggerToContext', async () => {
-    await systemMiddleware.addLoggerToContext(applicationContext, () =>
+    const testLogger = getJestLogger()
+    const testContext = getMockApplicationContext()
+    const testMiddleware = new SystemMiddleware(testLogger.logger)
+
+    await testMiddleware.addLoggerToContext(testContext, () =>
       Promise.resolve()
     )
 
-    snapshotExistingLogger(applicationContext.logger)
+    snapshotExistingLogger(testLogger.logger)
   })
 
-  test('requestLogger', async () => {})
+  describe('requestLogger', () => {
+    test('await next', async () => {
+      const next = jest.fn()
+      next.mockImplementation(() => Promise.resolve())
+      await systemMiddleware.requestLogger(applicationContext, next)
+      expect(next).toHaveBeenCalled()
+
+      expect(jestLogger.transport.mock.mock.calls).toHaveLength(1)
+      const loggedCall = jestLogger.transport.mock.mock.calls[0][0]
+      snapshotLogEntryFailWhaleMethod(loggedCall)
+      jestLogger.transport.mock.mockReset()
+    })
+
+    test('doh error - muh bad', async () => {
+      const next = jest.fn()
+      next.mockRejectedValue('muh Bad')
+      await systemMiddleware
+        .requestLogger(applicationContext, next)
+        .catch((reason: any) => {
+          expect(reason).toMatchSnapshot()
+        })
+
+      expect(jestLogger.transport.mock.mock.calls).toHaveLength(1)
+      const loggedCall = jestLogger.transport.mock.mock.calls[0][0]
+      snapshotLogEntryFailWhaleMethod(loggedCall)
+      jestLogger.transport.mock.mockReset()
+    })
+  })
 
   test('setInitialState', async () => {
     const setHeader = jest.fn()
@@ -35,5 +83,6 @@ describe('middleware', () => {
       'x-correlation-id',
       context.state.correlationId
     )
+    jestLogger.callsMatchSnapshot()
   })
 })

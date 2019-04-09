@@ -96,4 +96,11 @@ describe('app', () => {
       jestLogger.callsMatchSnapshot()
     })
   })
+
+  describe('static', () => {
+    test('there can be only one ⚔️👱', () => {
+      const expected = App.getInstance()
+      expect(App.getInstance()).toBe(expected)
+    })
+  })
 })

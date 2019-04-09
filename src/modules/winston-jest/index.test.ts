@@ -4,6 +4,12 @@
 import * as winston from 'winston'
 import * as winstonTransport from 'winston-transport'
 
+const timestampMatcher = {
+  duration: expect.any(Number),
+  end: expect.any(Number),
+  start: expect.any(Number)
+}
+
 export interface IWinstonJestTransport extends winstonTransport {
   readonly mock: jest.Mock
   callsMatchSnapshot: () => void
