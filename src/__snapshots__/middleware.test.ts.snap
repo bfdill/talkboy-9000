@@ -11,34 +11,18 @@ Array [
 ]
 `;
 
-exports[`middleware requestLogger await next 1`] = `
-Object {
-  "name": "request logger",
-}
-`;
+exports[`middleware requestLogger await next 1`] = `"{ name: 'request logger' }"`;
 
-exports[`middleware requestLogger await next 2`] = `"info"`;
+exports[`middleware requestLogger await next 2`] = `undefined`;
 
-exports[`middleware requestLogger await next 3`] = `undefined`;
+exports[`middleware requestLogger await next 3`] = `"info"`;
 
-exports[`middleware requestLogger await next 4`] = `Object {}`;
+exports[`middleware requestLogger await next 4`] = `"request"`;
 
-exports[`middleware requestLogger await next 5`] = `Object {}`;
+exports[`middleware requestLogger doh error - muh bad 1`] = `"{ name: 'request logger' }"`;
 
-exports[`middleware requestLogger await next 6`] = `Object {}`;
+exports[`middleware requestLogger doh error - muh bad 2`] = `"muh Bad"`;
 
-exports[`middleware requestLogger doh error - muh bad 1`] = `
-Object {
-  "name": "request logger",
-}
-`;
+exports[`middleware requestLogger doh error - muh bad 3`] = `"error"`;
 
-exports[`middleware requestLogger doh error - muh bad 2`] = `"error"`;
-
-exports[`middleware requestLogger doh error - muh bad 3`] = `undefined`;
-
-exports[`middleware requestLogger doh error - muh bad 4`] = `Object {}`;
-
-exports[`middleware requestLogger doh error - muh bad 5`] = `Object {}`;
-
-exports[`middleware requestLogger doh error - muh bad 6`] = `Object {}`;
+exports[`middleware requestLogger doh error - muh bad 4`] = `"request"`;

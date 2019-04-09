@@ -6,14 +6,16 @@ import {
 import { SystemMiddleware, ISystemMiddleware } from './middleware'
 import { IApplicationContext } from './types'
 import { getMockApplicationContext } from './__mocks__/applicationContext'
+import { inspect } from 'util'
 
 const snapshotLogEntryFailWhaleMethod = (loggedCall: any) => {
-  expect(loggedCall.middleware).toMatchSnapshot()
+  expect(inspect(loggedCall.middleware)).toMatchSnapshot()
+  expect(loggedCall.start).toEqual(expect.any(Number))
+  expect(loggedCall.end).toEqual(expect.any(Number))
+  expect(loggedCall.duration).toEqual(expect.any(Number))
+  expect(loggedCall.error).toMatchSnapshot()
   expect(loggedCall.level).toMatchSnapshot()
-  expect(loggedCall.request).toMatchSnapshot()
-  expect(loggedCall.start).toMatchSnapshot(expect.any(Number))
-  expect(loggedCall.end).toMatchSnapshot(expect.any(Number))
-  expect(loggedCall.duration).toMatchSnapshot(expect.any(Number))
+  expect(loggedCall.message).toMatchSnapshot()
 }
 
 describe('middleware', () => {
