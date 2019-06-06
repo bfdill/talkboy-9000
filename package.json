@@ -60,5 +60,9 @@
     "tslint-config-airbnb": "^5.11.1",
     "tslint-no-focused-test": "^0.5.0",
     "typescript": "^3.4.1"
+  },
+  "resolutions": {
+    "js-yaml": "^3.13.1",
+    "handlebars": "^4.1.2"
   }
 }
