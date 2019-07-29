@@ -5,14 +5,15 @@
   "main": "dist/src/server.js",
   "engines": {
     "node": "11.10.0",
-    "yarn": "1.13.0"
+    "yarn": "1.17.3"
   },
   "license": "Unlicense",
   "rant": "Unlicense says fight the man, no license field. Yarn says, include it or warning. 😩🐼",
   "scripts": {
+    "bootstrap": "lerna bootstrap",
     "build": "tsc",
     "build:prod": "tsc --build tsconfig.prod.json",
-    "clean": "rimraf dist/ && rimraf app.zip",
+    "clean": "rimraf packages/**/dist/ dist/ app.zip",
     "lint": "tslint -c tslint.json --project tsconfig.json 'src/**/*.ts'",
     "prettier:check": "prettier --check \"src/**/*.ts\"",
     "prettier:fix": "prettier --write \"src/**/*.ts\" && yarn lint --fix",
@@ -52,6 +53,7 @@
   "devDependencies": {
     "@types/jest": "^24.0.11",
     "jest": "^24.7.0",
+    "lerna": "^3.13.4",
     "nodemon": "^1.18.10",
     "prettier": "^1.16.4",
     "ts-jest": "^24.0.1",
@@ -64,5 +66,9 @@
   "resolutions": {
     "js-yaml": "^3.13.1",
     "handlebars": "^4.1.2"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "private": true
 }

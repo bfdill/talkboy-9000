@@ -1,4 +1,5 @@
 import * as winston from 'winston'
+import * as winstonTransport from 'winston-transport'
 import * as winstonDailyRotateFile from 'winston-daily-rotate-file'
 
 export * from '../../middleware'
@@ -10,7 +11,9 @@ const format = winston.format.combine(
   winston.format.prettyPrint()
 )
 
-export const getDefaultTransports = () => [
+export const getDefaultTransports = ():
+  | winstonTransport
+  | winstonTransport[] => [
   new winston.transports.Console({
     format,
     level: 'info'

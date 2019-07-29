@@ -1,0 +1,9 @@
+{
+  "name": "@talkboy-9000/utils",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p ./tsconfig.json"
+  }
+}
