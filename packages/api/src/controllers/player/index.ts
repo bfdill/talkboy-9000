@@ -2,7 +2,7 @@ import * as koaRouter from 'koa-router'
 import { NOT_FOUND, BAD_REQUEST, OK } from 'http-status-codes'
 import { ISoundService, SoundService } from '../../modules/sounds'
 import { IPlayerService, PlayerService } from '../../modules/player'
-import { randomIntFromInterval } from '@bfd/utils'
+import { randomIntFromInterval } from '@talkboy-9000/utils'
 import { ApplicationState, IApplicationContext } from '../../types'
 
 export interface IPlayerController {
