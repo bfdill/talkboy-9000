@@ -3,8 +3,9 @@
   "compilerOptions": {
     "composite": true,
     "outDir": "./dist",
-    "rootDir": "./src",
     "typeRoots": ["./@types", "../../node_modules/@types"]
   },
-  "references": [{ "path": "../utils" }]
+  "references": [{ "path": "../utils" }],
+  "include": ["src/**/*"],
+  "exclude": ["src/**/*.test.*"]
 }
