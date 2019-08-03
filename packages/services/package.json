@@ -1,5 +1,5 @@
 {
-  "name": "@talkboy-9000/api",
+  "name": "@talkboy-9000/services",
   "version": "0.0.1",
   "license": "Unlicense",
   "main": "dist/index.js",
@@ -8,11 +8,5 @@
     "build": "tsc -p ./tsconfig.json",
     "clean": "rimraf dist",
     "test": "jest --no-cache"
-  },
-  "peerDependencies": {
-    "@talkboy-9000/utils": "^0.0.1"
-  },
-  "devDependencies": {
-    "@talkboy-9000/utils": "^0.0.1"
   }
 }

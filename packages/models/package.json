@@ -1,5 +1,5 @@
 {
-  "name": "@talkboy-9000/types",
+  "name": "@talkboy-9000/models",
   "version": "0.0.1",
   "license": "Unlicense",
   "main": "dist/index.js",

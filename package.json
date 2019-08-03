@@ -10,7 +10,7 @@
   "license": "Unlicense",
   "rant": "Unlicense says fight the man, no license field. Yarn says, include it or warning. 😩🐼",
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "boot": "lerna bootstrap",
     "clean": "lerna run clean && lerna clean",
     "build": "lerna run build",
     "old-build": "tsc",
