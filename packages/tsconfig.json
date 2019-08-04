@@ -1,8 +1,9 @@
 {
   "extends": "./tsconfig.settings.json",
-  "target": "es2018",
+  "target": "es1028",
   "module": "commonjs",
   "compilerOptions": {
+    "composite": true,
     "declaration": true
   }
 }
