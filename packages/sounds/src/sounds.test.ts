@@ -5,7 +5,7 @@ import { SoundService } from './sounds'
 import { ISoundService } from './sounds.types'
 
 describe('modules -> sounds', () => {
-  const PATH_TO_SOUNDS = join(process.cwd(), 'audio')
+  const PATH_TO_SOUNDS = '/tmp/fakeaf'
   const saneOnMock = jest.fn()
   const saneWatcherMock = {
     on: saneOnMock
@@ -20,7 +20,7 @@ describe('modules -> sounds', () => {
   beforeEach(() => {
     saneOnMock.mockReturnValue(saneWatcherMock)
     soundService = new SoundService(
-      '/tmp/fakeaf',
+      PATH_TO_SOUNDS,
       saneFunctionMock as any,
       jestLogger.logger
     )

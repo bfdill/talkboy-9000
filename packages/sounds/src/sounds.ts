@@ -106,6 +106,7 @@ export class SoundService implements ISoundService {
     const absCandidate = resolve(filename) + sep
     const result =
       absCandidate.substring(0, this.pathToSounds.length) === this.pathToSounds
+
     parentLogger
       .child({
         service: {
@@ -119,6 +120,7 @@ export class SoundService implements ISoundService {
         message: `isPathValid(${filename})`,
         pathToSounds: this.pathToSounds
       })
+
     return result
   }
 
