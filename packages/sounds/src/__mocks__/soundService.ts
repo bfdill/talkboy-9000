@@ -1,4 +1,5 @@
-import { ISoundService, Sound } from '..'
+import { Sound } from '@talkboy-9000/models'
+import { ISoundService } from '../sounds.types'
 
 export interface IMockSoundService extends ISoundService {
   setGetBySoundId: (result: any) => void
@@ -14,7 +15,7 @@ export const getMockSoundService = (): IMockSoundService => {
   const getSounds = jest.fn()
   const isPathValid = jest.fn()
 
-  return {
+  return <IMockSoundService>{
     getBySoundId,
     getSounds,
     isPathValid,
@@ -25,5 +26,5 @@ export const getMockSoundService = (): IMockSoundService => {
       getBySoundId.mockReturnValue(result),
     setGetSounds: (result: Sound[]) => getSounds.mockReturnValue(result),
     setIsPathValid: (result: boolean) => isPathValid.mockReturnValue(result)
-  } as any
+  }
 }

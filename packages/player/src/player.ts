@@ -1,17 +1,10 @@
 // import * as playSound from 'play-sound'
 import * as winston from 'winston'
 import { createPlayer, IPlayer } from './types'
-import { ISoundService, SoundService } from '../sounds'
+import { IPlayerService } from './player.types'
 
 // tsd creation fail
 const createPlayer: createPlayer = require('play-sound')
-
-export interface IPlayerService {
-  playFile: (
-    filename: string,
-    parentLogger: winston.Logger
-  ) => PromiseLike<void>
-}
 
 export class PlayerService implements IPlayerService {
   static instance: IPlayerService | undefined

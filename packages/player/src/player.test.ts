@@ -2,7 +2,7 @@ import { createPlayer, IPlayer, What, PlayOptions, Next } from './types'
 import { PlayerService, IPlayerService } from '.'
 import { ChildProcess } from 'child_process'
 import { IJestLogger, getJestLogger } from '../winston-jest/index.test'
-import { getMockSoundService } from '../sounds/__mocks__/soundService'
+import { getMockSoundService } from '../../sounds/src/__mocks__/soundService'
 
 // tsd creation fail
 const createPlayer: createPlayer = require('play-sound')

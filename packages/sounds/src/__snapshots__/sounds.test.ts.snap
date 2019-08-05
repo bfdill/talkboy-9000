@@ -517,13 +517,6 @@ Array [
 ]
 `;
 
-exports[`modules -> sounds has known exports 1`] = `
-Array [
-  "PATH_TO_SOUNDS",
-  "SoundService",
-]
-`;
-
 exports[`modules -> sounds removeSound removes file and re-sorts remaining items 1`] = `
 Array [
   Object {

@@ -27,10 +27,6 @@ describe('modules -> sounds', () => {
     baseSoundService = soundService as SoundService
   })
 
-  test('has known exports', () => {
-    expect(Object.keys(require('.'))).toMatchSnapshot()
-  })
-
   describe('addSound', () => {
     test('id = ordinal position by filename alpha', () => {
       expect(soundService.getSounds(jestLogger.logger)).toHaveLength(0)
