@@ -2,7 +2,7 @@ import * as sane from 'sane'
 import * as winston from 'winston'
 import { sync } from 'glob'
 import { join, resolve, sep, basename } from 'path'
-import { ISoundService } from './sounds.types'
+import { ISoundService, LOGGER_META } from './sounds.types'
 import { Sound } from '@talkboy-9000/models'
 
 export class SoundService implements ISoundService {
@@ -105,7 +105,7 @@ export class SoundService implements ISoundService {
   isPathValid = (filename: string, parentLogger: winston.Logger): boolean => {
     const absCandidate = resolve(filename) + sep
     const result =
-      absCandidate.substring(0, PATH_TO_SOUNDS.length) === PATH_TO_SOUNDS
+      absCandidate.substring(0, this.pathToSounds.length) === this.pathToSounds
     parentLogger
       .child({
         service: {
@@ -117,7 +117,7 @@ export class SoundService implements ISoundService {
         filename,
         result,
         message: `isPathValid(${filename})`,
-        pathToSounds: PATH_TO_SOUNDS
+        pathToSounds: this.pathToSounds
       })
     return result
   }
@@ -148,14 +148,9 @@ export class SoundService implements ISoundService {
     if (this.instance !== undefined) return this.instance
 
     this.instance = new SoundService(
-      PATH_TO_SOUNDS,
+      join(process.cwd(), 'audio'),
       sane,
-      getAppLogger().child({
-        service: {
-          name: 'SoundService',
-          method: 'addSound'
-        }
-      })
+      winston.createLogger({ defaultMeta: LOGGER_META })
     )
 
     return this.instance

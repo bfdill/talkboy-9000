@@ -1,3 +1,5 @@
+const compilerOptions = require('./tsconfig.settings.json').compilerOptions
+
 module.exports = {
   testEnvironment: 'node',
   moduleFileExtensions: ['ts', 'js', 'json'],
@@ -24,8 +26,8 @@ module.exports = {
   globals: {
     'ts-jest': {
       tsConfig: {
-        noUnusedParameters: false,
-        noUnusedLocals: false
+        ...compilerOptions,
+        incremental: true
       }
     }
   },
