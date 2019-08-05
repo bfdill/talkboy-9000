@@ -11,5 +11,9 @@
   },
   "include": ["src/**/*"],
   "exclude": ["src/**/*.test.*"],
-  "references": [{ "path": "../models" }, { "path": "../winston-jest" }]
+  "references": [
+    { "path": "../models" },
+    { "path": "../sounds" },
+    { "path": "../winston-jest" }
+  ]
 }

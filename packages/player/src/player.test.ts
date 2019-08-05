@@ -1,8 +1,10 @@
-import { createPlayer, IPlayer, What, PlayOptions, Next } from './types'
-import { PlayerService, IPlayerService } from '.'
 import { ChildProcess } from 'child_process'
-import { IJestLogger, getJestLogger } from '../winston-jest/index.test'
+import { getJestLogger, IJestLogger } from '@talkboy-9000/winston-jest'
 import { getMockSoundService } from '../../sounds/src/__mocks__/soundService'
+
+import { createPlayer, IPlayer, What, PlayOptions, Next } from './types'
+import { IPlayerService } from './player.types'
+import { PlayerService } from './player'
 
 // tsd creation fail
 const createPlayer: createPlayer = require('play-sound')

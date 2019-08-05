@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`modules -> player has known exports 1`] = `
+Array [
+  "PlayerService",
+]
+`;
+
+exports[`modules -> player playerService playback happy path 1`] = `undefined`;
+
+exports[`modules -> player playerService playback happy path 2`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": Object {
+      "filename": "this-file-totes-exists.mp3",
+    },
+    "service": Object {
+      "method": "playFile",
+      "name": "PlayerService",
+    },
+    Symbol(level): "info",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\",\\"method\\":\\"playFile\\"},\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\"},\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> player playerService playback happy path 3`] = `
+Array [
+  Object {
+    "filename": "this-file-totes-exists.mp3",
+    "level": "debug",
+    "message": "playback success",
+    "service": Object {
+      "method": "playFile",
+      "name": "PlayerService",
+    },
+    Symbol(level): "debug",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\",\\"method\\":\\"playFile\\"},\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"playback success\\",\\"level\\":\\"debug\\"}",
+  },
+]
+`;
+
+exports[`modules -> player playerService rejects on invalid file 1`] = `"filename path is invalid"`;
+
+exports[`modules -> player playerService rejects on invalid file 2`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": Object {
+      "filename": "this-file-totes-exists.mp3",
+    },
+    "service": Object {
+      "method": "playFile",
+      "name": "PlayerService",
+    },
+    Symbol(level): "info",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\",\\"method\\":\\"playFile\\"},\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\"},\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> player playerService rejects on invalid file 3`] = `
+Array [
+  Object {
+    "filename": "this-file-totes-exists.mp3",
+    "level": "error",
+    "message": "filename path is invalid",
+    "service": Object {
+      "method": "playFile",
+      "name": "PlayerService",
+    },
+    Symbol(level): "error",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\",\\"method\\":\\"playFile\\"},\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"filename path is invalid\\",\\"level\\":\\"error\\"}",
+  },
+]
+`;
+
+exports[`modules -> player playerService rejects on playback error 1`] = `
+Object {
+  "error": "KHAAAAAAN!",
+}
+`;
+
+exports[`modules -> player playerService rejects on playback error 2`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": Object {
+      "filename": "this-file-totes-exists.mp3",
+    },
+    "service": Object {
+      "method": "playFile",
+      "name": "PlayerService",
+    },
+    Symbol(level): "info",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\",\\"method\\":\\"playFile\\"},\\"message\\":{\\"filename\\":\\"this-file-totes-exists.mp3\\"},\\"level\\":\\"info\\"}",
+  },
+]
+`;
+
+exports[`modules -> player playerService rejects on playback error 3`] = `
+Array [
+  Object {
+    "error": Object {
+      "error": "KHAAAAAAN!",
+    },
+    "filename": "this-file-totes-exists.mp3",
+    "level": "debug",
+    "message": "playback failure",
+    "service": Object {
+      "method": "playFile",
+      "name": "PlayerService",
+    },
+    Symbol(level): "debug",
+    Symbol(message): "{\\"service\\":{\\"name\\":\\"PlayerService\\",\\"method\\":\\"playFile\\"},\\"error\\":{\\"error\\":\\"KHAAAAAAN!\\"},\\"filename\\":\\"this-file-totes-exists.mp3\\",\\"message\\":\\"playback failure\\",\\"level\\":\\"debug\\"}",
+  },
+]
+`;
