@@ -7,9 +7,14 @@
     "rootDir": "./src/",
     // with rootDir, tsBuildInfoFile is placed next to the tsconfig.json
     // # ts v3.5.3
-    "tsBuildInfoFile": "./dist/tsconfig.tsbuildinfo"
+    "tsBuildInfoFile": "./dist/tsconfig.tsbuildinfo",
+    "typeRoots": ["@types"]
   },
   "include": ["src/**/*"],
   "exclude": ["src/**/*.test.*"],
-  "references": [{ "path": "../utils" }]
+  "references": [
+    { "path": "../utils" },
+    { "path": "../player" },
+    { "path": "../sounds" }
+  ]
 }

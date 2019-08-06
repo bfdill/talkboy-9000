@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "soundboard app",
   "engines": {
-    "node": "11.10.0",
+    "node": ">=11.10.0",
     "yarn": "1.17.3"
   },
   "license": "Unlicense",

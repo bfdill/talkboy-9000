@@ -1,7 +1,8 @@
+import { Sound } from '@talkboy-9000/models'
+import { ISoundService } from '@talkboy-9000/sounds'
+import { getJestLogger } from '@talkboy-9000/winston-jest'
 import { IApplicationContext } from '../../types'
 import { SoundsController, getSoundsRouter } from '.'
-import { ISoundService, Sound } from '../../modules/sounds'
-import { getJestLogger } from '../../modules/winston-jest/index.test'
 
 describe('controllers -> sounds -> index', () => {
   const mockSound: Sound = {
@@ -14,7 +15,7 @@ describe('controllers -> sounds -> index', () => {
     expect(Object.keys(require('.'))).toMatchSnapshot()
   })
 
-  test.each([null, [mockSound]])(
+  test.each([null as any, [mockSound]])(
     'get matches snapshot',
     async (sounds?: Sound[] | null) => {
       const mockSoundService: ISoundService = {

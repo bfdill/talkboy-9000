@@ -1,8 +1,8 @@
 import * as KoaRouter from 'koa-router'
 import { NOT_FOUND, OK } from 'http-status-codes'
+import { ISoundService, SoundService } from '@talkboy-9000/sounds'
 
 import { IApplicationContext, ApplicationState } from '../../types'
-import { ISoundService, SoundService } from '../../modules/sounds'
 
 export interface ISoundsController {
   get: (ctx: IApplicationContext) => void
