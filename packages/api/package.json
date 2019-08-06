@@ -8,5 +8,14 @@
     "build": "tsc -p ./tsconfig.json",
     "clean": "rimraf dist",
     "test": "jest --no-cache"
+  },
+  "dependencies": {
+    "@talkboy-9000/sounds": "^0.0.1",
+    "@talkboy-9000/player": "^0.0.1",
+    "@talkboy-9000/utils": "^0.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "jest": "^24.8.0"
   }
 }

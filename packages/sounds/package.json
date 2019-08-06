@@ -8,5 +8,9 @@
     "build": "tsc -p ./tsconfig.json",
     "clean": "rimraf dist",
     "test": "jest --no-cache"
+  },
+  "devDependencies": {
+    "@talkboy-9000/models": "^0.0.1",
+    "@talkboy-9000/winston-jest": "^0.0.1"
   }
 }

@@ -9,6 +9,5 @@
     // # ts v3.5.3
     "tsBuildInfoFile": "./dist/tsconfig.tsbuildinfo"
   },
-  "include": ["src/**/*"],
-  "exclude": ["src/**/*.test.*"]
+  "include": ["src/**/*"]
 }

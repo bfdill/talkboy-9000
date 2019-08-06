@@ -5,10 +5,7 @@ import {
 } from '.'
 import { IApplicationContext } from '../../types'
 import { OK } from 'http-status-codes'
-import {
-  getJestLogger,
-  IJestLogger
-} from '../../modules/winston-jest/index.test'
+import { getJestLogger, IJestLogger } from '@talkboy-9000/winston-jest'
 import { mockApplicationState } from '../../__mocks__/applicationState'
 
 describe('controllers -> healthcheck', () => {

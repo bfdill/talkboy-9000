@@ -8,5 +8,9 @@
     "build": "tsc -p ./tsconfig.json",
     "clean": "rimraf dist/",
     "test": "jest --no-cache"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "jest": "^24.8.0"
   }
 }

@@ -1,7 +1,7 @@
 import {
   getJestLogger,
   snapshotExistingLogger
-} from './modules/winston-jest/index.test'
+} from '@talkboy-9000/winston-jest'
 import { SystemMiddleware } from './middleware'
 import { IApplicationContext } from './types'
 import { getMockApplicationContext } from './__mocks__/applicationContext'

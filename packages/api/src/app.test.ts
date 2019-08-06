@@ -6,7 +6,7 @@ import { App, configureRouter, getAppLogger, getAppRouter } from './app'
 import {
   getJestLogger,
   snapshotExistingLogger
-} from './modules/winston-jest/index.test'
+} from '@talkboy-9000/winston-jest'
 import { ISystemMiddleware, SystemMiddleware } from './modules/logging'
 
 describe('app', () => {

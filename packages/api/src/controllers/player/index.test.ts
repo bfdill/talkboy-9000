@@ -1,12 +1,10 @@
 import { PlayerController, IPlayerController } from '.'
-import { IPlayerService } from '../../modules/player'
-import { ISoundService, Sound } from '../../modules/sounds'
-import {
-  getJestLogger,
-  IJestLogger
-} from '../../modules/winston-jest/index.test'
+import { IPlayerService } from '@talkboy-9000/player'
+import { ISoundService } from '@talkboy-9000/sounds'
+import { getJestLogger, IJestLogger } from '@talkboy-9000/winston-jest'
 import { IApplicationContext } from '../../types'
 import { mockApplicationState } from '../../__mocks__/applicationState'
+import { Sound } from '@talkboy-9000/models'
 
 describe('controllers -> player', () => {
   const playerService: IPlayerService = {
