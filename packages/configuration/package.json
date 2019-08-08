@@ -1,0 +1,22 @@
+{
+  "name": "@talkboy-9000/configuration",
+  "version": "0.0.1",
+  "license": "Unlicense",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p ./tsconfig.json",
+    "clean": "rimraf dist",
+    "test": "jest --no-cache"
+  },
+  "peerDependencies": {
+    "@talkboy-9000/models": "^0.0.1",
+    "@types/config": "^0.0.34",
+    "config": "^3.2.2"
+  },
+  "devDependencies": {
+    "@talkboy-9000/models": "^0.0.1",
+    "@types/config": "^0.0.34",
+    "config": "^3.2.2"
+  }
+}
