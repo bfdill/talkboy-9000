@@ -3,6 +3,7 @@
 exports[`winston-jest has known exports 1`] = `
 Array [
   "getJestLogger",
+  "snapshotExistingLogger",
   "WinstonJestTransport",
 ]
 `;

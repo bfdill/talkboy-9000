@@ -1,50 +1,38 @@
 import { isAbsolute, join } from 'path'
 import * as config from 'config'
 
-export namespace Configuration {
-  export type Sounds = {
-    FileGlob: string
-    PathToSounds: string
+import { inspectAndLog } from '@talkboy-9000/utils'
+import { IConfigurationService, Sounds } from './configuration.types'
+
+export class ConfigurationService implements IConfigurationService {
+  private static instance: ConfigurationService | undefined = undefined
+  static getInstance(): ConfigurationService {
+    if (this.instance !== undefined) return this.instance
+
+    this.instance = new ConfigurationService()
+
+    return this.instance
   }
 
-  export type FullConfig = {
-    sounds: Sounds
-  }
+  soundConfig: Sounds | undefined = undefined
 
-  export interface IConfigurationService {
-    getSounds: () => Sounds
-  }
+  getSounds = () => {
+    if (this.soundConfig !== undefined) return this.soundConfig
 
-  export class ConfigurationService implements IConfigurationService {
-    private static instance: ConfigurationService | undefined = undefined
-    static getInstance(): ConfigurationService {
-      if (this.instance !== undefined) return this.instance
+    const cfg = config.get<Sounds>('sounds')
 
-      this.instance = new ConfigurationService()
+    // tslint:disable-next-line: variable-name
+    const PathToSounds = isAbsolute(cfg.PathToSounds)
+      ? cfg.PathToSounds
+      : join(process.cwd(), cfg.PathToSounds)
 
-      return this.instance
+    this.soundConfig = <Sounds>{
+      PathToSounds,
+      FileGlob: cfg.FileGlob
     }
 
-    soundConfig: Sounds | undefined = undefined
+    inspectAndLog({ soundConfig: this.soundConfig })
 
-    getSounds = () => {
-      if (this.soundConfig !== undefined) return this.soundConfig
-
-      const cfg = config.get<Sounds>('sounds')
-
-      console.log(`cfg(${cfg})`)
-
-      // tslint:disable-next-line: variable-name
-      const PathToSounds = isAbsolute(cfg.PathToSounds)
-        ? cfg.PathToSounds
-        : join(process.cwd(), cfg.PathToSounds)
-
-      this.soundConfig = <Sounds>{
-        PathToSounds,
-        FileGlob: cfg.FileGlob
-      }
-
-      return this.soundConfig
-    }
+    return this.soundConfig
   }
 }

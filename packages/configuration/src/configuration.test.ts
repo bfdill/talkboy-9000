@@ -1,8 +1,9 @@
-import { Configuration } from './configuration'
+import { ConfigurationService } from './configuration'
 
 describe('configuration', () => {
   test('PathToSounds contains audio', () => {
-    const sut = Configuration.ConfigurationService.getInstance()
+    const sut = ConfigurationService.getInstance()
+
     expect(
       sut.getSounds().PathToSounds.indexOf('audio')
     ).toBeGreaterThanOrEqual(0)

@@ -1,8 +1,10 @@
-import { Configuration } from '../src/configuration'
+import { FullConfig } from '../src/configuration.types'
 
-export const config: Configuration.FullConfig = {
+const config: FullConfig = {
   sounds: {
     FileGlob: '**/*.mp3',
     PathToSounds: 'audio'
   }
 }
+
+export default config

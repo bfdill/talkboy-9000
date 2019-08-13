@@ -10,5 +10,5 @@
     "tsBuildInfoFile": "./dist/tsconfig.tsbuildinfo"
   },
   "include": ["src/**/*"],
-  "references": [{ "path": "../models" }]
+  "references": [{ "path": "../models" }, { "path": "../utils" }]
 }
