@@ -1,14 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`modules -> player has known exports 1`] = `
-Array [
-  "PlayerService",
-]
-`;
+exports[`playerService playback happy path 1`] = `undefined`;
 
-exports[`modules -> player playerService playback happy path 1`] = `undefined`;
-
-exports[`modules -> player playerService playback happy path 2`] = `
+exports[`playerService playback happy path 2`] = `
 Array [
   Object {
     "level": "info",
@@ -25,7 +19,7 @@ Array [
 ]
 `;
 
-exports[`modules -> player playerService playback happy path 3`] = `
+exports[`playerService playback happy path 3`] = `
 Array [
   Object {
     "filename": "this-file-totes-exists.mp3",
@@ -41,9 +35,9 @@ Array [
 ]
 `;
 
-exports[`modules -> player playerService rejects on invalid file 1`] = `"filename path is invalid"`;
+exports[`playerService rejects on invalid file 1`] = `"filename path is invalid"`;
 
-exports[`modules -> player playerService rejects on invalid file 2`] = `
+exports[`playerService rejects on invalid file 2`] = `
 Array [
   Object {
     "level": "info",
@@ -60,7 +54,7 @@ Array [
 ]
 `;
 
-exports[`modules -> player playerService rejects on invalid file 3`] = `
+exports[`playerService rejects on invalid file 3`] = `
 Array [
   Object {
     "filename": "this-file-totes-exists.mp3",
@@ -76,13 +70,13 @@ Array [
 ]
 `;
 
-exports[`modules -> player playerService rejects on playback error 1`] = `
+exports[`playerService rejects on playback error 1`] = `
 Object {
   "error": "KHAAAAAAN!",
 }
 `;
 
-exports[`modules -> player playerService rejects on playback error 2`] = `
+exports[`playerService rejects on playback error 2`] = `
 Array [
   Object {
     "level": "info",
@@ -99,7 +93,7 @@ Array [
 ]
 `;
 
-exports[`modules -> player playerService rejects on playback error 3`] = `
+exports[`playerService rejects on playback error 3`] = `
 Array [
   Object {
     "error": Object {

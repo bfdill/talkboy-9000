@@ -1,6 +1,6 @@
-// import * as playSound from 'play-sound'
 import * as winston from 'winston'
 import { ISoundService, SoundService } from '@talkboy-9000/sounds'
+
 import { createPlayer, IPlayer } from './types'
 import { IPlayerService } from './player.types'
 
