@@ -4,16 +4,19 @@ import { sync } from 'glob'
 import { join, resolve, sep, basename } from 'path'
 import { ISoundService, LOGGER_META } from './sounds.types'
 import { Sound } from '@talkboy-9000/models'
+import {
+  Sounds as SoundConfig,
+  ConfigurationService
+} from '@talkboy-9000/configuration'
 
 export class SoundService implements ISoundService {
   private static instance: ISoundService | undefined
-  public readonly FILE_GLOB = '**/*.mp3'
 
   protected sounds: Sound[] = []
   protected readonly watcher: sane.Watcher
 
   constructor(
-    public readonly pathToSounds: string,
+    public readonly config: SoundConfig,
     protected readonly saneFunction: typeof sane,
     protected readonly logger: winston.Logger
   ) {
@@ -24,7 +27,9 @@ export class SoundService implements ISoundService {
   addSounds = () => {
     this.logger.info('add sounds')
 
-    sync(join(this.pathToSounds, this.FILE_GLOB)).forEach(this.addSound)
+    sync(join(this.config.PathToSounds, this.config.FileGlob)).forEach(
+      this.addSound
+    )
   }
 
   addSound = (filename: string) => {
@@ -51,7 +56,9 @@ export class SoundService implements ISoundService {
   }
 
   private createWatch = (): sane.Watcher => {
-    return this.saneFunction(this.pathToSounds, { glob: this.FILE_GLOB })
+    return this.saneFunction(this.config.PathToSounds, {
+      glob: this.config.FileGlob
+    })
       .on('add', (path: string) => {
         this.addSound(path)
 
@@ -105,7 +112,8 @@ export class SoundService implements ISoundService {
   isPathValid = (filename: string, parentLogger: winston.Logger): boolean => {
     const absCandidate = resolve(filename) + sep
     const result =
-      absCandidate.substring(0, this.pathToSounds.length) === this.pathToSounds
+      absCandidate.substring(0, this.config.PathToSounds.length) ===
+      this.config.PathToSounds
 
     parentLogger
       .child({
@@ -118,7 +126,7 @@ export class SoundService implements ISoundService {
         filename,
         result,
         message: `isPathValid(${filename})`,
-        pathToSounds: this.pathToSounds
+        pathToSounds: this.config.PathToSounds
       })
 
     return result
@@ -150,7 +158,7 @@ export class SoundService implements ISoundService {
     if (this.instance !== undefined) return this.instance
 
     this.instance = new SoundService(
-      join(process.cwd(), 'audio'),
+      ConfigurationService.getInstance().getSounds(),
       sane,
       winston.createLogger({ defaultMeta: LOGGER_META })
     )

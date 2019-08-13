@@ -1,11 +1,17 @@
 import * as sane from 'sane'
 import { join } from 'path'
+import { Sounds as SoundConfig } from '@talkboy-9000/configuration'
 import { getJestLogger, IJestLogger } from '@talkboy-9000/winston-jest'
+
 import { SoundService } from './sounds'
 import { ISoundService } from './sounds.types'
 
 describe('modules -> sounds', () => {
-  const PATH_TO_SOUNDS = '/tmp/fakeaf'
+  const config: SoundConfig = {
+    FileGlob: '**/*.mp3',
+    PathToSounds: '/tmp/unit_test/audio'
+  }
+
   const saneOnMock = jest.fn()
   const saneWatcherMock = {
     on: saneOnMock
@@ -20,7 +26,7 @@ describe('modules -> sounds', () => {
   beforeEach(() => {
     saneOnMock.mockReturnValue(saneWatcherMock)
     soundService = new SoundService(
-      PATH_TO_SOUNDS,
+      config,
       saneFunctionMock as any,
       jestLogger.logger
     )
@@ -110,7 +116,7 @@ describe('modules -> sounds', () => {
   describe('isPathValid', () => {
     test.each<[string, boolean]>([
       ['/tmp/invalid_af', false],
-      [join(PATH_TO_SOUNDS, 'too_legit'), true]
+      [join(config.PathToSounds, 'too_legit'), true]
     ])('validity test', (filename: string, expected) => {
       const actual = soundService.isPathValid(filename, jestLogger.logger)
 
