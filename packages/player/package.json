@@ -7,7 +7,8 @@
   "scripts": {
     "build": "tsc -p ./tsconfig.json",
     "clean": "rimraf dist",
-    "test": "jest --no-cache"
+    "test": "jest --no-cache",
+    "watch": "yarn build --watch --preserveWatchOutput"
   },
   "dependencies": {
     "@talkboy-9000/sounds": "^0.0.1"

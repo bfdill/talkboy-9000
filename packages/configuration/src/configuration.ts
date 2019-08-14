@@ -1,7 +1,6 @@
 import { isAbsolute, join } from 'path'
 import * as config from 'config'
 
-import { inspectAndLog } from '@talkboy-9000/utils'
 import { IConfigurationService, Sounds } from './configuration.types'
 
 export class ConfigurationService implements IConfigurationService {
@@ -30,8 +29,6 @@ export class ConfigurationService implements IConfigurationService {
       PathToSounds,
       FileGlob: cfg.FileGlob
     }
-
-    inspectAndLog({ soundConfig: this.soundConfig })
 
     return this.soundConfig
   }

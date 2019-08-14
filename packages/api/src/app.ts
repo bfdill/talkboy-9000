@@ -15,8 +15,8 @@ import {
   ApplicationRouter,
   ApplicationKoa,
   ApplicationState,
-  IApplicationContext,
-  IApplication
+  IApplication,
+  IApplicationContext
 } from './types'
 
 export const configureRouter = (router: ApplicationRouter) =>
@@ -24,6 +24,7 @@ export const configureRouter = (router: ApplicationRouter) =>
     .use('/healthcheck', getHealthcheckRouter().routes())
     .use('/player', getPlayerRouter().routes())
     .use('/sounds', getSoundsRouter().routes())
+
 export const getAppLogger = () =>
   createLogger({
     app: {

@@ -7,11 +7,13 @@
   "scripts": {
     "build": "tsc -p ./tsconfig.json",
     "clean": "rimraf dist",
-    "test": "jest --no-cache"
+    "test": "NODE_CONFIG_DIR=../configuration/config jest --no-cache",
+    "watch": "yarn build --watch --preserveWatchOutput"
   },
   "dependencies": {
-    "@talkboy-9000/sounds": "^0.0.1",
+    "@talkboy-9000/configuration": "^0.0.1",
     "@talkboy-9000/player": "^0.0.1",
+    "@talkboy-9000/sounds": "^0.0.1",
     "@talkboy-9000/utils": "^0.0.1"
   },
   "devDependencies": {

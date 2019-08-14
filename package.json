@@ -12,6 +12,8 @@
     "boot": "lerna bootstrap",
     "clean": "lerna run clean && lerna clean",
     "build": "lerna run build",
+    "test": "lerna run test",
+    "watch": "lerna run watch --parallel",
     "old-build": "tsc",
     "old-build:prod": "tsc --build tsconfig.prod.json",
     "old-clean": "rimraf packages/**/dist/ dist/ app.zip",
