@@ -1,11 +1,19 @@
 import { ConfigurationService } from './configuration'
 
 describe('configuration', () => {
-  test('PathToSounds contains audio', () => {
-    const sut = ConfigurationService.getInstance()
+  describe('logging', () => {
+    test('path contains logs', () => {
+      const sut = ConfigurationService.getInstance()
 
-    expect(
-      sut.getSounds().PathToSounds.indexOf('audio')
-    ).toBeGreaterThanOrEqual(0)
+      expect(sut.getLogging().path.indexOf('logs')).toBeGreaterThanOrEqual(0)
+    })
+  })
+
+  describe('sounds', () => {
+    test('path contains audio', () => {
+      const sut = ConfigurationService.getInstance()
+
+      expect(sut.getSounds().path.indexOf('audio')).toBeGreaterThanOrEqual(0)
+    })
   })
 })

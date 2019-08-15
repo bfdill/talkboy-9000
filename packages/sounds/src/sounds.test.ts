@@ -8,8 +8,8 @@ import { ISoundService } from './sounds.types'
 
 describe('modules -> sounds', () => {
   const config: SoundConfig = {
-    FileGlob: '**/*.mp3',
-    PathToSounds: '/tmp/unit_test/audio'
+    fileGlob: '**/*.mp3',
+    path: '/tmp/unit_test/audio'
   }
 
   const saneOnMock = jest.fn()
@@ -116,7 +116,7 @@ describe('modules -> sounds', () => {
   describe('isPathValid', () => {
     test.each<[string, boolean]>([
       ['/tmp/invalid_af', false],
-      [join(config.PathToSounds, 'too_legit'), true]
+      [join(config.path, 'too_legit'), true]
     ])('validity test', (filename: string, expected) => {
       const actual = soundService.isPathValid(filename, jestLogger.logger)
 

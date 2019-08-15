@@ -1,0 +1,27 @@
+{
+  "name": "@talkboy-9000/logging",
+  "version": "0.0.1",
+  "license": "Unlicense",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p ./tsconfig.json",
+    "clean": "rimraf dist",
+    "test": "jest --no-cache",
+    "watch": "yarn build --watch --preserveWatchOutput"
+  },
+  "peerDependencies": {
+    "@talkboy-9000/configuration": "^0.0.1",
+    "@talkboy-9000/winston-jest": "^0.0.1",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^3.8.0",
+    "winston-transport": "^4.3.0"
+  },
+  "devDependencies": {
+    "@talkboy-9000/configuration": "^0.0.1",
+    "@talkboy-9000/winston-jest": "^0.0.1",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^3.8.0",
+    "winston-transport": "^4.3.0"
+  }
+}

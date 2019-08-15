@@ -27,9 +27,7 @@ export class SoundService implements ISoundService {
   addSounds = () => {
     this.logger.info('add sounds')
 
-    sync(join(this.config.PathToSounds, this.config.FileGlob)).forEach(
-      this.addSound
-    )
+    sync(join(this.config.path, this.config.fileGlob)).forEach(this.addSound)
   }
 
   addSound = (filename: string) => {
@@ -56,8 +54,8 @@ export class SoundService implements ISoundService {
   }
 
   private createWatch = (): sane.Watcher => {
-    return this.saneFunction(this.config.PathToSounds, {
-      glob: this.config.FileGlob
+    return this.saneFunction(this.config.path, {
+      glob: this.config.fileGlob
     })
       .on('add', (path: string) => {
         this.addSound(path)
@@ -112,8 +110,7 @@ export class SoundService implements ISoundService {
   isPathValid = (filename: string, parentLogger: winston.Logger): boolean => {
     const absCandidate = resolve(filename) + sep
     const result =
-      absCandidate.substring(0, this.config.PathToSounds.length) ===
-      this.config.PathToSounds
+      absCandidate.substring(0, this.config.path.length) === this.config.path
 
     parentLogger
       .child({
@@ -126,7 +123,7 @@ export class SoundService implements ISoundService {
         filename,
         result,
         message: `isPathValid(${filename})`,
-        pathToSounds: this.config.PathToSounds
+        pathToSounds: this.config.path
       })
 
     return result

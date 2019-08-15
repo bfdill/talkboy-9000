@@ -1,7 +1,7 @@
 import { isAbsolute, join } from 'path'
 import * as config from 'config'
 
-import { IConfigurationService, Sounds } from './configuration.types'
+import { IConfigurationService, Sounds, Logging } from './configuration.types'
 
 export class ConfigurationService implements IConfigurationService {
   private static instance: ConfigurationService | undefined = undefined
@@ -14,20 +14,30 @@ export class ConfigurationService implements IConfigurationService {
   }
 
   soundConfig: Sounds | undefined = undefined
+  loggingConfig: Logging | undefined = undefined
+
+  getLogging = () => {
+    if (this.loggingConfig !== undefined) return this.loggingConfig
+
+    const cfg = config.get<Logging>('logging')
+    const path = isAbsolute(cfg.path) ? cfg.path : join(process.cwd(), cfg.path)
+
+    this.loggingConfig = <Logging>{
+      path
+    }
+
+    return this.loggingConfig
+  }
 
   getSounds = () => {
     if (this.soundConfig !== undefined) return this.soundConfig
 
     const cfg = config.get<Sounds>('sounds')
-
-    // tslint:disable-next-line: variable-name
-    const PathToSounds = isAbsolute(cfg.PathToSounds)
-      ? cfg.PathToSounds
-      : join(process.cwd(), cfg.PathToSounds)
+    const path = isAbsolute(cfg.path) ? cfg.path : join(process.cwd(), cfg.path)
 
     this.soundConfig = <Sounds>{
-      PathToSounds,
-      FileGlob: cfg.FileGlob
+      path,
+      fileGlob: cfg.fileGlob
     }
 
     return this.soundConfig

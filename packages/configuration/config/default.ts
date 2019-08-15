@@ -1,9 +1,12 @@
 import { FullConfig } from '../src/configuration.types'
 
 const config: FullConfig = {
+  logging: {
+    path: 'logs'
+  },
   sounds: {
-    FileGlob: '**/*.mp3',
-    PathToSounds: 'audio'
+    fileGlob: '**/*.mp3',
+    path: 'audio'
   }
 }
 
