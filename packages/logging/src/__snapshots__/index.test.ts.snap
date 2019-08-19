@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`logging createLogger logs meta as expected 1`] = `
+Array [
+  Object {
+    "level": "info",
+    "message": "hai",
+    "metaNeedsMeta": ":( :(",
+    "testMeta": true,
+    Symbol(level): "info",
+    Symbol(splat): Array [
+      Object {
+        "metaNeedsMeta": ":( :(",
+      },
+    ],
+    Symbol(message): "{\\"testMeta\\":true,\\"metaNeedsMeta\\":\\":( :(\\",\\"level\\":\\"info\\",\\"message\\":\\"hai\\"}",
+  },
+]
+`;
+
+exports[`logging createLogger no log meta no base meta? 1`] = `
+Array [
+  Object {
+    "level": "error",
+    "message": "hai",
+    Symbol(level): "error",
+    Symbol(message): "{\\"level\\":\\"error\\",\\"message\\":\\"hai\\"}",
+  },
+]
+`;
+
+exports[`logging createLogger snapshot 1`] = `"Console"`;
+
+exports[`logging createLogger snapshot 2`] = `"DailyRotateFile"`;
+
+exports[`logging createLogger snapshot 3`] = `"DailyRotateFile"`;
+
+exports[`logging createLogger snapshot 4`] = `"DailyRotateFile"`;
+
+exports[`logging transports snapshot 1`] = `"Console"`;
+
+exports[`logging transports snapshot 2`] = `"DailyRotateFile"`;
+
+exports[`logging transports snapshot 3`] = `"DailyRotateFile"`;
+
+exports[`logging transports snapshot 4`] = `"DailyRotateFile"`;

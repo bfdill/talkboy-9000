@@ -1,0 +1,29 @@
+{
+  "name": "@talkboy-9000/api",
+  "version": "0.0.1",
+  "license": "Unlicense",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p ./tsconfig.json",
+    "clean": "rimraf dist",
+    "test": "NODE_CONFIG_DIR=../configuration/config jest --no-cache",
+    "watch": "yarn build --watch --preserveWatchOutput"
+  },
+  "peerDependencies": {
+    "@talkboy-9000/configuration": "^0.0.1",
+    "@talkboy-9000/logging": "^0.0.1",
+    "@talkboy-9000/player": "^0.0.1",
+    "@talkboy-9000/sounds": "^0.0.1",
+    "@talkboy-9000/utils": "^0.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "@talkboy-9000/configuration": "^0.0.1",
+    "@talkboy-9000/logging": "^0.0.1",
+    "@talkboy-9000/player": "^0.0.1",
+    "@talkboy-9000/sounds": "^0.0.1",
+    "@talkboy-9000/utils": "^0.0.1",
+    "jest": "^24.8.0"
+  }
+}

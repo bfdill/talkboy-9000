@@ -1,0 +1,25 @@
+{
+  "name": "@talkboy-9000/sounds",
+  "version": "0.0.1",
+  "license": "Unlicense",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p ./tsconfig.json",
+    "clean": "rimraf dist",
+    "test": "SUPPRESS_NO_CONFIG_WARNING=false jest --no-cache",
+    "watch": "yarn build --watch --preserveWatchOutput"
+  },
+  "devDependencies": {
+    "@talkboy-9000/configuration": "^0.0.1",
+    "@talkboy-9000/logging": "^0.0.1",
+    "@talkboy-9000/models": "^0.0.1",
+    "@talkboy-9000/winston-jest": "^0.0.1"
+  },
+  "peerDependencies": {
+    "@talkboy-9000/configuration": "^0.0.1",
+    "@talkboy-9000/logging": "^0.0.1",
+    "@talkboy-9000/models": "^0.0.1",
+    "@talkboy-9000/winston-jest": "^0.0.1"
+  }
+}

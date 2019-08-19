@@ -1,0 +1,17 @@
+{
+  "name": "@talkboy-9000/utils",
+  "version": "0.0.1",
+  "license": "Unlicense",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p ./tsconfig.json",
+    "clean": "rimraf dist/",
+    "test": "jest --no-cache",
+    "watch": "yarn build --watch --preserveWatchOutput"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "jest": "^24.8.0"
+  }
+}

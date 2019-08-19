@@ -1,0 +1,12 @@
+{
+  "name": "@talkboy-9000/models",
+  "version": "0.0.1",
+  "license": "Unlicense",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p ./tsconfig.json",
+    "clean": "rimraf dist/",
+    "watch": "yarn build --watch --preserveWatchOutput"
+  }
+}

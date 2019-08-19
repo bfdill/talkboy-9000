@@ -2,31 +2,36 @@
   "name": "talkboy-9000",
   "version": "0.0.1",
   "description": "soundboard app",
-  "main": "dist/src/server.js",
   "engines": {
-    "node": "11.10.0",
-    "yarn": "1.13.0"
+    "node": ">=11.10.0",
+    "yarn": "1.17.3"
   },
   "license": "Unlicense",
   "rant": "Unlicense says fight the man, no license field. Yarn says, include it or warning. 😩🐼",
   "scripts": {
-    "build": "tsc",
-    "build:prod": "tsc --build tsconfig.prod.json",
-    "clean": "rimraf dist/ && rimraf app.zip",
-    "lint": "tslint -c tslint.json --project tsconfig.json 'src/**/*.ts'",
-    "prettier:check": "prettier --check \"src/**/*.ts\"",
-    "prettier:fix": "prettier --write \"src/**/*.ts\" && yarn lint --fix",
-    "serve": "node .",
-    "start": "ts-node src/server.ts",
-    "start:watch": "nodemon --watch 'src/**/*' -e ts --exec 'ts-node' src/server.ts",
-    "test": "NODE_ENV=development jest --no-cache",
-    "test:coverage": "yarn test --coverage",
-    "test:watch": "yarn test --watch",
-    "zip": "node dist/archiver.js"
+    "boot": "lerna bootstrap",
+    "clean": "lerna run clean && lerna clean",
+    "build": "lerna run build",
+    "test": "lerna run test",
+    "watch": "lerna run watch --parallel",
+    "old-build": "tsc",
+    "old-build:prod": "tsc --build tsconfig.prod.json",
+    "old-clean": "rimraf packages/**/dist/ dist/ app.zip",
+    "old-lint": "tslint -c tslint.json --project tsconfig.json 'src/**/*.ts'",
+    "old-prettier:check": "prettier --check \"src/**/*.ts\"",
+    "old-prettier:fix": "prettier --write \"src/**/*.ts\" && yarn lint --fix",
+    "old-serve": "node .",
+    "old-start": "ts-node src/server.ts",
+    "old-start:watch": "nodemon --watch 'src/**/*' -e ts --exec 'ts-node' src/server.ts",
+    "old-test": "NODE_ENV=development jest --no-cache",
+    "old-test:coverage": "yarn test --coverage",
+    "old-test:watch": "yarn test --watch",
+    "old-zip": "node dist/archiver.js"
   },
   "author": "bfd <ben@dillfamily.org>",
   "dependencies": {
     "@types/archiver": "^3.0.0",
+    "@types/config": "^0.0.34",
     "@types/glob": "^7.1.1",
     "@types/koa": "^2.0.48",
     "@types/koa-helmet": "^3.1.2",
@@ -34,6 +39,7 @@
     "@types/sane": "^2.0.0",
     "@types/uuid": "^3.4.4",
     "archiver": "^3.0.0",
+    "config": "^3.2.2",
     "glob": "^7.1.3",
     "http-status-codes": "^1.3.2",
     "koa": "^2.7.0",
@@ -52,6 +58,7 @@
   "devDependencies": {
     "@types/jest": "^24.0.11",
     "jest": "^24.7.0",
+    "lerna": "^3.13.4",
     "nodemon": "^1.18.10",
     "prettier": "^1.16.4",
     "ts-jest": "^24.0.1",
@@ -59,10 +66,14 @@
     "tslint": "^5.15.0",
     "tslint-config-airbnb": "^5.11.1",
     "tslint-no-focused-test": "^0.5.0",
-    "typescript": "^3.4.1"
+    "typescript": "^3.5.3"
   },
   "resolutions": {
     "js-yaml": "^3.13.1",
     "handlebars": "^4.1.2"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "private": true
 }

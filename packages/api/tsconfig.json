@@ -1,0 +1,19 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist/",
+    // without rootDir, dist is dist/src
+    // i'm don't want my dist to have a src dir
+    "rootDir": "./src/",
+    // with rootDir, tsBuildInfoFile is placed next to the tsconfig.json
+    // # ts v3.5.3
+    "tsBuildInfoFile": "./dist/tsconfig.tsbuildinfo",
+    "typeRoots": ["@types", "node_modules/@types"]
+  },
+  "include": ["src/**/*"],
+  "references": [
+    { "path": "../utils" },
+    { "path": "../player" },
+    { "path": "../sounds" }
+  ]
+}
