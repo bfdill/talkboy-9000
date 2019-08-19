@@ -3,11 +3,7 @@ import * as KoaHelmet from 'koa-helmet'
 import * as KoaBody from 'koa-body'
 import * as KoaRouter from 'koa-router'
 import * as winston from 'winston'
-import {
-  createLogger,
-  ISystemMiddleware,
-  SystemMiddleware
-} from './modules/logging'
+import { createLogger } from '@talkboy-9000/logging'
 import { getHealthcheckRouter } from './controllers/healthcheck'
 import { getPlayerRouter } from './controllers/player'
 import { getSoundsRouter } from './controllers/sounds'
@@ -18,6 +14,7 @@ import {
   IApplication,
   IApplicationContext
 } from './types'
+import { ISystemMiddleware, SystemMiddleware } from './middleware'
 
 export const configureRouter = (router: ApplicationRouter) =>
   router

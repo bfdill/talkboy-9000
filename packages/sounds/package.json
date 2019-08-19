@@ -12,6 +12,13 @@
   },
   "devDependencies": {
     "@talkboy-9000/configuration": "^0.0.1",
+    "@talkboy-9000/logging": "^0.0.1",
+    "@talkboy-9000/models": "^0.0.1",
+    "@talkboy-9000/winston-jest": "^0.0.1"
+  },
+  "peerDependencies": {
+    "@talkboy-9000/configuration": "^0.0.1",
+    "@talkboy-9000/logging": "^0.0.1",
     "@talkboy-9000/models": "^0.0.1",
     "@talkboy-9000/winston-jest": "^0.0.1"
   }

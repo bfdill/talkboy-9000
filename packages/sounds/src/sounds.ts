@@ -8,6 +8,7 @@ import {
   Sounds as SoundConfig,
   ConfigurationService
 } from '@talkboy-9000/configuration'
+import { createLogger } from '@talkboy-9000/logging'
 
 export class SoundService implements ISoundService {
   private static instance: ISoundService | undefined
@@ -157,7 +158,7 @@ export class SoundService implements ISoundService {
     this.instance = new SoundService(
       ConfigurationService.getInstance().getSounds(),
       sane,
-      winston.createLogger({ defaultMeta: LOGGER_META })
+      createLogger({ defaultMeta: LOGGER_META })
     )
 
     return this.instance

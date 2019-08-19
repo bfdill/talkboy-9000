@@ -7,7 +7,7 @@ import {
   getJestLogger,
   snapshotExistingLogger
 } from '@talkboy-9000/winston-jest'
-import { ISystemMiddleware, SystemMiddleware } from './modules/logging'
+import { SystemMiddleware, ISystemMiddleware } from './middleware'
 
 describe('app', () => {
   test('has expected exports', () => {
