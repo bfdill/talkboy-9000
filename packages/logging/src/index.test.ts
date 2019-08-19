@@ -1,28 +1,46 @@
 import * as logging from './'
+import * as winstonTransport from 'winston-transport'
+
 import { WinstonJestTransport } from '@talkboy-9000/winston-jest'
-// import { inspectAndLog } from '@talkboy-9000/utils'
+
+const transportsTest = (transports: winstonTransport[]) => {
+  test('expected length', () => {
+    expect(transports).toHaveLength(4)
+  })
+
+  test('snapshot', () => {
+    transports.forEach(t => expect(t.constructor.name).toMatchSnapshot())
+  })
+}
 
 describe('logging', () => {
   describe('transports', () => {
     const transports = logging.getDefaultTransports()
 
-    test('expected length', () => {
-      expect(transports).toHaveLength(4)
-    })
-
-    test('snapshot', () => {
-      expect(transports).toMatchSnapshot()
-    })
+    transportsTest(transports)
   })
 
   describe('createLogger', () => {
-    test('c', () => {
-      const wjt = new WinstonJestTransport()
-      const l = logging.createLogger({})
+    const logger = logging.createLogger({ testMeta: true })
 
-      l.clear()
-      l.add(wjt)
-      l.log('info', 'c')
+    transportsTest(logger.transports)
+
+    test('no log meta no base meta?', () => {
+      const wjt = new WinstonJestTransport()
+
+      logger.clear()
+      logger.add(wjt)
+      logger.log('error', 'hai')
+
+      wjt.callsMatchSnapshot()
+    })
+
+    test('logs meta as expected', () => {
+      const wjt = new WinstonJestTransport()
+
+      logger.clear()
+      logger.add(wjt)
+      logger.log('info', 'hai', { metaNeedsMeta: ':( :(' })
 
       wjt.callsMatchSnapshot()
     })

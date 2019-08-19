@@ -1,363 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`logging createLogger c 1`] = `
+exports[`logging createLogger logs meta as expected 1`] = `
 Array [
   Object {
     "level": "info",
-    "message": "c",
+    "message": "hai",
+    "metaNeedsMeta": ":( :(",
+    "testMeta": true,
     Symbol(level): "info",
-    Symbol(message): "{\\"level\\":\\"info\\",\\"message\\":\\"c\\"}",
+    Symbol(splat): Array [
+      Object {
+        "metaNeedsMeta": ":( :(",
+      },
+    ],
+    Symbol(message): "{\\"testMeta\\":true,\\"metaNeedsMeta\\":\\":( :(\\",\\"level\\":\\"info\\",\\"message\\":\\"hai\\"}",
   },
 ]
 `;
 
-exports[`logging transports snapshot 1`] = `
+exports[`logging createLogger no log meta no base meta? 1`] = `
 Array [
-  Console {
-    "_events": Object {
-      "pipe": [Function],
-      "unpipe": [Function],
-    },
-    "_eventsCount": 2,
-    "_maxListeners": 30,
-    "_writableState": WritableState {
-      "bufferProcessing": false,
-      "bufferedRequest": null,
-      "bufferedRequestCount": 0,
-      "corked": 0,
-      "corkedRequestsFree": CorkedRequest {
-        "entry": null,
-        "finish": [Function],
-        "next": null,
-      },
-      "decodeStrings": true,
-      "defaultEncoding": "utf8",
-      "destroyed": false,
-      "ended": false,
-      "ending": false,
-      "errorEmitted": false,
-      "finalCalled": false,
-      "finished": false,
-      "highWaterMark": 16,
-      "lastBufferedRequest": null,
-      "length": 0,
-      "needDrain": false,
-      "objectMode": true,
-      "onwrite": [Function],
-      "pendingcb": 0,
-      "prefinished": false,
-      "sync": true,
-      "writecb": null,
-      "writelen": 0,
-      "writing": false,
-    },
-    "consoleWarnLevels": Object {},
-    "eol": "
-",
-    "format": Format {
-      "Format": [Function],
-      "options": Object {},
-    },
-    "handleExceptions": undefined,
-    "level": "info",
-    "name": "console",
-    "silent": undefined,
-    "stderrLevels": Object {},
-    "writable": true,
-  },
-  DailyRotateFile {
-    "_events": Object {
-      "pipe": [Function],
-      "unpipe": [Function],
-    },
-    "_eventsCount": 2,
-    "_maxListeners": undefined,
-    "_writableState": WritableState {
-      "bufferProcessing": false,
-      "bufferedRequest": null,
-      "bufferedRequestCount": 0,
-      "corked": 0,
-      "corkedRequestsFree": CorkedRequest {
-        "entry": null,
-        "finish": [Function],
-        "next": null,
-      },
-      "decodeStrings": true,
-      "defaultEncoding": "utf8",
-      "destroyed": false,
-      "ended": false,
-      "ending": false,
-      "errorEmitted": false,
-      "finalCalled": false,
-      "finished": false,
-      "highWaterMark": 16,
-      "lastBufferedRequest": null,
-      "length": 0,
-      "needDrain": false,
-      "objectMode": true,
-      "onwrite": [Function],
-      "pendingcb": 0,
-      "prefinished": false,
-      "sync": true,
-      "writecb": null,
-      "writelen": 0,
-      "writing": false,
-    },
-    "dirname": "logs",
-    "filename": "%DATE%.info.log",
-    "format": Format {
-      "Format": [Function],
-      "options": Object {},
-    },
-    "handleExceptions": undefined,
-    "level": "info",
-    "logStream": EventEmitter {
-      "_events": Object {
-        "new": Array [
-          [Function],
-          [Function],
-        ],
-        "rotate": [Function],
-      },
-      "_eventsCount": 2,
-      "_maxListeners": undefined,
-      "auditLog": Object {
-        "auditLog": "logs/.923c928cdb909ea68f7c250e96bd85f54351900c-audit.json",
-        "files": Array [
-          Object {
-            "date": 1565835854154,
-            "hash": "8b1a24376bf82210d4ce53d3d808afd6",
-            "name": "logs/2019-08-14.info.log",
-          },
-        ],
-        "keep": Object {
-          "amount": 7,
-          "days": true,
-        },
-      },
-      "end": [Function],
-      "write": [Function],
-    },
-    "options": Object {
-      "colorize": false,
-      "datePattern": "YYYY-MM-DD",
-      "depth": null,
-      "eol": "
-",
-      "filename": "logs/%DATE%.info.log",
-      "format": Format {
-        "Format": [Function],
-        "options": Object {},
-      },
-      "json": false,
-      "label": null,
-      "level": "info",
-      "logstash": null,
-      "maxFiles": "7d",
-      "maxSize": "20m",
-      "prettyPrint": false,
-      "showLevel": true,
-      "stringify": false,
-      "timestamp": [Function],
-    },
-    "silent": undefined,
-    "writable": true,
-  },
-  DailyRotateFile {
-    "_events": Object {
-      "pipe": [Function],
-      "unpipe": [Function],
-    },
-    "_eventsCount": 2,
-    "_maxListeners": undefined,
-    "_writableState": WritableState {
-      "bufferProcessing": false,
-      "bufferedRequest": null,
-      "bufferedRequestCount": 0,
-      "corked": 0,
-      "corkedRequestsFree": CorkedRequest {
-        "entry": null,
-        "finish": [Function],
-        "next": null,
-      },
-      "decodeStrings": true,
-      "defaultEncoding": "utf8",
-      "destroyed": false,
-      "ended": false,
-      "ending": false,
-      "errorEmitted": false,
-      "finalCalled": false,
-      "finished": false,
-      "highWaterMark": 16,
-      "lastBufferedRequest": null,
-      "length": 0,
-      "needDrain": false,
-      "objectMode": true,
-      "onwrite": [Function],
-      "pendingcb": 0,
-      "prefinished": false,
-      "sync": true,
-      "writecb": null,
-      "writelen": 0,
-      "writing": false,
-    },
-    "dirname": "logs",
-    "filename": "%DATE%.debug.log",
-    "format": Format {
-      "Format": [Function],
-      "options": Object {},
-    },
-    "handleExceptions": undefined,
-    "level": "debug",
-    "logStream": EventEmitter {
-      "_events": Object {
-        "new": Array [
-          [Function],
-          [Function],
-        ],
-        "rotate": [Function],
-      },
-      "_eventsCount": 2,
-      "_maxListeners": undefined,
-      "auditLog": Object {
-        "auditLog": "logs/.90e214d71b222aca4e71cf652f5d19a6033bddad-audit.json",
-        "files": Array [
-          Object {
-            "date": 1565835854155,
-            "hash": "277989cf685100a878a30b712393e94f",
-            "name": "logs/2019-08-14.debug.log",
-          },
-        ],
-        "keep": Object {
-          "amount": 2,
-          "days": true,
-        },
-      },
-      "end": [Function],
-      "write": [Function],
-    },
-    "options": Object {
-      "colorize": false,
-      "datePattern": "YYYY-MM-DD",
-      "depth": null,
-      "eol": "
-",
-      "filename": "logs/%DATE%.debug.log",
-      "format": Format {
-        "Format": [Function],
-        "options": Object {},
-      },
-      "json": false,
-      "label": null,
-      "level": "debug",
-      "logstash": null,
-      "maxFiles": "2d",
-      "maxSize": "20m",
-      "prettyPrint": false,
-      "showLevel": true,
-      "stringify": false,
-      "timestamp": [Function],
-    },
-    "silent": undefined,
-    "writable": true,
-  },
-  DailyRotateFile {
-    "_events": Object {
-      "pipe": [Function],
-      "unpipe": [Function],
-    },
-    "_eventsCount": 2,
-    "_maxListeners": undefined,
-    "_writableState": WritableState {
-      "bufferProcessing": false,
-      "bufferedRequest": null,
-      "bufferedRequestCount": 0,
-      "corked": 0,
-      "corkedRequestsFree": CorkedRequest {
-        "entry": null,
-        "finish": [Function],
-        "next": null,
-      },
-      "decodeStrings": true,
-      "defaultEncoding": "utf8",
-      "destroyed": false,
-      "ended": false,
-      "ending": false,
-      "errorEmitted": false,
-      "finalCalled": false,
-      "finished": false,
-      "highWaterMark": 16,
-      "lastBufferedRequest": null,
-      "length": 0,
-      "needDrain": false,
-      "objectMode": true,
-      "onwrite": [Function],
-      "pendingcb": 0,
-      "prefinished": false,
-      "sync": true,
-      "writecb": null,
-      "writelen": 0,
-      "writing": false,
-    },
-    "dirname": "logs",
-    "filename": "%DATE%.silly.log",
-    "format": Format {
-      "Format": [Function],
-      "options": Object {},
-    },
-    "handleExceptions": undefined,
-    "level": "silly",
-    "logStream": EventEmitter {
-      "_events": Object {
-        "new": Array [
-          [Function],
-          [Function],
-        ],
-        "rotate": [Function],
-      },
-      "_eventsCount": 2,
-      "_maxListeners": undefined,
-      "auditLog": Object {
-        "auditLog": "logs/.973edb8125ed4fc2398326e9246b192e01b492dc-audit.json",
-        "files": Array [
-          Object {
-            "date": 1565835854155,
-            "hash": "16bc6ffcd6fb370933b0a5c05b2bb884",
-            "name": "logs/2019-08-14.silly.log",
-          },
-        ],
-        "keep": Object {
-          "amount": 2,
-          "days": true,
-        },
-      },
-      "end": [Function],
-      "write": [Function],
-    },
-    "options": Object {
-      "colorize": false,
-      "datePattern": "YYYY-MM-DD",
-      "depth": null,
-      "eol": "
-",
-      "filename": "logs/%DATE%.silly.log",
-      "format": Format {
-        "Format": [Function],
-        "options": Object {},
-      },
-      "json": false,
-      "label": null,
-      "level": "silly",
-      "logstash": null,
-      "maxFiles": "2d",
-      "maxSize": "20m",
-      "prettyPrint": false,
-      "showLevel": true,
-      "stringify": false,
-      "timestamp": [Function],
-    },
-    "silent": undefined,
-    "writable": true,
+  Object {
+    "level": "error",
+    "message": "hai",
+    Symbol(level): "error",
+    Symbol(message): "{\\"level\\":\\"error\\",\\"message\\":\\"hai\\"}",
   },
 ]
 `;
+
+exports[`logging createLogger snapshot 1`] = `"Console"`;
+
+exports[`logging createLogger snapshot 2`] = `"DailyRotateFile"`;
+
+exports[`logging createLogger snapshot 3`] = `"DailyRotateFile"`;
+
+exports[`logging createLogger snapshot 4`] = `"DailyRotateFile"`;
+
+exports[`logging transports snapshot 1`] = `"Console"`;
+
+exports[`logging transports snapshot 2`] = `"DailyRotateFile"`;
+
+exports[`logging transports snapshot 3`] = `"DailyRotateFile"`;
+
+exports[`logging transports snapshot 4`] = `"DailyRotateFile"`;
