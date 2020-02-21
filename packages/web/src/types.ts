@@ -2,8 +2,11 @@ import { Sound } from '@talkboy-9000/models'
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 
-export type FullState = {
+export type GetSoundsState = {
   sounds: Sound[]
+}
+export type FullState = {
+  getSounds: GetSoundsState
 }
 
 export type RequestGetSoundsAction = Action<'REQUEST/getSounds'>

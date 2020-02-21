@@ -1,13 +1,16 @@
 import { Reducer } from 'redux'
-import { FullState, AnyAction } from '../../../types'
+import { AnyAction, GetSoundsState } from '../../../types'
 
-const reducer: Reducer<FullState, AnyAction> = (state, action) => {
+const reducer: Reducer<GetSoundsState, AnyAction> = (
+  state = { sounds: [] },
+  action
+) => {
   switch (action.type) {
     case 'SUCCESS/getSounds':
       return { sounds: action.payload }
   }
 
-  return { sounds: [] }
+  return state
 }
 
 export default reducer

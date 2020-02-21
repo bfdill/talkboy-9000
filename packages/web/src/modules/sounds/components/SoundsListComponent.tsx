@@ -17,7 +17,7 @@ const enhance = compose<ComponentProps, {}>(
     ComponentProps,
     FullState
   >(
-    state => state?.sounds ? { sounds: state.sounds } : { sounds: [] },
+    state => state?.getSounds.sounds ? { sounds: state.getSounds.sounds } : { sounds: [] },
     { getSounds }
   ),
   lifecycle<DispatchProps, FullState>({
