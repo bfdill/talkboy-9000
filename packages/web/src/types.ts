@@ -32,7 +32,7 @@ export type GetSounds = () => ThunkAction<
 >
 
 export type MakeSound = (
-  id: number
+  id: string
 ) => ThunkAction<
   void,
   FullState,

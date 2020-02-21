@@ -1,16 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import getSounds from '../actions/getSounds'
-import { GetSounds, FullState } from '../../../types'
+import makeSound from '../actions/makeSound'
+import { GetSounds, FullState, MakeSound } from '../../../types'
 import { compose, lifecycle } from 'recompose'
 import { Sound } from '@talkboy-9000/models'
 import SoundComponent from './SoundComponent'
 
 
 type ComponentProps = { sounds: Sound[] }
-type DispatchProps = { getSounds: GetSounds }
+type DispatchProps = { getSounds: GetSounds, makeSound: MakeSound }
 
-const enhance = compose<ComponentProps, {}>(
+const enhance = compose<ComponentProps & DispatchProps, {}>(
   connect<
     {},
     DispatchProps,
@@ -18,7 +19,7 @@ const enhance = compose<ComponentProps, {}>(
     FullState
   >(
     state => state?.getSounds.sounds ? { sounds: state.getSounds.sounds } : { sounds: [] },
-    { getSounds }
+    { getSounds, makeSound }
   ),
   lifecycle<DispatchProps, FullState>({
     componentDidMount() {
@@ -27,4 +28,4 @@ const enhance = compose<ComponentProps, {}>(
   })
 )
 
-export default enhance(props => <ul>{props.sounds.map(s => <SoundComponent sound={s} />)}</ul>)
+export default enhance(props => <ul>{props.sounds.map(s => <SoundComponent sound={s} makeSound={props.makeSound} />)}</ul>)

@@ -6,13 +6,12 @@ import getSounds from './modules/sounds/reducers/sounds'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import { FullState, AnyAction } from './types'
 
 const reducers = combineReducers({ getSounds })
-const store = createStore<any, any, any, any>(
+const store = createStore<FullState, AnyAction, { dispatch: unknown }, unknown>(
   reducers,
-  {
-    sounds: []
-  },
+  undefined,
   composeWithDevTools(applyMiddleware(thunk))
 )
 
