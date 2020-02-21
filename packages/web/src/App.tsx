@@ -1,13 +1,29 @@
 import React from 'react'
 import logo from './logo.svg'
 import './App.css'
-import SoundComponent from './modules/sounds/components/SoundComponent'
+import SoundsListComponent from './modules/sounds/components/SoundsListComponent'
+import { createStore, applyMiddleware } from 'redux'
+import { FullState, AnyAction } from './types'
+import reducer from './modules/sounds/reducers/sounds'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension'
+
+const store = createStore<any, any, any, any>(
+  reducer,
+  {
+    sounds: []
+  },
+  composeWithDevTools(applyMiddleware(thunk))
+)
 
 const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <SoundComponent />
+        <Provider store={store}>
+          <SoundsListComponent />
+        </Provider>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.

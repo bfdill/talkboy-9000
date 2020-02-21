@@ -1,21 +1,7 @@
-import { ThunkAction } from 'redux-thunk'
-import { Action } from 'redux'
 import axios from 'axios'
+import { GetSounds } from '../../../types'
 
-type FullState = {
-  sounds: any
-}
-
-type RequestGetSoundsAction = Action<'REQUEST/getSounds'>
-type SuccessGetSoundsAction = Action<'SUCCESS/getSounds'> & { payload: any }
-type FailGetSoundsAction = Action<'FAILED/getSounds'> & { err: Error }
-
-const getSounds: ThunkAction<
-  void,
-  FullState,
-  undefined,
-  RequestGetSoundsAction | SuccessGetSoundsAction | FailGetSoundsAction
-> = async dispatch => {
+const getSounds: GetSounds = () => async dispatch => {
   dispatch({ type: 'REQUEST/getSounds' })
 
   try {
