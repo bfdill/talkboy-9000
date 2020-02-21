@@ -3,24 +3,28 @@ import { connect } from 'react-redux'
 import getSounds from '../actions/getSounds'
 import { GetSounds, FullState } from '../../../types'
 import { compose, lifecycle } from 'recompose'
+import { Sound } from '@talkboy-9000/models'
+import SoundComponent from './SoundComponent'
 
 
- const enhance = compose(
+type ComponentProps = { sounds: Sound[] }
+type DispatchProps = { getSounds: GetSounds }
+
+const enhance = compose<ComponentProps, {}>(
   connect<
     {},
-    { getSounds: GetSounds },
-    { sounds: any[] },
+    DispatchProps,
+    ComponentProps,
     FullState
   >(
-    state => state?.sounds || {},
+    state => state?.sounds ? { sounds: state.sounds } : { sounds: [] },
     { getSounds }
   ),
-  lifecycle<{ getSounds: GetSounds }, FullState>({
+  lifecycle<DispatchProps, FullState>({
     componentDidMount() {
       this.props.getSounds()
-      console.log(this.props)
     }
   })
 )
 
-export default enhance(() => <div>Foo</div>)
+export default enhance(props => <ul>{props.sounds.map(s => <SoundComponent sound={s} />)}</ul>)
