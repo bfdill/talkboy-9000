@@ -26,6 +26,8 @@
     "typescript": "^3.7.5"
   },
   "scripts": {
+    "prebuild": "yarn css",
+    "prestart": "yarn css",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "css": "tachyons src/css/app.css > src/index.css --minify",
