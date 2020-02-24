@@ -1,5 +1,4 @@
 import React from 'react'
-import './App.css'
 import SoundsListComponent from './modules/sounds/components/SoundsListComponent'
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import getSounds from './modules/sounds/reducers/sounds'
@@ -16,9 +15,12 @@ const store = createStore<FullState, AnyAction, { dispatch: unknown }, unknown>(
 )
 
 const App = () => (
-  <Provider store={store}>
-    <SoundsListComponent />
-  </Provider>
+  <div>
+    <h1 className="code f5 fl w-100 pa2">talkboy-9000</h1>
+    <Provider store={store}>
+      <SoundsListComponent />
+    </Provider>
+  </div>
 )
 
 export default App

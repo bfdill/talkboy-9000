@@ -28,4 +28,4 @@ const enhance = compose<ComponentProps & DispatchProps, {}>(
   })
 )
 
-export default enhance(props => <ul>{props.sounds.map(s => <SoundComponent sound={s} makeSound={props.makeSound} />)}</ul>)
+export default enhance(props => <div className="flex flex-wrap w-100">{props.sounds.map(s => <SoundComponent sound={s} makeSound={props.makeSound} />)}</div>)
