@@ -7,7 +7,7 @@ const getSounds: GetSounds = () => async dispatch => {
 
   try {
     const response = await axios.get<{ sounds: Sound[] }>(
-      'http://localhost:4000/sounds'
+      'http://10.139.116.199:3000/sounds'
     )
 
     dispatch({ type: 'SUCCESS/getSounds', payload: response.data.sounds })

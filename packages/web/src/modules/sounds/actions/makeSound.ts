@@ -5,7 +5,7 @@ const makeSound: MakeSound = id => async dispatch => {
   dispatch({ type: 'REQUEST/makeSounds' })
 
   try {
-    await axios.get(`http://localhost:4000/player/${id}`)
+    await axios.get(`http://10.139.116.199:3000/player/${id}`)
 
     dispatch({ type: 'SUCCESS/makeSounds' })
   } catch (err) {
