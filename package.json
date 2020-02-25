@@ -58,6 +58,8 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.11",
+    "inquirer": "6.0.0",
+    "jest": "24.9.0",
     "lerna": "^3.13.4",
     "nodemon": "^1.18.10",
     "prettier": "^1.16.4",
@@ -69,6 +71,7 @@
     "typescript": "^3.5.3"
   },
   "resolutions": {
+    "is-whitespace": "0.3.0",
     "js-yaml": "^3.13.1",
     "handlebars": "^4.1.2"
   },

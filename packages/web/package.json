@@ -50,6 +50,8 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/dom": "^6.12.2"
+    "@testing-library/dom": "^6.12.2",
+    "eslint": "^6.0.0",
+    "eslint-plugin-flowtype": "^3.0.0"
   }
 }
