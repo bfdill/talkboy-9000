@@ -2,6 +2,7 @@ import * as Koa from 'koa'
 import * as KoaHelmet from 'koa-helmet'
 import * as KoaBody from 'koa-body'
 import * as KoaRouter from 'koa-router'
+import * as cors from '@koa/cors'
 import * as winston from 'winston'
 import { createLogger } from '@talkboy-9000/logging'
 import { getHealthcheckRouter } from './controllers/healthcheck'
@@ -54,6 +55,7 @@ export class App implements IApplication {
     })
 
     koa
+      .use(cors())
       .use(KoaHelmet())
       .use(KoaBody())
       .use(systemMiddleware.middleware)
